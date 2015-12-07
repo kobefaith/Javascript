@@ -1,6 +1,7 @@
 /**
  * Created by zhoufei on 2015/12/7.
  */
+
 var Student = {
     name:'Robot',
     height:1.2,
@@ -8,6 +9,11 @@ var Student = {
         console.log(this.name + 'is running...');
     }
 };
+
+/*var xiaoming = {
+    name:'ะกร๗'
+};
+ xiaoming.__proto__ = Student;*/
 function createStudent(name){
     var s = Object.create(Student);
     s.name = name;
