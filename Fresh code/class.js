@@ -33,3 +33,10 @@ function Student(name){
 var xiaoming = new Student('ะกร๗');
 xiaoming.name;
 xiaoming.hello();
+
+function Student(name){
+    this.name = name;
+}
+Student.prototype.hello = function(){
+    alert('Hello, '+this.name + '!');
+};
