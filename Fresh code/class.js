@@ -22,3 +22,14 @@ function createStudent(name){
 var xiaoming = createStudent('小明');
 xiaoming.run();
 xiaoming.__proto__===Student;
+
+function Student(name){
+    this.name = name;
+    this.hello = function(){
+        alert('hello,'+this.name + '!');
+    }
+}
+
+var xiaoming = new Student('小明');
+xiaoming.name;
+xiaoming.hello();
