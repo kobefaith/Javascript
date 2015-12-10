@@ -42,3 +42,21 @@ haskell.id = 'haskell';
 haskell.innerText = 'Haskell';
 list.insertBefore(haskell,ref);
 list.insertBefore(haskell,ref);
+
+
+var
+    i,c,
+    list = document.getElementById('list');
+for (i = 0; i < list.children.length; i++){
+    c = list.children[i];
+}
+
+
+var self = document.getElementById('to-be-removed');
+var parent = self.parentElement;
+var removed = parent.removedChild(self);
+removed === self;
+
+var parent = document.getElementById('parent');
+parent.removeChild(parent.children[0]);
+
