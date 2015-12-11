@@ -17,4 +17,15 @@ var input =document.getElementById('email');
 input.value = 'test@example.com';
 <input type="date" value="2015-07-01">
 <input type="color" value="#ff0000">
+<form id="test-form" onsubmit="return checkForm()">
+        <input type="text" name="test">
+        <button type="submit">Submit</button>
+        </form>
+<script>
+        function checkForm(){
+            var form = document.getElementById('test-form');
+
+            return true;
+        }
+</script>
 
