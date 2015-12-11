@@ -12,3 +12,9 @@ mon.value;
 tue.value;
 mon.checked;
 tue.checked;
+
+var input =document.getElementById('email');
+input.value = 'test@example.com';
+<input type="date" value="2015-07-01">
+<input type="color" value="#ff0000">
+
