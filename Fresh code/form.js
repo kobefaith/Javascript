@@ -54,3 +54,19 @@ input.value = 'test@example.com';
             return true;
         }
 </script>
+var checkRegisterForm = function(){
+    var username = document.getElementById('username');
+    var passwd = document.getElementById('password');
+    var passwd_2 = document.getElementById('password-2');
+    var re = /[0-9a-zA-Z]{3,10}/;
+    if (passwd.length<5 && passwd.length > 20){
+        return false;
+    }
+    if (passwd != passwd2){
+        return false;
+    }
+    if (re.test(username) === false){
+        return false;
+    }
+    return true;
+}
