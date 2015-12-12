@@ -28,4 +28,15 @@ input.value = 'test@example.com';
             return true;
         }
 </script>
-
+<form id="login-form" method="post" onsubmit="return checkForm()">
+        <input type="text" id="username" name="username">
+        <input type="password" id="password" name="password">
+        <button type="submit">Submit</button>
+</form>
+<script>
+        function checkForm(){
+            var pwd = document.getElementById('password');
+            pwd.value = toMD5(pwd.value);
+            return true;
+        }
+</script>
