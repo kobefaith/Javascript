@@ -33,3 +33,23 @@ fileInput.addEventListener('change',function(){
     };
     reader.readAsDataURL(file);
 });
+
+
+
+var request;
+if(windows.XMLHttpRequest){
+    request = new XMLHttpRequest();
+}else{
+    request = new ActiveXObject("Microsoft.XMLHttp")
+}
+
+
+request.open("GET","get.php",true);
+request.send();
+
+request.open("POST","post.php",true);
+request.send();
+
+request.open("POST","create.php",true);
+request.setRequestHeader("Content-type","application/X-www-form-urlencoded");
+request.send("name=kobe&age=37");
