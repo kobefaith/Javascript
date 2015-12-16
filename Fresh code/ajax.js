@@ -28,3 +28,11 @@ function handleResult(ret){
         domHits.style.display = 'none';
     }
 }
+
+function testCreateXhr(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST','http://test/keyword/hit',true);
+    xhr.setRequestHeader("content-Type","application/json");
+    xhr.send('keyword=c');
+    
+}
