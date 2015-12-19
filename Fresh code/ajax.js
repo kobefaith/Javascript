@@ -42,11 +42,16 @@ function testCreateXhr(){
         keyword:'c',
         other:'test'
     }));
+    xhr.timeout = 200;
+    xhr.ontimeout = function(){
+        console.log('timeout!');
+    }
     xhr.onreadystatechange = function(e) {
         if (xhr.readyState === 4 && xhr.status == 200) {
 
             console.log(xhr.responseText);
-
+            JSON.parse(xhr.response.Text);//将json字符串转成json对象
+            //eval(xhr.response.Text);//将json字符串转成json对象
             console.log(xhr.responseXML);
             console.log(xhr.getAllResponseHeaders());
             console.log(xhr.getResponseHeader("Content-Type"));
