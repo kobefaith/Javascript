@@ -68,3 +68,9 @@ function testCreateXhr(){
     }
 
 }
+function callback(){
+    console.log('Done');
+}
+console.log('before setTimeout()');
+setTimeout(callback,1000);
+console.log('after setTimeout()');
