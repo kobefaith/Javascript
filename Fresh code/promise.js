@@ -65,4 +65,3 @@ var p2 = new Promise(function(resolve,reject){
 Promise.all([p1,p2]).then(function(results){
     console.log(results);
 });
-
