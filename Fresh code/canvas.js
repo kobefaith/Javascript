@@ -17,3 +17,15 @@ path.moveTo(95,65);
 path.arc(90,65,5,0,Math.PI*2,true);
 ctx.strokeStyle = '#0000ff';
 ctx.stroke(path);
+
+var
+    canvas = document.getElementById('test-text-canvas'),
+    ctx = canvas.getContext('2d');
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.shadowoffsetX = 2;
+ctx.shadowOffsetY = 2;
+ctx.shadowBlur = 2;
+ctx.shadowColor = '#666666';
+ctx.font = '24px Arial';
+ctx.fillStyle = '#333333';
+ctx.fillText('带阴影的文字'，20,40);
