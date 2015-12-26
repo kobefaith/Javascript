@@ -23,3 +23,25 @@ var emailInput = $('input[name=email]');
 var tr = $('tr.red');
 $('p,div');
 $('p.red,p.green');
+
+
+
+<div class="testing">
+        <ul class="lang">
+        <li class="lang-javascript">Javascript</li>
+        <li class="lang-python">Python</li>
+        <li class="lang-lua">Lua</li>
+        </ul>
+    </div>
+  $('ul.lang li.lang-javascript');
+$('div.testing li.lang-javascript');
+$('ul.lang li');
+$('form[name=upload] input');
+$('form.test p input');
+$('ul.lang li');
+$('ul.lang li:first-child');
+$('ul.lang li:last-child');
+$('ul.lang li:nth-child(2)');
+$('ul.lang li:nth-child(even)');
+$('ul.lang li:nth-child(odd)');
+
