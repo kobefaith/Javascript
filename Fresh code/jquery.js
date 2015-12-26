@@ -45,3 +45,26 @@ $('ul.lang li:nth-child(2)');
 $('ul.lang li:nth-child(even)');
 $('ul.lang li:nth-child(odd)');
 
+
+<div class="test-selector">
+    <ul class="test-lang">
+    <li class="lang-javascript">JavaScript</li>
+    <li class="lang-python">Python</li>
+    <li class="lang-lua">Lua</li>
+    </ul>
+    <ol class="test-lang">
+    <li class="lang-swift">Swift</li>
+    <li class="lang-java">Java</li>
+    <li class="lang-c">C</li>
+    </ol>
+    </div>
+
+
+
+    //selected = $('div.test-selector li');
+//selected = $('ul.test-lang li');
+//selected = $('ol.test-lang li');
+//selected = $('ul.test-lang li.lang-javascript');
+//selected = $('ul.test-lang li.lang-lua');
+selected = $('ol.test-lang li.lang-c');
+
