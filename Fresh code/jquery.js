@@ -60,11 +60,10 @@ $('ul.lang li:nth-child(odd)');
     </div>
 
 
-
-    //selected = $('div.test-selector li');
-//selected = $('ul.test-lang li');
-//selected = $('ol.test-lang li');
-//selected = $('ul.test-lang li.lang-javascript');
-//selected = $('ul.test-lang li.lang-lua');
+selected = $('div.test-selector li');
+selected = $('ul.test-lang li');
+selected = $('ol.test-lang li');
+selected = $('ul.test-lang li.lang-javascript');
+selected = $('ul.test-lang li.lang-lua');
 selected = $('ol.test-lang li.lang-c');
 
