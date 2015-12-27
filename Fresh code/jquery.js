@@ -90,3 +90,12 @@ swift.prev();//Python
 swift.prev('.js');
 
 
+var langs = $('ul.lang li');
+var a = langs.filter('.dy');
+
+var langs = $('ul.lang li');
+langs.filter(function(){
+    return this.innerHTML.indexOf('S') === 0;
+});
+
+
