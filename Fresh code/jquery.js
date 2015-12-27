@@ -67,3 +67,26 @@ selected = $('ul.test-lang li.lang-javascript');
 selected = $('ul.test-lang li.lang-lua');
 selected = $('ol.test-lang li.lang-c');
 
+
+<ul class="lang">
+        <li class="js dy">JavaScript</li>
+        <li class="dy">Python</li>
+        <li id="swift">Swift</li>
+        <li class="dy">Scheme</li>
+        <li name="haskell">Haskell</li>
+        </ul>
+var ul = $('ul.lang');
+var dy = ul.find('.dy');
+var swf = ul.find('#swift');
+var hsk = ul.find('[name=haskell]');
+var swf = $('#swift');
+var parent = swf.parent();
+var a = swf.parent('div.red');
+
+var swift = $('#swift');
+swift.next();//Scheme
+swift.next('[name=haskell]');
+swift.prev();//Python
+swift.prev('.js');
+
+
