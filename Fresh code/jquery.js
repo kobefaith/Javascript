@@ -97,5 +97,12 @@ var langs = $('ul.lang li');
 langs.filter(function(){
     return this.innerHTML.indexOf('S') === 0;
 });
+var langs=$('ul.lang li');
+var arr = langs.map(function(){
+    return this.innerHTML;
+}).get();
 
-
+var langs = $('ul.lang li');
+var js = langs.first();
+var haskell = langs.last();
+var sub = langs.slice(2,4);
