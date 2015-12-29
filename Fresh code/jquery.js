@@ -131,3 +131,30 @@ j2.text('JavaScript & ECMAScript');
     <li class="lang dy"><span>Scheme</span></li>
     </ul>
     $('#test-css li.dy>span').css('background-color','#ffd351').css('color','red');
+
+
+
+<div id="test-highlight-css">
+    <ul>
+    <li class="py"><span>Python</span></li>
+<li class="js"><span>JavaScript</span></li>
+<li class="sw"><span>Swift</span></li>
+<li class="hk"><span>Haskell</span></li>
+</ul>
+</div>
+    var div = $('#test-hightlight-css');
+div.find('.js').addClass('hightlight');
+var a = $('a[target=_blank]');
+a.hide();
+a.show();
+$(window).width();
+$(window).height();
+$(document).width();
+$(document).height();
+var div = $('#test-div');
+div.width();
+div.height();
+div.width(400);
+div.height('200px');
+
+
