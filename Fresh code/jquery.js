@@ -106,3 +106,28 @@ var langs = $('ul.lang li');
 var js = langs.first();
 var haskell = langs.last();
 var sub = langs.slice(2,4);
+
+
+<ul id="test-ul">
+        <li class="js">JavaScript</li>
+        <li name="book">Java</li>
+        </ul>
+
+        $('#test-ul li[name=book]').text();
+
+$('#test-ul li[name=book]').html();
+
+var j1 = $('#test-ul li.js');
+var j2 = $('#test-ul li[name=book]');
+j1.html('<span style="color : red">JavaScript</span>');
+j2.text('JavaScript & ECMAScript');
+
+
+<ul id="test-css">
+        <li class="lang dy"><span>Javascript</span></li>
+    <li class="lang"><span>Java</span></li>
+    <li class="lang dy"><span>Python</span></li>
+    <li class="lang"><span>Swift</span></li>
+    <li class="lang dy"><span>Scheme</span></li>
+    </ul>
+    $('#test-css li.dy>span').css('background-color','#ffd351').css('color','red');
