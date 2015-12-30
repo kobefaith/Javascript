@@ -27,13 +27,13 @@ $('p.red,p.green');
 
 
 <div class="testing">
-        <ul class="lang">
-        <li class="lang-javascript">Javascript</li>
-        <li class="lang-python">Python</li>
-        <li class="lang-lua">Lua</li>
-        </ul>
+    <ul class="lang">
+    <li class="lang-javascript">Javascript</li>
+    <li class="lang-python">Python</li>
+    <li class="lang-lua">Lua</li>
+    </ul>
     </div>
-  $('ul.lang li.lang-javascript');
+    $('ul.lang li.lang-javascript');
 $('div.testing li.lang-javascript');
 $('ul.lang li');
 $('form[name=upload] input');
@@ -56,8 +56,8 @@ $('ul.lang li:nth-child(odd)');
     <li class="lang-swift">Swift</li>
     <li class="lang-java">Java</li>
     <li class="lang-c">C</li>
-    </ol>
-    </div>
+</ol>
+</div>
 
 
 selected = $('div.test-selector li');
@@ -69,12 +69,12 @@ selected = $('ol.test-lang li.lang-c');
 
 
 <ul class="lang">
-        <li class="js dy">JavaScript</li>
-        <li class="dy">Python</li>
-        <li id="swift">Swift</li>
-        <li class="dy">Scheme</li>
-        <li name="haskell">Haskell</li>
-        </ul>
+    <li class="js dy">JavaScript</li>
+    <li class="dy">Python</li>
+    <li id="swift">Swift</li>
+    <li class="dy">Scheme</li>
+    <li name="haskell">Haskell</li>
+    </ul>
 var ul = $('ul.lang');
 var dy = ul.find('.dy');
 var swf = ul.find('#swift');
@@ -109,11 +109,11 @@ var sub = langs.slice(2,4);
 
 
 <ul id="test-ul">
-        <li class="js">JavaScript</li>
-        <li name="book">Java</li>
-        </ul>
+    <li class="js">JavaScript</li>
+    <li name="book">Java</li>
+    </ul>
 
-        $('#test-ul li[name=book]').text();
+    $('#test-ul li[name=book]').text();
 
 $('#test-ul li[name=book]').html();
 
@@ -124,13 +124,13 @@ j2.text('JavaScript & ECMAScript');
 
 
 <ul id="test-css">
-        <li class="lang dy"><span>Javascript</span></li>
-    <li class="lang"><span>Java</span></li>
-    <li class="lang dy"><span>Python</span></li>
-    <li class="lang"><span>Swift</span></li>
-    <li class="lang dy"><span>Scheme</span></li>
-    </ul>
-    $('#test-css li.dy>span').css('background-color','#ffd351').css('color','red');
+    <li class="lang dy"><span>Javascript</span></li>
+<li class="lang"><span>Java</span></li>
+<li class="lang dy"><span>Python</span></li>
+<li class="lang"><span>Swift</span></li>
+<li class="lang dy"><span>Scheme</span></li>
+</ul>
+$('#test-css li.dy>span').css('background-color','#ffd351').css('color','red');
 
 
 
@@ -142,7 +142,7 @@ j2.text('JavaScript & ECMAScript');
 <li class="hk"><span>Haskell</span></li>
 </ul>
 </div>
-    var div = $('#test-hightlight-css');
+var div = $('#test-hightlight-css');
 div.find('.js').addClass('hightlight');
 var a = $('a[target=_blank]');
 a.hide();
@@ -156,5 +156,32 @@ div.width();
 div.height();
 div.width(400);
 div.height('200px');
+
+
+
+var div = $('#test-div');
+div.attr('data');
+div.attr('name');
+div.attr('name','Hello');
+div.removeAttr('name');
+<input id="test-input" name="email" value="">
+        <select id="test-select" name="city">
+        <option value="BJ" selected>Beijing</option>
+    <option value="SH" >shanghai</option>
+        <option value="SZ">shenzhen</option>
+        </select>
+        <textarea id="test-textarea">hello</textarea>
+
+var
+    input = $('#test-inout'),
+    select = $('#test-select'),
+    textarea = $('#test-textarea');
+input.val();
+input.val('abc@example.com');
+select.val();
+select.val('SH');
+
+textarea.val();
+textarea.val('Hi');
 
 
