@@ -185,3 +185,34 @@ textarea.val();
 textarea.val('Hi');
 
 
+<div id="test-div">
+        <ul>
+        <li><span>Javascript</span></li>
+    <li><span>python</span></li>
+    <li><span>swift</span></li>
+    </ul>
+    </div>
+
+    var ul = $('#test-div>ul');
+ul.append('<li><span>haskell</span></li>');
+
+
+var ps = document.createElement('li');
+ps.innerHTML = '<span>pascal</span>';
+ul.append(ps);
+ul.append($('#scheme'));
+ul.append(function (index,html){
+    return '<li><span>language-'+index'</span></li>';
+});
+
+
+
+var js = $('#test-div>ul>li:first-child');
+js.after('<li><span>Lua</span></li>');
+var li = $('#test-div>ul>li');
+li.remove();
+
+var js = $('#test-div>ul>li:first-child');
+js.after('<li><span>Lua</span></li>');
+$('#test-div>ul>li:nth-child(2)').after('<li><span>Pascal</span></li>');
+$('#test-div>ul>li:nth-child(4)').after('<li><span>Ruby</span></li>');
