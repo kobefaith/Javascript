@@ -216,3 +216,9 @@ var js = $('#test-div>ul>li:first-child');
 js.after('<li><span>Lua</span></li>');
 $('#test-div>ul>li:nth-child(2)').after('<li><span>Pascal</span></li>');
 $('#test-div>ul>li:nth-child(4)').after('<li><span>Ruby</span></li>');
+
+<a id="test-link" href="#0">µ„Œ“ ‘ ‘</a>
+        var a = $('#test-link');
+a.on('click',function(){
+    alert('Hello!');
+});
