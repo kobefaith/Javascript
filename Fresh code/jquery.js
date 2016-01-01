@@ -222,3 +222,32 @@ $('#test-div>ul>li:nth-child(4)').after('<li><span>Ruby</span></li>');
 a.on('click',function(){
     alert('Hello!');
 });
+a.click(function (){
+    alert('hello!');
+})
+$(document).ready(function (){
+    $('#testForm').submit(function (){
+        alert('submit!');
+    });
+});
+$(function (){
+    console.log('init A...');
+});
+$(function (){
+    console.log('init B...');
+});
+$(function (){
+    console.log('init C...');
+});
+$(function (){
+    $('#testMouseMoveDiv').mousemove(function (e){
+        $('#testMouseMoveSpan').text('pageX = '+ e.pageX +',pageY='+ e.pageY );
+    });
+});
+function hello(){
+    alert('hello!');
+}
+a.click(hello);
+setTimeout(function (){
+    a.off('click',hello);
+},1000);
