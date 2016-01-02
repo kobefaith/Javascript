@@ -251,3 +251,27 @@ a.click(hello);
 setTimeout(function (){
     a.off('click',hello);
 },1000);
+
+
+
+var input = $('#test-input');
+input.val('change it!');
+input.change();
+
+$(function(){
+    window.open('/');
+});
+var button1 = $('#testPopButton1');
+var button2 = $('#testPopButton2');
+function popupTestwindow(){
+    window.open('/');
+}
+button1.click(function (){
+    popupTestWindow();
+});
+button2.click(function (){
+    setTimeout(popupTestwindow,100);
+});
+
+
+
