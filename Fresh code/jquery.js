@@ -273,5 +273,32 @@ button2.click(function (){
     setTimeout(popupTestwindow,100);
 });
 
+var div = $('test-show-hide');
+div.hide(3000);
 
+var div = $('test-show-hide');
+div.show('slow');
+var div = $('#test-slide');
+div.slideUp(3000);
+var div = $('#test-fade');
+div.fadeOut('slow');
 
+var div = $('#test-animate');
+div.animate({
+    opacity:0.25,
+    width:'256px',
+    height:'256px',
+},3000);
+
+var div = $('#test-animates');
+div.slideDown(2000)
+    .delay(1000)
+    .animate({
+        width:'256px',
+        height:'256px',
+    },2000)
+    .delay(1000)
+    .animate({
+        width:'128px',
+        height:'128px'
+    },2000);
