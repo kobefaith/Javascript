@@ -302,3 +302,7 @@ div.slideDown(2000)
         width:'128px',
         height:'128px'
     },2000);
+function deleteFirstTR(){
+    var tr = $('#test-table>tbody>tr:visable').first();
+    tr.fadeOut('slow');
+}
