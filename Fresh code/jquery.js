@@ -306,3 +306,13 @@ function deleteFirstTR(){
     var tr = $('#test-table>tbody>tr:visable').first();
     tr.fadeOut('slow');
 }
+
+var jqxhr = $.get('/path/to/resource',{name:'bob lee',check:1});
+
+var jqxhr = $.post('/path/to/resource',{name:'bob lee',check:1});
+var jqxhr = $.getJSON('/path/to/resource',{
+    name:'bob lee',
+    check:1
+}).done(function (data){
+    
+});
