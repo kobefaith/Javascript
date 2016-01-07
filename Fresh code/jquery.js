@@ -314,5 +314,19 @@ var jqxhr = $.getJSON('/path/to/resource',{
     name:'bob lee',
     check:1
 }).done(function (data){
-    
+
+});
+$.fn.highlight1 = function(){
+    this.css('backgroundColor','#fffceb').css('color','#d85030');
+    return this;
+}
+$.fn.highlight2 = function (options){
+    var bgcolor = options && options.backgroundColor || '#fffceb';
+    var color = options && options.color || '#d85030';
+    this.css('backgroundcolor',bgcolor).css('color',color);
+    return this;
+}
+$('#test-highlight2 span').highlight2({
+    backgroundColor:'#00a8e6',
+    color:'#ffffff'
 });
