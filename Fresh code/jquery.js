@@ -330,3 +330,29 @@ $('#test-highlight2 span').highlight2({
     backgroundColor:'#00a8e6',
     color:'#ffffff'
 });
+$.fn.highlight = function (options){
+    var opts = $.extend({}, $.fn.highlight.defaults,options);
+    this.css('backgroundColor',opts.backgroundColor).css('color',color);
+    return this;
+}
+$.fn.highlight.defaults = {
+    color:'#d85030',
+    backgroundColor:'#fff8de'
+}
+
+$.fn.external = function() {
+    return this.filter('a').each(function (){
+        var a=$(this);
+        var url = a.attr('href');
+        if (url && (url.indexOf('http://')===0 || url.indexOf('http://')===0)){
+            a.attr('href','#0')
+                .removeAttr('target')
+                .append('<i class="uk-icon-external-link"></i>')
+                .click(function (){
+                    if(confirm('你确定要前往'+url+'?')){
+                        window.open(url);
+                    }
+                });
+        }
+    });
+}
