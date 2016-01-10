@@ -45,3 +45,26 @@ var groups = _.groupBy(scores,function (x){
 _.shuffle([1,2,3,4,5,6]);
 _.sample([1,2,3,4,5,6]);
 _.sample([1,2,3,4,5,6],3);
+
+var arr = [2,4,6,8];
+_.first(arr);
+_.last(arr);
+
+_.flatten([1,[2],[3],[[4],[5]]]);
+
+var names = ['Adam','Lisa','Bart'];
+var scores = [86,93,58];
+_.zip(names,scores);
+
+var namesAndSores = [['Adam',85],['Lisa',92],['bart',59]];
+_unzip(namesAndScores);
+
+var names = ['Adam','Lisa','Bart'];
+var scores = [85,92,59];
+_object(names,scores);
+
+_.range(10);
+
+_.range(1,11);
+_.range(0,30,5);
+_.range(0,-10,-1);
