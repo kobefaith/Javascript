@@ -68,3 +68,41 @@ _.range(10);
 _.range(1,11);
 _.range(0,30,5);
 _.range(0,-10,-1);
+
+
+function Student(name,age){
+    this.name = name;
+    this.age = age;
+}
+var xiaoming = new Student('xiaoming',20);
+_.keys(xiaoming);
+
+Student.prototype.school = 'No.1 Middle School';
+var xiaoming = new Student('xiaoming',20);
+_.allkeys(xiaoming);
+var obj = {
+    name:'xiaoming',
+    age:20
+};
+_.values(obj);
+var obj = {a:1,b:2,c:3};
+_.mapObject(obj,(v,k)=>100+v);
+var obj = {
+    adam:90,
+    lisa:85,
+    bart:59
+};
+_.invert(obj);
+var a = {name:'bob',age:20};
+_.extend(a,{age:15},{age:88,city:'beijing'});
+
+var source = {
+    name:'xiaoming',
+    age:20,
+    skills:['javascript','css','html']
+};
+var copied = _.clone(source);
+var o1 = {name:'bob',skills:{java:90,javascript:99}};
+var o2 = {name:'bob',skills:{javascript:99,java:90}};
+o1 === o2;
+_isEqual(o1,o2);
