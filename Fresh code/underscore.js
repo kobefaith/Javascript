@@ -106,3 +106,33 @@ var o1 = {name:'bob',skills:{java:90,javascript:99}};
 var o2 = {name:'bob',skills:{javascript:99,java:90}};
 o1 === o2;
 _isEqual(o1,o2);
+
+
+console.log('Hello,world');
+var log = console.log;
+log('Hello world!');
+
+var log = console.log;
+log.call(console,'Hello,world');
+
+var log = _.bind(console.log,console);
+log('hello,world');
+
+var pow2N = _.partial(Math.pow,2);
+pow2N(3);
+
+var cube = _.partial(Math.pow,_,3);
+cube(3);
+
+function factorial(n){
+    console.log('start calculate' +n +'!...');
+    var s= 1,i = n;
+    while (i > 1){
+        s = s * i;
+        i--;
+    }
+    console.log(n + '!='+s);
+    return s;
+}
+factorial(10);
+
