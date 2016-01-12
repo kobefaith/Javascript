@@ -136,3 +136,32 @@ function factorial(n){
 }
 factorial(10);
 
+
+var factorial = _.memoize(function(n){
+    console.log('start calculate '+n + '!...');
+    var s = 1,i = n;
+    while (i > 1){
+        s = s * i;
+        i--;
+    }
+    console.log(n + '!='+s);
+    return s;
+});
+
+var factorial = _.memoize(function(n){
+    console.log('start calculate' +n + '!...');
+    if (n < 2){
+        return 1;
+    }
+    return n * factorial(n-1);
+});
+
+var register = _.once(function (){
+    alert('Register ok!');
+});
+
+
+_.delay(alert,2000);
+
+var log = _.bind(console.log,console);
+_.delay(log,2000,'hello,','world!');
