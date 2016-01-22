@@ -28,6 +28,18 @@ setTimeout(function(){
     event.emit('some_event');
 },1000);
 
+var name ;
+exports.setName = function(thyName){
+    name = thyName;
+};
+
+exports.sayHello = function(){
+    console.log('Hello'+name);
+};
+var myModule = require('./module');
+myModule.setName('BYVoid');
+myModule.sayHello();
+
 
     
 
