@@ -4,3 +4,5 @@ var c = function(x){
 console.log('hello'+x+a);
 };
 c(b);
+
+console.log(process.argv);
