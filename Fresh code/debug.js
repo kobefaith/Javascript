@@ -10,3 +10,18 @@ process.stdin.resume();
 process.stdin.on('data',function(data){
     process.stdout.write('read from console:'+data.toString());
 })
+function doSomethings(args,callback){
+    somethingComplicated(args);
+    callback();
+}
+dosomething(function onEnd(){
+    compute();
+});
+
+function dosomething(args,callback){
+    somethingComplicated(args);
+    process.nextTrick(callback);
+}
+doSomething(function onEnd(){
+    compute();
+});
