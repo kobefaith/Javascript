@@ -18,7 +18,7 @@ dosomething(function onEnd(){
     compute();
 });
 
-function dosomething(args,callback){
+function doSomething(args,callback){
     somethingComplicated(args);
     process.nextTrick(callback);
 }
