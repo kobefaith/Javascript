@@ -5,3 +5,7 @@ app.all('/',function(req,res){
 res,send(req.body.title + req.body.text);
 });
 app.listen(3000);
+
+app.get('/user/:username',function(req,res){
+    res.send('user:' + req.params.username);
+});
