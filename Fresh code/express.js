@@ -40,3 +40,11 @@ app.all('/user/:username',function(req,res){
 app.get('/user/:username',function(req.res){
     res.send('user: '+ req.params.username);
 });
+
+
+function(req,res){
+    res.render('userlist',{
+        title:'用户列表',
+        layout:'admin'
+    });
+};
