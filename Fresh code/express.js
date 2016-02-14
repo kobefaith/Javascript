@@ -55,3 +55,12 @@ var Connection = require('mongodb').Connection;
 var Server  = require('mongodb').Server;
 module.exports = new Db(settings.db,new Server(settings.host,Connection.DEFAULT_PORT,{}));
 
+
+
+var MongoStore = require('connect-mongo');
+app.use(express.session({
+    secret:settings.cookieSecret,
+    store:new MongoStore({
+        db:settings.db
+    })
+}));
