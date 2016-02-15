@@ -64,3 +64,4 @@ app.use(express.session({
         db:settings.db
     })
 }));
+app.use(express.route(routes));
