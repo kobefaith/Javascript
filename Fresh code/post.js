@@ -9,7 +9,7 @@ if(time){
 }
 };
 module.exports = Post;
-Post/prototype.save = function save(callback){
+Post.prototype.save = function save(callback){
     var post = {
         user:this.user,
         post = this.post,
