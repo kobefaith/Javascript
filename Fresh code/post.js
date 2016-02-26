@@ -39,7 +39,7 @@ Post.get  = function get(username,callback){
         }
         db.collection('posts',function(err,collection){
             if(err){
-                mongidb.close();
+                mongodb.close();
                 return callback(err);
             }
             var query = {};
