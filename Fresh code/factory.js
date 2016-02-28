@@ -10,3 +10,12 @@ function createPerson(name,age,job){
 }
 var person1 = createPerson("Nocholas",29,"software engineer");
 var person2 = createPerson("Greg",27,"Doctor");
+
+var fs = require('fs');
+var files = ['a.txt','b.txt','c.txt'];
+
+for(var i = 0; i < files.length; i++){
+    fs.readFile(files[i],'utf-8',function(err,contents){
+        console.log(files[i] + ':' + contents);
+    });
+}
