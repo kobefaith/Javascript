@@ -28,3 +28,4 @@ files.forEach(function(filename){
         console.log(filename + ':' + contents);
     });
 });
+var fs = require('fs');
