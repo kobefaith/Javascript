@@ -28,3 +28,17 @@ files.forEach(function(filename){
         console.log(filename + ':' + contents);
     });
 });
+
+
+var fs = require('fs');
+var accessLogfile = fs.createWriteStream('access.log',{flags:'a'});
+var errorLogfile = fs.createwriteStream('error.log',{flags:'a'});
+
+app.use(express.logger({stream:accessLogfile}));
+app.configure('production',function(){
+    app.error(function(err,req,res,next){
+        var meta = '[' + new Date() + ']' + req.url +'\n';
+        errorLogfile.write(meta + err.stack + '\n');
+        next();
+    });
+});
