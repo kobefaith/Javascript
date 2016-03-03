@@ -48,3 +48,14 @@ if(! module.parent){
     console.log("Express server listening on port!");
 }
 
+
+
+server{
+    listen 80;
+    server_name mysite.com;
+    
+    location / {
+        proxy_pass http://localhost:3000;
+    }
+}
+
