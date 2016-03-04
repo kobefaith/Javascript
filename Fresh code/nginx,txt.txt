@@ -1,0 +1,2 @@
+usr/local/nginx
+sudo apt-get install nginx
