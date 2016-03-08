@@ -162,6 +162,86 @@ parseInt(Math.random()*10)//转化成从0到10的值
 Math.max()
 Math.min();
 Math.abs();
+JS 浏览器对象
+window对象
+所有的js的全局对象、函数以及变量均自动成为window对象的成员。
+HTML DOM的document也是window对象的属性之一
+window.innerHeight 浏览器内部窗口的高度 不包含导航栏
+window.innerWidth  浏览器内部窗口的宽度  不包含滚动条
+    function btnClicked(){
+        window.open("index.html","windowname",
+            "height=200,width=200,
+             top = 100, left = 100,
+             toolbar = no,menubar = no
+             "
+        )
+    }
+计时器
+    setInterval()间隔指定的毫秒数不停地执行指定的代码。
+    setTimeout()暂停指定的毫秒数后执行指定的代码。
+    <p id="ptime"></p>
+<script>
+    var mytime = setInterval(function(){
+        getTime();
+    },1000);
+    function getTime(){
+        var d = new Date();
+        var t = d.toLocaleTimeString();//打印时分秒。
+        document.getElementById("ptime").innerHTML=t;
+    }
+    function stopTime(){
+        clearInterval(mytime);
+    }
+    
+    var win;
+    function myWin(){
+        win = setTimeout(function(){alert("hello");},3000);
+    }
+    function stopWin(){
+        clearTimeout(win);
+    }    
+    </script>
+history对象
+window.history对象包含浏览器的历史url的集合
+history.back()与浏览器中点击后退按钮相同
+history.forward()与浏览器中点击向前按钮相同
+history.go()进入某个历史页面
+<button id="btn" onclick="go()">按钮</button>
+<script>
+    function go(){
+        history.forward();
+    }
+</script>
+<form>
+  <input type="text" id="username">
+</form>
+<button id="btn" onclick="safe">按钮</button>
+<script>
+    function safe(){
+        var name = document.getElementById("username").value;
+        if(name=="hello"){
+            history.go(-1);
+        }else{
+            alert("输入错误");
+        }
+    }
+</script>
+Location对象
+用于获得当前页面的地址url，并把浏览器重定向到新的页面。
+location.hostname  返回web主机的域名
+location.pathname  返回当前页面的路径和文件名
+location.port      返回web主机的端口
+location.protocol  返回所使用的协议
+location.href      返回当前页面的url
+location.assign() 加载新的文档
+<script>
+        function getLoc(){
+            document.getElementById("ptime").innerHTML=window.location.pathname;
+        }
+        function getLoc(){
+            location.assign("http://www.jikexueyuan.com");
+        }
+</script>
 http://www.jikexueyuan.com/course/208.html
     
 http://www.jikexueyuan.com/course/196.html
