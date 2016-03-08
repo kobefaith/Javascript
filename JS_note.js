@@ -287,6 +287,28 @@ type:获取事件类型
 target：获取事件目标
 stopPropagation():阻止事件冒泡
 preventDefault()：阻止事件默认行为
+<div id="div">
+     <button id="btn1">按钮</button>
+     <a href="http://www.jikexueyuan.com" id="aid">极客学院</a>
+</div>
+<script>
+   document.getElementById("btn1").addEventListener("click",showType);
+   document.getElementById("div").addEventListener("click",showDiv);
+   document.getElementById("aid").addEventListener("click",showA);
+   function showType(event){
+       alert(event.type);
+       alert(event.target);
+       event.stopPropagation();//阻止事件冒泡，也就是只有button元素能收到事件，div元素不能收到事件
+   }
+   function showDiv(){
+       alert("div");
+   }
+   function showA(event){
+       event.stopPropagation();
+       event.preventDefault();//阻止<a>元素的跳转功能。
+   }
+</script>
+
 http://www.jikexueyuan.com/course/208.html
     
 http://www.jikexueyuan.com/course/196.html
