@@ -247,6 +247,46 @@ screen对象
     document.write("可用高度"+screen.availHeight+"，可用高度"+screen.availWidth);
     document.write("高度"+screen.height+"，宽度"+screen.width);
 </script>
+JS 事件流：
+事件冒泡：
+由具体的元素接受，然后逐级向上传播至最不具体的元素的节点(文档)，浏览器兼容性最后
+事件捕获：
+最不具体的节点先接受事件，而最具体的节点应该是最后接受事件。
+Js事件的处理
+DOM0级事件处理
+<script>
+    var btn1 = document.getElementById("btn1");
+    btn1.onclick = function(){alert("DOM0级事件处理程序1");}//坏处是会被面的覆盖掉。
+    btn1.onclick = function(){alert("DOM0级事件处理程序2");}
+</script>
+DOM2级事件处理
+script>
+    var btn1 = document.getElementById("btn1").addEventListener("click",demo);
+    function demo(){
+        alert("DOM2级事件处理程序");
+    })    
+</script>
+为兼容各种浏览器：
+<script>
+   var btn1 = document.getElementById("btn1");
+   if(btn1.addEventListener){
+       btn1.addEventListener("click",demo);
+   }else if(btn1.attachEvent){
+       btn1.attachevent("onclick",demo);
+   }else{
+       btn1.onclick = demo;
+   }
+   function demo(){
+       alert("Hello");
+   }
+</script>
+事件对象
+在触发DOM事件的时候都会产生一个对象。
+事件对象event：
+type:获取事件类型
+target：获取事件目标
+stopPropagation():阻止事件冒泡
+preventDefault()：阻止事件默认行为
 http://www.jikexueyuan.com/course/208.html
     
 http://www.jikexueyuan.com/course/196.html
