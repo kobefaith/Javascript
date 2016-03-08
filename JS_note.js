@@ -242,6 +242,11 @@ location.assign() 加载新的文档
             location.assign("http://www.jikexueyuan.com");
         }
 </script>
+screen对象
+<script>
+    document.write("可用高度"+screen.availHeight+"，可用高度"+screen.availWidth);
+    document.write("高度"+screen.height+"，宽度"+screen.width);
+</script>
 http://www.jikexueyuan.com/course/208.html
     
 http://www.jikexueyuan.com/course/196.html
