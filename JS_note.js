@@ -308,14 +308,105 @@ preventDefault()：阻止事件默认行为
        event.preventDefault();//阻止<a>元素的跳转功能。
    }
 </script>
+JS DOM 对象控制html
+getElementsByName()  获取name
+getElementsByTagName()获取元素
+getAttribute()         获取元素属性
+setAttribute()       设置元素属性
+childNodes()        访问子节点
+parentNode()        访问父节点
+createElement()     创建元素节点
+createTextNode()    创建文本节点
+insertBefore()      插入节点
+removeChild()       删除节点
+offsetHeight        网页尺寸
+scrollHeight        网页尺寸
+<p name="pn">Hello</p>
+<p name="pn">Hello</p>
+<p name="pn">Hello</p>
+<p name="pn">Hello</p>
+<a id="aid" title="a标签的属性">hello</a>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<div id="div">
+    <p id="pid">div的p元素</p>    
+</div>
+<script>
+   function getName(){
+       var count = document.getElementsByName("pn");//var count = document.getElementsByTagName("p");两种方法效果相同
+       alert(count.length);//4
+       var p = count[2];//通过下标访问
+       p.innerHTML = "world";
+   }
+   getName();
+   function getAttr(){
+       var anode = document.getElementById("aid");
+       var attr = anode.getAttribute("id");
+       alert(attr);
+   }
+   getAttr();
+   function getChildNode(){
+       var childnode = document.getElementsByTagName("ul")[0].childNodes;
+       alert(childnode.length);//7  因为空格也算一个 <ul>  <li>后面的空格
+       alert(childnode[0].nodeType);
+   }
+   function getParentNode(){
+       var div = document.getelementById("pid");
+       alert(div.parentNode.nodeName);
+   }
+   getParentNode();
+   function createNode(){
+       var body = document.body;
+       var input = document.createElement("input");
+       input.type = "button";
+       input.value = "按钮";
+       body.appendChild(input);
+   }
+   createNode();
+   function addNode(){
+       var div = document.getElementById("div");
+       var node = document.getElementById("pid");
+       var newnode = document.createElement("p");
+       newnode.innerHTML = "动态添加第一个p元素"；
+       div.insertBefore(newnode,node);
+   }
+   addNode();
+   function removeNode(){
+       var div = document.getElementById("div");
+       var p = div.removeChild(div.childNodes[1]);
+   }
+   removeNode();
+   function getSize(){
+       var width = document.documentElement.offsetWidth || document.body.offsetWidth;//为了兼容浏览器。
+       var height = document.documentElement.offsetHeight;
+       alert(width+" , "+height);
+   }
+</script>
+JS面向对象
 
-http://www.jikexueyuan.com/course/208.html
-    
+http://www.jikexueyuan.com/course/208.html    
 http://www.jikexueyuan.com/course/196.html
-
 http://www.jikexueyuan.com/course/207.html
 http://www.jikexueyuan.com/course/210.html
+
+http://www.jikexueyuan.com/course/180.html    
     
+http://www.jikexueyuan.com/course/1272.html
+http://www.jikexueyuan.com/course/1313.html    
+http://www.jikexueyuan.com/course/2038.html   
+http://www.jikexueyuan.com/course/2209.html    
+http://www.jikexueyuan.com/course/1774.html   
+http://www.jikexueyuan.com/course/2224.html    
+jquery
+http://www.jikexueyuan.com/course/245.html
+初级前端面试题
+http://www.zhufengpeixun.cn/JavaScriptmianshiti/2014-02-25/249.html
+中级前端面试题
+http://jingyan.baidu.com/article/546ae185643bc01148f28c4b.html
+https://segmentfault.com/a/1190000002627927
     
     
     
