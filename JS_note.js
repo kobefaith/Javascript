@@ -386,6 +386,60 @@ scrollHeight        网页尺寸
    }
 </script>
 JS面向对象
+function Person(){
+    
+}
+Person.prototype={
+    name:"iwen",
+    age:"30",
+    eat:function(){
+        alert("我在吃");
+    }
+}
+var p=new Person();
+===================================
+function People(){
+    
+}
+People.prototype.say = function(){
+    alert("hello");
+}
+function Student(){
+    
+}
+Student.prototype = new People();
+Student.protype.say = function(){
+    alert("stu-hello");
+}
+var s = new Student();
+s.say();
+闭包
+(function (){
+    var n = "ime";
+    function People(name){
+        this.name = name;
+    }
+    People.prototype.say = function(){
+        alert("peo-hello"+this.name);
+    }
+    window.People = People;
+}());
+this http://www.ibm.com/developerworks/cn/web/1207_wangqf_jsthis/
+
+function Person(){
+    var _this = {};
+    _this.sayHello = function(){
+        alert("Hello");
+    }
+    return _this;
+}
+function Teacher(){
+    var _this = Person();
+    return _this;
+}
+var t = Teacher();
+t.sayHello();
+
 
 http://www.jikexueyuan.com/course/208.html    
 http://www.jikexueyuan.com/course/196.html
