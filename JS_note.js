@@ -439,6 +439,56 @@ function Teacher(){
 }
 var t = Teacher();
 t.sayHello();
+JS作用域
+JS是函数级作用域，在函数内的变量都能被函数访问到。外部不能访问内部的，内部能访问外部的。
+var j = 100;
+~(function test(){
+    console.log(j);
+})();   //经典面试题  如果不加~会报错。~是把后面的语句当成一个表达式来立即执行。
+
+var j = 100;
+function test(){
+    alert(j);
+    var j;
+}//输出undefined 因为后面声明的j声明会被前置，但是赋值不会前置。
+谁调this  this就指向谁
+window.m=100;
+function test(){
+    alert(this.m);
+}
+window.test();//window调用this 所以this的m是window的
+
+this.m = 1000;
+var obj={
+    m:100,
+    test:function(){
+        alert(this.m);
+    }
+}
+obj.test();//obj调用this  所以 this 指向obj ，然后alert中的m就是100.
+this.a=1000;
+function test(){
+    this.a = 1;
+}
+test.prototype.geta=function(){
+    return this.a;
+}
+var p=new test;
+console.log(p.geta());//1
+构造函数中的this绑定的是对象
+按引用传递
+function test(obj){
+    obj.age="20";
+    console.log('inner',obj);
+}
+var obj={
+    name:"xiaoming"
+}
+test(obj);
+console.log('outer',obj);
+两个输出是一样的 都有age，这是按引用传递
+js中的Object Array Date RegExp Function 等都是引用类型
+按值传递的是string  number  boolen等类型。
 
 
 http://www.jikexueyuan.com/course/208.html    
