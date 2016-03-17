@@ -36,3 +36,51 @@ a:link - 普通的、未被访问的链接
 a:visited - 用户已访问的链接
 a:hover - 鼠标指针位于链接的上方
 a:active - 链接被点击的时刻
+a:link {
+      color:#FF0000;
+      text-decoration:none;
+}		/* 未被访问的链接 */
+a:visited {color:#00FF00;}	/* 已被访问的链接 */
+a:hover {color:#FF00FF;}	/* 鼠标指针移动到链接上 */
+a:active {color:#0000FF;}	/* 正在被点击的链接 */
+列表
+ul li{
+    list-style-image:url("icon1.gif");为列表添加图片
+}
+表格
+#tb,tr,th,td{
+border:1px solid blue;
+text-align:center;//设置内容居中显示
+}
+#tb{
+width：400px;
+height:400px;
+border-collapse:collapse;//合并边框
+}
+#tb th{
+text-align:right;
+background-color:aqua;
+}
+轮廓
+p{
+outline-color:aqua;  //设置轮廓颜色
+outline-style:dotted;//设置轮廓的线型
+}
+css常用操作
+对齐
+.div{
+width:70%;
+height:1000px;
+background-color:red;
+margin-left:auto;//居中对齐
+margin-right:auto;
+
+position:absolute;  //绝对布局，距离左边0px；
+left:0px;
+
+float:left //向左对齐  三种水平对齐方式 
+    
+margin:100px auto;//上下是100px  左右居中
+}
+分类
+    
