@@ -137,4 +137,59 @@ magin-bottom:5px;
 css选择器
 h1,h2{
     //选择器分组
-}      
+} 
+类选择器
+ 结合元素选择器
+ <div>123</div>
+ <a class="div">jikexueyuan</a>
+a.div{
+color:red;
+} 
+多类选择器
+<div class="p1">123</div>
+<div class="p1">123</div>
+<div class="p1 p2">123</div>
+.p1{
+color:red;
+}
+.p2{
+fint-size:3px;
+}
+.p1.p2{
+font-style:normal;//既拥有前面的样式也拥有自己定义的样式
+}
+id选择器与类选择器的区别：
+ID只能在文档中使用一次，而类选择器可以使用多次。
+id选择器不能结合使用。
+当使用js时候，需要用到id
+属性选择器
+<style>
+[title]{
+color:aqua;
+}
+[href="http://www.google.com"]{
+color:red;
+}
+[title~="title"]{//选择值中有title的属性
+color:red;
+}
+</style>
+<p title="">hello</p>
+<a href="http://www.google.com">谷歌</a>
+属性的值必须一样。
+<p title="tit">hello</p>
+<p title="title">hello</p>//根据属性的值进行匹配
+<p title="t">hello</p>  
+<p title="title hello">hello</p>  //根据属性的值进行匹配
+
+
+
+
+
+
+
+
+
+
+
+
