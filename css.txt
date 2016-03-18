@@ -181,8 +181,20 @@ color:red;
 <p title="title">hello</p>//根据属性的值进行匹配
 <p title="t">hello</p>  
 <p title="title hello">hello</p>  //根据属性的值进行匹配
-
-
+后代选择器
+<p>this is an <strong>web<i>hello</i></strong>site</p>
+p strong i{
+color:red;
+}
+p i{//不经过strong也能找到i
+color:red;
+}
+子元素选择器，与后代选择器不同，子元素只能选择某元素的子元素，而不能选择孙元素等
+<p>this is an <strong>web</strong>site</p>
+p>strong{
+color:red;
+}
+相邻兄弟选择器
 
 
 
