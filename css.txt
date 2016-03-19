@@ -195,6 +195,18 @@ p>strong{
 color:red;
 }
 相邻兄弟选择器
+可选择紧接在另一个元素后的元素，而且两者有相同的父级元素。
+<div>
+   <ul>
+       <li>item1</li>
+       <li>item2</li>
+       <li>item3</li>
+   </ul>
+</div>
+li+li{
+font-size:50px;
+color:red;
+}//后面两个的样式发生改变，选择的是邻接在li元素后的li元素
 
 
 
