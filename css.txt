@@ -243,6 +243,18 @@ position:relative（表示相对定位），
 left:100px;
 top:50px;
 相对于以前位置向下移动50px，向右移动100px;
+float 浮动布局
+#fd{
+width:100px;
+height:100px;
+background-color:red;
+float:left;//靠近窗口的左边，如果有几个元素都是left，那么他们将会依次排布
+}
+#text{
+clear:left;//去掉向左浮动
+}
+
+
 
 
 
