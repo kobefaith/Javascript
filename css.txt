@@ -253,7 +253,40 @@ float:left;//靠近窗口的左边，如果有几个元素都是left，那么他
 #text{
 clear:left;//去掉向左浮动
 }
-
+盒子模型
+内边距 padding
+td{
+padding-left:100px;
+padding-right:100px;
+}
+边框
+p{
+border-style:dotted;
+border-top-style:double;
+border-right-style:dotted;
+border-width:10px;
+border-top-width:10px;
+border-color:red;
+border-left-color:blue;
+}
+css3提供的边框效果
+p{
+border-radius:10px;//圆角边框
+}
+.cssid{
+box-shadow:10px 10px 5px #FFccFF;   //阴影向右移动10px 向下移动10px 透明度是5px 颜色是 #FFccFF
+}
+border-image 边框图片
+p
+{
+  border:5px solid red;
+}
+外边距
+.mg{
+margin:100px;
+margin-bottom:100px;
+}
+如果a元素设置了 margin  b元素也设置了margin，那么a和b元素的margin会合并成数值大的那一个。
 
 
 
