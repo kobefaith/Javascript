@@ -14,47 +14,78 @@ body{
 .pic{
     width:160px;
 }
+.container img:hover{
+    box-shadow:15px 15px 20px rgba(50,50,50,0.4);
+    transform:rotate(0deg) scale(1.20);
+    -webkit-transform:rotate(0deg) scale(1.20);
+    z-index:2;
+}
 .container img{
     padding:10px 10px 15px;
     background-color:white;
     border:1px solid #ddd;
     box-shadow:2px 2px 3px rgba(50,50,50,0.4);
     position:absolute;
+    box-shadow: 2px 2px 3px rgba(50,50,50,0.4);
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+    z-index:1;
     #position:relative;
 }
 .pic1{
     left:100px;
     top:0px;
+    transform:rotate(-5deg);
+    -webkit-transform:rotate(-5deg);
 }
 .pic2{
     left:300px;
     top:0px;
+    transform:rotate(-20deg);
+    -webkit-transform:rotate(-20deg);
 }
 .pic3{
     left:500px;
     top:0px;
+    transform:rotate(5deg);
+    -webkit-transform:rotate(5deg);
 }
 .pic4{
     left:700px;
     top:0px;
+    transform:rotate(-10deg);
+    -webkit-transform:rotate(-10deg);
 }
 .pic5{
     left:100px;
     top:200px;
+    transform:rotate(-10deg);
+    -webkit-transform:rotate(-10deg);
 }
 .pic6{
     left:300px;
     top:200px;
+    transform:rotate(10deg);
+    -webkit-transform:rotate(10deg);
 }
 .pic7{
     left:500px;
     top:200px;
+    transform:rotate(20deg);
+    -webkit-transform:rotate(20deg);
 }
 .pic8{
     left:700px;
     top:200px;
+    transform:rotate(5deg);
+    -webkit-transform:rotate(5deg);
 }
 .pic9{
     left:100px;
     bottom:0px;
+    transform:rotate(15deg);
+    -webkit-transform:rotate(15deg);
 }
