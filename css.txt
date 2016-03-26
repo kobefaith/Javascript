@@ -287,6 +287,65 @@ margin:100px;
 margin-bottom:100px;
 }
 如果a元素设置了 margin  b元素也设置了margin，那么a和b元素的margin会合并成数值大的那一个。
+css3动画
+2d 3d转换
+转换是使元素改变形状、尺寸和位置的一种效果。
+2d转换方法
+translate()
+rotate()
+scale()
+skew()
+matrix()
+3d转换方法
+rotateX()
+rotateY()
+.div2{
+    transform:translate(200px,100px);//元素移动效果
+    -webkit-transform:translate(200px,100px);/*safari chrome*/
+    -ms-transform:translate(200px,100px);/*IE*/
+    -o-transform:translate(200px,100px);/*opera*/
+    -moz-transform:translate(200px,100px);/*firefox*/
+}
+.div2{
+    transform:rotate(200deg);//元素旋转效果
+    -webkit-transform:rotate(200deg);/*safari chrome*/
+    -ms-transform:rotate(200deg);/*IE*/
+    -o-transform:rotate(200deg);/*opera*/
+    -moz-transform:rotate(200deg);/*firefox*/
+}
+.div2{
+    transform:scale(1,2);//宽度是1倍，高度是2倍
+    -webkit-transform:scale(1,2);/*safari chrome*/
+    -ms-transform:scale(1,2);/*IE*/
+    -o-transform:scale(1,2);/*opera*/
+    -moz-transform:scale(1,2);/*firefox*/
+
+}
+.div2{
+    transform:skew(20deg,20deg);//x轴倾斜20度 y轴倾斜20度
+    -webkit-transform:skew(20deg,20deg);/*safari chrome*/
+    -ms-transform:skew(20deg,20deg);/*IE*/
+    -o-transform:skew(20deg,20deg);/*opera*/
+    -moz-transform:skew(20deg,20deg);/*firefox*/
+
+}
+.div2{
+transform:rotateX(120deg);
+ -webkit-transform:rotateX(120deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
