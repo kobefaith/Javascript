@@ -333,6 +333,24 @@ rotateY()
 transform:rotateX(120deg);
  -webkit-transform:rotateX(120deg);
 }
+css3过渡
+过渡是元素从一种样式装换成另一种样式
+transition 设置四个过渡属性
+div{
+width:100px;
+height:100px;
+background-color:blue;
+-webkit-transition:width 2s,height 2s,-webkit-transform 2s;
+transition:width 2s,height 2s,transform 2s;
+-webkit-transition-delay:2s;//设置动画延时执行
+transition-delay:2s;
+}
+div:hover{
+width:200px;
+height:200px;
+transform:rotate(360deg);
+-webkit-transform:rotate(360deg);
+}
 
 
 
