@@ -334,6 +334,9 @@ transform:rotateX(120deg);
  -webkit-transform:rotateX(120deg);
 }
 css3过渡
+CSS3 过渡
+通过 CSS3，我们可以在不使用 Flash 动画或 JavaScript 的情况下，
+当元素从一种样式变换为另一种样式时为元素添加效果。
 过渡是元素从一种样式装换成另一种样式
 transition 设置四个过渡属性
 div{
@@ -350,6 +353,29 @@ width:200px;
 height:200px;
 transform:rotate(360deg);
 -webkit-transform:rotate(360deg);
+}
+css3动画
+div{
+   width:100px;
+   height:100px;
+   background-color:red;
+   position:relative;
+   animation:anim 5s;    //指定动画的名字叫anmi 时间是5秒
+   -webkit-animation:anim 5s;
+}
+@keyframes anmi{    //用百分比来规定变化发生的时间
+   0%{background:red;left:0px;top:0px}
+   25%{background:blue;left:200px;top:0px}
+   50%{background:#ccffcc;left:200px;top:200px}
+   75%{background:#00ffff;left:0px;top:200px}
+   100%{background:red;left:0px;top:0px}
+}
+@-webkit-keyframes anmi{
+   0%{background:red;left:0px;top:0px}
+   25%{background:blue;left:200px;top:0px}
+   50%{background:#ccffcc;left:200px;top:200px}
+   75%{background:#00ffff;left:0px;top:200px}
+   100%{background:red;left:0px;top:0px}
 }
 
 
