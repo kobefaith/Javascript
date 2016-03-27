@@ -360,8 +360,8 @@ div{
    height:100px;
    background-color:red;
    position:relative;
-   animation:anim 5s;    //指定动画的名字叫anmi 时间是5秒
-   -webkit-animation:anim 5s;
+   animation:anim 5s infinite alternate;    //指定动画的名字叫anmi 时间是5秒 加上infinite alternate后会一直循环
+   -webkit-animation:anim 5s infinite alternate;
 }
 @keyframes anmi{    //用百分比来规定变化发生的时间
    0%{background:red;left:0px;top:0px}
@@ -377,7 +377,26 @@ div{
    75%{background:#00ffff;left:0px;top:200px}
    100%{background:red;left:0px;top:0px}
 }
-
+css3多列
+.div1{
+   column-count:4;
+   -webkit-column-count:4;
+   -webkit-column-gap:30px;
+   column-gap:30px;
+   column-rule:5px;outset #FF0000;
+   -webkit-column-rule:5px outset #FF0000;
+}
+瀑布流：宽度等宽 但高度不一样的 图片排列方式
+.container{
+   column-width:250px;
+   -webkit-column-width:250px;
+   -webkit-column-gap:5px;
+   column-gap:5px;
+}
+.container div{
+   width:250px;
+   margin:5px 0;
+}
 
 
 
