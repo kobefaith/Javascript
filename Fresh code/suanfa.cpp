@@ -40,6 +40,27 @@ int longestCommonSubsequence(string A, string B){
     
 }
 
+ListNode *insertSortList(ListNode *head, ListNode *cur)
+{
+    ListNode *dummy = new ListNode(INT_MIN);
+    dummy->next = head;
+    ListNode *pre = dummy;
+    ListNode *beh = dummy->next;
+    while(beh != NULL && beh->value < cur->value){
+        pre = beh;
+        beh = beh->next;
+    }
+    if(beh != NULL){
+        pre->next = cur;
+        cur->next = beh;
+    }else{
+        pre->next = cur;
+        cur->next = NULL;
+    }
+    return dummy->next;    
+}
+
+
 
 
 
