@@ -60,6 +60,18 @@ ListNode *insertSortList(ListNode *head, ListNode *cur)
     return dummy->next;    
 }
 
+ListNode *reverse(ListNode *head)
+{
+    ListNode *pre = NULL;
+    while(head != NULL){
+        ListNode *temp = head->next;
+        head->next = pre;
+        pre = head;
+        head = temp;
+    }
+    return pre;
+}
+
 
 
 
