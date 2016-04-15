@@ -86,6 +86,28 @@ ListNode *findmiddle(ListNode *head)
     return slow;
 }
 
+ListNode *merge(ListNode *left,ListNode *right)
+{
+    ListNode *dummy= new ListNode(-1);
+    ListNode *head = dummy;
+    while(left != NULL && right != NULL){
+        if(left->value < right->value){
+            head->next = left;            
+            left = left->next;
+        }else{
+            head->next = right;            
+            right = right->next;
+        }
+        head = head->next;
+    }
+    if(left != NULL){
+        head->next = left;
+    }else{
+        head->next = right;
+    }
+    return dummy->next;
+}
+
 
 
 
