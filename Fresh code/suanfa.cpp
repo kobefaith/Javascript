@@ -107,10 +107,6 @@ ListNode *merge(ListNode *left,ListNode *right)
     }
     return dummy->next;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 54f497b3508a72787175ef941b97621324b62735
 
 int bsearch(int *a,int x,int y,int t)
 {
