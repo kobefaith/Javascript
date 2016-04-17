@@ -124,5 +124,22 @@ int bsearch(int *a,int x,int y,int t)
     return -1;    
 }
 
+BinaryTreeNode *PreorderTree(BinaryTreeNode *root)
+{
+    stack<BinaryTreeNode*> astack;
+    BinaryTreeNode *pointer = root;
+    while(!astack.empty() || pointer != NULL){
+        if(pointer != NULL){
+            cout<<pointer->value<<endl;
+            astack.push(pointer);
+            pointer = pointer->left;
+        }else{
+            pointer = astack.top();
+            astack.pop();
+            pointer = pointer->right;            
+        }
+    }    
+}
+
 
 
