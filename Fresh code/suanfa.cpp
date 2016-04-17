@@ -141,5 +141,25 @@ BinaryTreeNode *PreorderTree(BinaryTreeNode *root)
     }    
 }
 
+BinaryTreeNode *InorderTree(BinaryTreeNode *root)
+{
+    stack<BinaryTreeNode*> astack;
+    BinaryTreeNode *pointer = root;
+    while(!astack.empty() || pointer != NULL){
+        if(pointer != NULL){            
+            astack.push(pointer);
+            pointer = pointer->left;
+        }else{
+            pointer = astack.top();
+            astack.pop();
+            cout<<pointer->value<<endl;
+            pointer = pointer->right;            
+        }
+    }    
+}
+
+
+
+
 
 
