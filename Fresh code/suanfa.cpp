@@ -150,15 +150,36 @@ BinaryTreeNode *InorderTree(BinaryTreeNode *root)
             astack.push(pointer);
             pointer = pointer->left;
         }else{
-            pointer = astack.top();
-            astack.pop();
-            cout<<pointer->value<<endl;
+            pointer = astack.top();            
             pointer = pointer->right;            
         }
     }    
 }
 
-
+vector<vector<int>>zigzagLevelOrder(TreeNode *root)
+{
+    vector<vector<int>> result;
+    vector<int> temp;
+    queue<TreeNode*>qu;
+    int size;
+    if(root == NULL)
+        return result;
+    qu.push(root);
+    while(!qu.empty()){
+        size = qu.size();
+        for(int i = 0; i < size; i++){
+            temp.push_back(qu.front()->val);
+            if(qu.front()->left != NULL)
+                qu.push(qu.front()->left);
+            if(qu.front()->right != NULL)
+                qu.push(qu.front()->right);
+            qu.pop();
+        }
+        result.push_back(temp);
+        temp.clear();
+    }
+    return result;    
+}
 
 
 
