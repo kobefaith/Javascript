@@ -181,6 +181,55 @@ vector<vector<int>>zigzagLevelOrder(TreeNode *root)
     return result;    
 }
 
+#include<iostream>
+using namespace std;
+int c[4];
+int tot = 0;
+void search(int cur)
+{
+    int i,j;
+    if(cur == 4){
+        tot++;
+        for(int k = 0; k < 4; k++){
+            cout<<c[k]<<' ';
+        }
+        cout<<endl;
+    }else{
+        for(i = 0; i < 4; i++ ){
+            int ok = 1;
+            c[cur] = i;
+            for(j = 0; j < cur; j++){
+                if(c[cur] == c[j] || cur-c[cur] == j-c[j] || cur+c[cur] == j+ c[j]){
+                    ok = 0;
+                    break;
+                }
+            }
+            if(ok)
+                search(cur+1);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
