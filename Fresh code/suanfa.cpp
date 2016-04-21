@@ -209,9 +209,25 @@ void search(int cur)
         }
     }
 }
+#ifndef _FUNC_H_
+#define _FUNC_H_
+void func(int n);
+void const_func(int n);
+#endif
 
-
-
+int counter()
+{
+    static int cnt = 0;
+    ++cnt;
+    return cnt;
+}
+int main()
+{
+    cout<<counter()<<endl;
+    cout<<counter()<<endl;
+    cout<<counter()<<endl;
+    return 0;    
+}
 
 
 
