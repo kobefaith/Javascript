@@ -238,8 +238,20 @@ static_cast 允许执行任意的隐式转换 可以用于类和基础类型的�
 dynamic_cast 只用于对象的指针和引用。
 const_cast 这个转换类型操纵传递对象的construction属性，或者是设置或者是移除
 
+class A{
+    int data;
+    public:
+    A(int d = 0):data(d){}
+    friend A add(const A& a1,const A &a2)
+    friend class B;    
+}
 
-
+class B{
+    public:
+    void twice(A& a1){
+        a1.data *= 2;
+    }
+}
 
 
 
