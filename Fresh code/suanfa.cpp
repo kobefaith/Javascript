@@ -232,6 +232,11 @@ int main()
 成员变量根据其继承和声明顺序依次放在后面
 在单一的继承中，被overwrite的虚函数在虚函数表中得到了更新
 
+c++四种类型的转换
+reinterpret_cast 转换一个指针为其他类型的指针
+static_cast 允许执行任意的隐式转换 可以用于类和基础类型的转换
+dynamic_cast 只用于对象的指针和引用。
+const_cast 这个转换类型操纵传递对象的construction属性，或者是设置或者是移除
 
 
 
