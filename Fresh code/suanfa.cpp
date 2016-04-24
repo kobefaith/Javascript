@@ -274,6 +274,25 @@ A & operator--()
      data -= 10;
      return old;
  }
+void qsort(int begin, int end)
+{
+    if (begin >= end)return;
+
+    int left = begin;
+    int right = end;
+    int key = a[left];
+    while (left < right)
+    {
+        while ((left < right) && (a[right] >= key))right--;
+        a[left] = a[right];
+        while ((left < right) && (a[left] <= key))left++;
+        a[right] = a[left];
+    }
+    a[left] = key;
+    qsort(begin, left-1);
+    qsort(left+1, end);
+}
+
 
 
 
