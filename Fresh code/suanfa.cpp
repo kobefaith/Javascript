@@ -253,6 +253,28 @@ class B{
     }
 }
 
+friend A & operator++(A & o)
+{
+    o.data += 10;
+    return o;
+}
+friend A operator++(A & o,int)
+{
+    A old(o);
+    o.data += 10;
+    return old;
+}
+A & operator--()
+{
+    o.data -= 10;
+    return *this;
+}
+ A operator--(int){
+     A old(*this);
+     data -= 10;
+     return old;
+ }
+
 
 
 
