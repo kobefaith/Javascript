@@ -292,7 +292,26 @@ void qsort(int begin, int end)
     qsort(begin, left-1);
     qsort(left+1, end);
 }
-
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+void merge_sort(int* a, int x, int y, int* t)
+{
+    if(y-x>1){
+        int m = x+(y-x)/2;
+        int p = x,q = m, i = x;
+        merge_sort(a,x,m,t);
+        merge_sort(a,m,y,t);
+        while(p<m || q<y)
+        {
+            if(q>=y || (p<m&&a[p]<=a[q])) t[i++] = a[p++];
+            else
+                t[i++] = a[q++];
+            
+        }
+        for(i = x; i < y; i++) a[i] = t[i];
+    }
+}
 
 
 
