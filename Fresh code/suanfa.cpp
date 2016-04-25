@@ -313,7 +313,15 @@ void merge_sort(int* a, int x, int y, int* t)
     }
 }
 
-
+class Solution{
+    public:
+    vector<vector<string>> partion(string s){
+        vector<vector<string>> result;
+        vector<string> path;
+        dfs(s,path, result, 0, 1);
+        return result;
+    }
+}
 
 
 
