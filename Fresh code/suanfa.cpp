@@ -323,7 +323,15 @@ class Solution{
     }
 }
 
-
+dir = argv[1];
+DIR* p=opendir(dir);
+dirent* pd = NULL;
+while((pd = readdir(p))!= NULL){
+    string path = dir;
+    path += "/";
+    path += pd->d_name;
+    ifstream fin(path.c_str());
+}
 
 
 
