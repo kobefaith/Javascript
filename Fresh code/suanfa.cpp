@@ -333,8 +333,31 @@ while((pd = readdir(p))!= NULL){
     ifstream fin(path.c_str());
 }
 
+#include<iostream>
+#include<sys.stat.h>
+#include<unistd.h>
+#include<string>
+using namespace std;
 
-
+int main()
+{
+    string cmd;
+    string dirname;
+    for(;;){
+        cout<<"cmd:";
+        cin>>cmd;
+        if(cmd == "mkdir"){
+            cin>>dirname;
+            mkdir(dirname.c_str(),0777);
+        }else if(cmd == "rmdir"){
+            cin>>dirname;
+            rmdir(dirname.c_str());
+        }else if(cmd =="chdir"){
+            cin>>dirname;
+            chdir(dirname.c_str());
+        }
+    }
+}
 
 
 
