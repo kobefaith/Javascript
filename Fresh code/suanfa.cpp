@@ -373,10 +373,41 @@ int main(void)
     return 0;
 }
 
+#include<iostream>
+using namespace std;
+#include<signal.h>
+#include<unistd.h>
+#include<sys/wait.h>
+#include<sys/types.h>
+#include<stdlib.h>
 
+void func(int sig)
+{
+    signal(sig,func);
+    wait(NULL);
+    cout<<"wait on child"<<endl;
+}
 
-
-
+void child(int len, char ch)
+{
+    if(fork() != 0)
+        return ;
+    for(int i = 0; i < len; i++){
+        cerr<<ch;
+        sleep(3);
+    }
+    exit(0);
+}
+ int main()
+ {
+     signal(SIGCHLD,func);
+     child(10,'.');
+     child(20,'^');
+     for(int i = 0; i < 100; i++){
+         cerr<<'$';
+         sleep(1);
+     }
+ }
 
 
 
