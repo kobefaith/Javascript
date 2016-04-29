@@ -511,7 +511,59 @@ http://www.zhufengpeixun.cn/JavaScriptmianshiti/2014-02-25/249.html
 中级前端面试题
 http://jingyan.baidu.com/article/546ae185643bc01148f28c4b.html
 https://segmentfault.com/a/1190000002627927
-    
+创建对象
+1.工厂模式
+function createPerson(name, age, job){
+    var o = new Object();
+    o.name = name;
+    o.age = age;
+    o.job = job;
+    o.sayName = function(){
+       alert(this.name);
+    }
+    return o;
+}
+var person1 = createPerson("tim",37,"powerforward")
+var person2 = createPerson("park",30,"gard")
+
+2.构造函数模式
+
+function Person(name,age,job){
+    this.name  = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function(){
+        alert(this.name);
+    };
+}
+var person1 = new Person("tim",37,"PF");
+var person2 = new Person("park",30,"PG");
+与工厂模式的不同
+没有显示地创建对象；
+直接将属性和方法赋给了this对象；
+没有return 语句。
+
+构造函数的问题：
+每个方法都要在每个实例上重新创建一遍。
+
+原型模式来解决这个问题：
+创建的每一个函数都有一个prototype属性，这个属性是一个指针，指向一个对象，这个对象的用途是包含可以由
+特定类型的所有实例共享的属性和方法。
+function Person(){
+    Person.prototype.name = "tim";
+    Person.prototype.age = 30;
+    Person.prototype.job = "player";
+    Person.prototype.sayName = function(){
+        alert(this.name);
+    };
+}
+var person1 = new Person();
+var person2 = new Person();
+
+alert(person1.sayName == person2.sayName);//true;
+
+同步 异步  阻塞 非阻塞
+http://blog.csdn.net/historyasamirror/article/details/5778378   
     
     
     
