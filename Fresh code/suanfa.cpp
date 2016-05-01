@@ -486,6 +486,26 @@ int main()
     return 0;
 }
 
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+void sort(string &str)
+{
+    int len = str.size();
+    int i = 0, j = 0, k = 0;
+    char temp;
+    for(i = 0; i < len-1; i++){
+        k =i ;
+        for(j = i+1; j < len; j++)
+            if(str[j] <= str[k])
+                k = j;
+        temp = str[k];
+        str[k] = str[i];
+        str[i] = temp;        
+    }
+}
 
 
 
