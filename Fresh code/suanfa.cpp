@@ -507,7 +507,42 @@ void sort(string &str)
     }
 }
 
+int *Next(string p)
+{
+    int m = p.size;
+    assert(m>0);
+    int * N = new int [m];
+    assert(N!=0);
+    N[0] = 0;
+    for(int i = 0; i < m; i++)
+    {
+        int k = N[i-1];
+        while(k>0&&p.str[i] != p.str[k])
+            k = N[k-1];
+        if(p.str[i] == p.str[k])
+            N[i] = k+1;
+        else
+            N[i] = 0;
+    }
+    return N;    
+}
 
+int kmp_find(string s, string p, int *N, int startindex)
+{
+    int lastindex = s.size-p.size;
+    if((lastindex-startindex)<0)
+        return (-1);
+    int i;
+    int j = 0;
+    for(i = startindex; i < s.size; i++){
+        while(p.str[j] != s.str[i] && j > 0)
+            j = N[j-1];
+        if(p.str[j] == s.str[i]) j++;
+        if(j == p.size)
+            return (i-j+1);
+    }
+    return (-1);   
+}
 
 
 
