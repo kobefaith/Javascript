@@ -587,6 +587,18 @@ int kmp_find(string s, string p, int *N, int startindex)
     return (-1);   
 }
 
+int ELFhash(char *key)
+{
+    unsigned long h = 0;
+    while(*key){
+        h = (h<<4)+*key++;
+        unsigned long g = h&0xF0000000;
+        if(g) h^=g>>24;
+        h &= ~g;
+    }
+    return h%hash_table_size;
+}
+
 
 
 
