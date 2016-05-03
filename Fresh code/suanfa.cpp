@@ -596,7 +596,7 @@ int ELFhash(char *key)
         if(g) h^=g>>24;
         h &= ~g;
     }
-    return h%hash_table_size;
+    return h%hash_table_size;  
 }
 
 
