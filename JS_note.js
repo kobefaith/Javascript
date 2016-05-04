@@ -256,7 +256,7 @@ Js事件的处理
 DOM0级事件处理
 <script>
     var btn1 = document.getElementById("btn1");
-    btn1.onclick = function(){alert("DOM0级事件处理程序1");}//坏处是会被面的覆盖掉。
+    btn1.onclick = function(){alert("DOM0级事件处理程序1");}//坏处是会被后面的覆盖掉。
     btn1.onclick = function(){alert("DOM0级事件处理程序2");}
 </script>
 DOM2级事件处理
