@@ -564,7 +564,12 @@ alert(person1.sayName == person2.sayName);//true;
 
 同步 异步  阻塞 非阻塞
 http://blog.csdn.net/historyasamirror/article/details/5778378   
-    
+ 
+浏览器渲染网页的过程：
+1.解析html（HTML parser）
+2.构建DOM树（DOM tree）
+3.渲染树构建（render tree）
+4.绘制渲染树（painting）
     
     
     
