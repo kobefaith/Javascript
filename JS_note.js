@@ -280,6 +280,14 @@ script>
        alert("Hello");
    }
 </script>
+DOM2级方法是指用addEventListener方法添加事件处理的方法。
+使用DOM2级方法添加事件处理程序的主要好处是可以添加多个事件处理程序。
+所添加的事件处理程序会按照添加它们的顺序触发。
+btn1.addEventListener("click",demo，false);//false是指将事件处理程序添加到事件流的冒泡阶段，true是捕获阶段
+这样可以最大限度地兼容各种浏览器。
+
+IE 和opera中使用attachEvent("onclick",handler)来添加事件处理函数，
+可以为一个事件绑定多个处理函数，但是执行顺序不是添加顺序，而是相反的顺序。    
 事件对象
 在触发DOM事件的时候都会产生一个对象。
 事件对象event：
