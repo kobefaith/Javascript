@@ -577,8 +577,78 @@ http://blog.csdn.net/historyasamirror/article/details/5778378
 1.解析html（HTML parser）
 2.构建DOM树（DOM tree）
 3.渲染树构建（render tree）
-4.绘制渲染树（painting）
+4.绘制渲染树（painting）   
+JS的继承
+所有引用类型默认都继承了object
+原型链继承
+function SuperType(){
+    this.property = true;        
+}
+SuperType.prototype.getSuperValue = function (){
+    return this.property;
+};
+function SubType(){
+    this.subproperty = false;
+}
+SubType.prototype = new SuperType();
+原型链继承的问题在于1 所有的子类对象都会共享同样的父类属性和函数，2 不能向父类的构造函数传递参数。
+实践中很少会单独使用原型链。
+借用构造函数继承
+function SuperType(){
+    this.colors = ["red","blue","green"];    
+}
+function SubType(){
+    SuperType.call(this); //继承了SuperType;
+}
+var instance1 = new SubType();
+instance1.colors.push("black");
+alert(instance1.colors);//"red","blue","green","black"
+ 
+var instance2 = new SubType();
+alert(instance2.colors);//"red","blue","green"
+
+向父类的构造函数传递参数：
+function SuperType(name){
+    this.name = name;
+}
+function SubType(){
+    SuperType.call(this，"tim"); //继承了SuperType;
+    this.age = 30;
+}
+借用构造函数继承的问题是方法都在构造函数中定义，子类对象之间无法共享方法。而且在超类型的原型中定义的方法，
+对子类型而言也是不可见的。所以借用构造函数的方法也是很少单独使用的。
+组合继承 ：
+是将原型链和借用构造函数的技术组合到一块，从而发挥二者之长的一种继承模式。
+背后的思路是使用原型链实现对原型属性和方法的继承，而通过借用构造函数来实现对实例属性的继承。
+function SuperType(name){
+    this.colors = ["red","blue","green"];   
+    this.name = name;
+}
+SuperType.prototype.sayName = function (){
+    alert(this.name);
+};
+function SubType(name,age){
+    SuperType.call(this,name);
+    this.age = age;
+}
+SubType.prototype = new SuperType();
+SubType.prototype.sayAge = function(){
+    alert(this.name);
+};
+var instance1 = new SubType("tim",20);
+instance1.colors.push("black");
+alert(instance1.colors);//"red","blue","green","black"
+instance1.sayName();tim
+instance1.sayAge();20
+
+var instance2 = new SubType("kobe",37);
+alert(instance2.colors);//"red","blue","green"
+instance1.sayName();kobe
+instance1.sayAge();37
+   
     
+    
+        
     
     
     
@@ -590,5 +660,3 @@ http://blog.csdn.net/historyasamirror/article/details/5778378
     
     
 
-
-```
