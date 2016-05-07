@@ -129,6 +129,12 @@ html设置
     <button id="btn2">点击</button>
     <input type="text" id="i3" value="hello world">
     <button id="btn3">点击</button>
+    <br/>
+    <a id="aid" href="http://www.baidu.com">最初是百度，接下来是极客学院</a>
+    <button id="btn4">跳转</button>
+    
+    <p id="p5">hello world</p>
+    <button id="btn5">按钮</button>
 </body>
 $(document).ready(function(){
     $("#btn1").click(function(){
@@ -139,6 +145,20 @@ $(document).ready(function(){
     });
     $("#btn3").click(function(){
         $("#i3").val("极客学院");
+    });
+    $("#btn4").click(function(){
+        $("aid").attr("href","http://www.jiekexuayuan.com");
+    });//如果修改多个属性，则采用如下的方式
+    $("#btn4").click(function(){
+        $("#aid").attr({
+            "href":"http://www.jikexuayuan.com",
+            "title":"hello"
+        });
+    });
+    $("#btn5").click(function(){
+       $("#p5").text(function(i,ot){//通过回调的方式来修改元素内容
+           return "old:"+ot+" new:这是新内容"+(i);
+       }); 
     });
 });
 
