@@ -104,16 +104,43 @@ HTML元素捕获，设置，元素添加删除
 <body>
     <p id="text">this is my webpage</p>
     <button id="btn1">点击</button>
-    
+    <p><input type="text" id="it" value="jike"></p>
+    <p><a href="http://www.jikexueyuan.com" id="aid"></a></p>
+    <button id="btn2">点击</button>
 </body>
 $(document).ready(function(){
     $("#btn1").click(function(){
         alert("text:" + $("#text").text());//获得text元素的内容
         alert("text:" + $("#text").html());//获得text元素的内容,与text的区别是可以获取内容中嵌入的标签
+        alert("text:" + $("#it").val());//获取input标签的value
+        
+    });
+    $("#btn2").click(function(){
+        alert("text:"+$("#aid").attr("href"));//获取属性
+        alert("text:"+$("#aid").attr("id"));//获取属性
     });
 });
-
-
+html设置
+<body>
+    <p id="p1">hello world</p>
+    <button id="btn1">点击</button>
+    
+    <p id="p2">hello world</p>
+    <button id="btn2">点击</button>
+    <input type="text" id="i3" value="hello world">
+    <button id="btn3">点击</button>
+</body>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("#p1").text("极客学院");
+    });
+    $("#btn2").click(function(){
+        $("#p2").html("<a href="http://www.baidu.com">百度</a>");//用html可以增加标签
+    });
+    $("#btn3").click(function(){
+        $("#i3").val("极客学院");
+    });
+});
 
 
 
