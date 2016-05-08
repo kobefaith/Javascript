@@ -157,12 +157,51 @@ $(document).ready(function(){
     });
     $("#btn5").click(function(){
        $("#p5").text(function(i,ot){//通过回调的方式来修改元素内容
-           return "old:"+ot+" new:这是新内容"+(i);
+           return "old:"+ot+" new:这是新内容"+(i);//i是元素的标号默认是0
        }); 
     });
 });
-
-
+html添加元素
+<body>
+    <p id="p1">Hello world</p>
+    <button id="btn1">按钮</button>
+    
+    <p id="p2">Hello world</p>
+    <button id="btn2">按钮</button>
+    <button onclick="appendText()">按钮</button>
+</body>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("#p1").append("this is my webpage");//在后面添加，不会换行
+        $("#p1").prepend("this is my webpage");//在前面添加，不会换行
+    });
+    $("#btn2").click(function(){
+        $("#p2").before("hello");//在p2之前添加，会换行
+        $("#p2").after("hello");//在p2之后添加，会换行
+    });
+});
+funtion appendText(){
+    /*
+       有三种添加元素的方式
+       html  jquery DOM
+    */
+    var text1 = "<p>html方式添加元素</p>";
+    var text2 = $("<p></p>").text("jquery方式添加元素");
+    var text3 = document.createElement("p");
+    text3.innerHTML = "DOM 方式添加元素";
+    $("body").append(text1,text2,text3);
+}
+删除元素
+<body>
+   <p>hello world</p>
+   <button id="btn">click</button>
+</body>
+$(document).ready(function(){
+    $("#btn").click(function(){
+        $("p").remove();//全部删除，比如会将div中的背景颜色 边框等连同内部的p元素一起删除
+        $("p").empty();//仅仅是删除div元素内部的p元素等子元素
+    });
+});
 
 
 
