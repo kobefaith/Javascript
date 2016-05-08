@@ -267,10 +267,92 @@ $(document).ready(function(){
     });
 });
 4.3滑动
-
-
-
-
+<head>
+    <style>
+        #content,#flipshow,#fliphide,#fliptoggle{
+            padding:5px;
+            text-align:center;
+            background-color:#ece023;
+            border:solid 1px #ece999;
+        }
+        #content{
+            padding:50px;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="flipshow">出现</div>
+    <div id="fliphide">隐藏</div>
+    <div id="fliptoggle">出现/隐藏</div>
+    <div id="content">Hello World</div>
+    
+</body>
+$(document).ready(function(){
+    $(#flipshow).click(function(){
+        $("#content").slideDown(1000);
+    });
+    $(#fliphide).click(function(){
+        $("#content").slideUp(1000);
+    });
+    $(#fliptoggle).click(function(){
+        $("#content").slideToggle(1000);
+    });
+});
+4.4jQuery回调
+<body>
+    <button>隐藏</button>
+    <p>hello world jiekxueyuan </p>
+</body>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("p").hide(1000,function(){
+            alert("动画结束");
+        });
+        $("p").css("color","red").slideUp(1000).slideDown(1000);//同时添加多个动画
+    });
+});
+5.jQuery Ajax 异步访问
+<body>
+    <input type="text" id="namevalue">
+    <br/>
+    <button id="btn">Send</button>
+    结果:<span id="result"></span>
+</body>
+$(document).ready(function(){
+    $("#btn").on("click",function(){
+        $.get("Server.php",{name:$("#namevalue").val()},function(data){
+            $("#result").text(data);
+        });
+    });
+    $("#btn").on("click",function(){
+        $.post("Server.php",{name:$("#namevalue").val()},function(data){
+            $("#result").text(data);
+        }).error(function(){//处理错误
+            $("#result").text("通讯有问题");
+        });
+    });
+});
+5.2AJAX加载片段
+box.htm
+<div style="width:100px;height:100px;background-color:red"></div>
+HelloJS.js
+function sayHello(){
+    alert("Hello AJAX");
+}
+$(document).ready(function(){
+    $("body").text("正在加载数据");
+    $("body").load("box.htm",function(a,status,c){  //在一个html文件中加载一段html代码，后缀自行定义，一般是htm
+        console.log(status);
+        if(status=="error"){
+            $("body").text("加载失败");
+        }
+    });
+    $.getScript("HelloJS.js").complete(function(){
+        sayHello();
+    });
+});
+6jQuery扩展
 
 
 
