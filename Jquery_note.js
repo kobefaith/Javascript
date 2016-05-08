@@ -353,12 +353,37 @@ $(document).ready(function(){
     });
 });
 6jQuery扩展
-
-
-
-
-
-
+一种扩展方式
+myjQuery.js
+$.myjq = function(){
+    alert("Hello myjQuery");
+}
+Extendindex.js
+$(document).ready(function(){
+    $.myjq();//第一种扩展方式调用
+    $("div").myjq();//第二种扩展方式调用
+})
+另外的扩展方式
+$.fn.myjq=function(){
+    $(this).text("Hello");
+}
+6.2 noConflict
+<body>
+    <div>Hello</div>
+    <button id="btn">按钮</button>
+</body>
+$.noConflict();//如果$被其他框架占有 ，可以用jQuery 替换$
+jQuery(document).ready(function(){
+    jQuery("#btn").on("click",function(){
+        jQuery("div").text("new content");
+    });
+});
+var myjq = $.noConflict();
+myjq(document).ready(function(){
+    myjq("#btn").on("click",function(){
+        myjq("div").text("new content");
+    });
+});
 
 
 
