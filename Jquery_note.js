@@ -11,7 +11,7 @@ $(document).ready(function(){
         $(this).hide();//点击后隐藏p元素
     })
 });
-jQuery选择器
+1.jQuery选择器
 <body>
    <p>p1</p>
    <p id="pid">p2</p>
@@ -25,7 +25,7 @@ $(document).ready(function(){
         $(".pclass").text("p3元素被修改了");//类选择器
     });
 });
-jquery事件
+2.jquery事件
 <body>   
    <button>click</button>
    <button id="clickMeBtn">click</button>
@@ -53,7 +53,7 @@ function clickHandler1(e){
 function clickHandler2(e){
     console.log("clickHandler2");
 }
-事件目标和冒泡
+2.1事件目标和冒泡
 <body>
    <div style="width:300px;height:300px;background-color:aqua">
         <ul>
@@ -100,7 +100,7 @@ $(document).ready(function(){
          console.log(event);
      });
 });
-HTML元素捕获，设置，元素添加删除
+3.HTML元素捕获，设置，元素添加删除
 <body>
     <p id="text">this is my webpage</p>
     <button id="btn1">点击</button>
@@ -120,7 +120,7 @@ $(document).ready(function(){
         alert("text:"+$("#aid").attr("id"));//获取属性
     });
 });
-html设置
+3.1html设置
 <body>
     <p id="p1">hello world</p>
     <button id="btn1">点击</button>
@@ -161,7 +161,7 @@ $(document).ready(function(){
        }); 
     });
 });
-html添加元素
+3.2html添加元素
 <body>
     <p id="p1">Hello world</p>
     <button id="btn1">按钮</button>
@@ -191,7 +191,7 @@ funtion appendText(){
     text3.innerHTML = "DOM 方式添加元素";
     $("body").append(text1,text2,text3);
 }
-删除元素
+3.3删除元素
 <body>
    <p>hello world</p>
    <button id="btn">click</button>
@@ -202,6 +202,93 @@ $(document).ready(function(){
         $("p").empty();//仅仅是删除div元素内部的p元素等子元素
     });
 });
+4.jQuery效果
+4.1现实与隐藏
+<body>
+   <p>hello</p>
+   <button id="hide">隐藏</button>
+   <button id="show">显示</button>
+   <button id="toggle">隐藏/显示</button>
+   <script>
+       for(var i = 0; i < 5; i++){
+           $("<div>").appendTo(document.body);//添加元素到body           
+       }
+       $("div").click(function(){
+           $(this).click(function(){
+               $(this).remove();
+           });
+       });
+   </script>
+</body>
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("p").hide();//设置元素隐藏
+        $("p").hide(1000);//1000是设置隐藏过程持续1000毫秒
+        
+    });
+    $("#show").click(function(){
+        $("p").show();
+        $("p").show(1000);
+    });
+    $("#toggle").click(function(){
+        $("p").toggle(1000); //点击后隐藏 ，再点击会显示    
+    });
+});
+4.2淡入淡出
+<body>
+    <button id="in">fadein</button>
+    <button id="out">fadeout</button>
+    <button id="toggle">fadetoggle</button>
+    <button id="to">fadeto</button>
+    <div id="div1" style="width:80px;height:80px;display:none;background-color:aqua"></div>
+    <div id="div2" style="width:80px;height:80px;display:none;background-color:#ece023"></div>
+    <div id="div3" style="width:80px;height:80px;display:none;background-color:darkgoldenrod"></div>
+</body>
+$(document).ready(function(){
+    $("#in").on("click",function(){
+        $("#div1").fadeIn(1000);
+        $("#div2").fadeIn(1000);
+        $("#div3").fadeIn(1000);
+    });
+    $("#out").on("click",function(){
+        $("#div1").fadeOut(1000);
+        $("#div2").fadeOut(1000);
+        $("#div3").fadeOut(1000);
+    });
+    $("#toggle").on("click",function(){
+        $("#div1").fadeToggle(1000);//点击淡入再点击淡出。
+        $("#div2").fadeToggle(1000);
+        $("#div3").fadeToggle(1000);
+    });
+    $("#to").on("click",function(){
+        $("#div1").fadeTo(1000,0);//设置透明效果，0代表完全透明，1代表不透明
+        $("#div2").fadeTo(1000,0.7);
+        $("#div3").fadeTo(1000,1);
+    });
+});
+4.3滑动
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
