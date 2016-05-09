@@ -645,7 +645,57 @@ var instance2 = new SubType("kobe",37);
 alert(instance2.colors);//"red","blue","green"
 instance1.sayName();kobe
 instance1.sayAge();37
-   
+原型式继承
+var person = {
+    name:"Nicholas",
+    friends:["Shelby","Court","Van"]
+};
+var anotherPerson1 = Object.create(person);
+anotherPerson1.name = "Greg";
+anotherPerson1.friends.push("Rob");
+
+var anotherPerson2 = Object.create(person);
+anotherPerson2.name = "Linda";
+anotherPerson2.friends.push("Barbie");
+
+alert(person.friends);//Shelby,Court,Van,Rob,Barbie
+
+寄生式继承
+function createAnother(original){
+    var clone = object(original);
+    clone.sayHi = function(){
+        alert("hi");
+    };
+    return clone;
+}
+
+var person = {
+    name:"kobe",
+    friends:["fisher","warton","gasol"]
+};
+var anotherPerson = createAnother(person);
+anotherPerson.sayHi();//hi
+寄生组合继承
+function inheritPrototype(subType,superType){
+    var prototype = object(superType.prototype);
+    prototype.constructor = subType;
+    subType.prototype = prototype;
+}
+function SuperType(name){
+    this.name = name;
+    this.colors = ["red","blue","green"];
+}
+SuperType.prototype.sayName = function(){
+    alert(this.name);
+};
+function SubType(name,age){
+    SuperType.call(this,name);
+    this.age = age;
+}
+inheritPrototype(SubType,SuperType);
+SubType.prototype.sayAge = function(){
+    alert(this.age);
+}   
     
     
         
