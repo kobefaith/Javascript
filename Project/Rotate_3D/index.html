@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8" />
+<link rel="stylesheet" href="css/base.css" type="text/css">
+<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="js/Modernizr.js"></script>
+<script type="text/javascript">
+var fx  = {	
+	flex : function(obj, cur, target, fnDo, fnEnd, fs, ms){
+		var MAX_SPEED=8;
+		
+		if(!fs)fs=6;
+		if(!ms)ms=0.75;
+		var now={};
+		var x=0;	//0-100
+		
+		if(!obj.__flex_v)obj.__flex_v=0;
+		
+		clearInterval(obj.timer);
+		obj.timer=setInterval(fnMove, 30);
+		
+		function fnMove(){
+			obj.__flex_v+=(100-x)/fs;
+			obj.__flex_v*=ms;
+			
+			if(Math.abs(obj.__flex_v)>MAX_SPEED)obj.__flex_v=obj.__flex_v>0?MAX_SPEED:-MAX_SPEED;
+			
+			x+=obj.__flex_v;
+			
+			for(var i in cur)
+			{
+				now[i]=(target[i]-cur[i])*x/100+cur[i];
+			}
+			
+			
+			if(fnDo)fnDo.call(obj, now);
+			
+			if(Math.abs(obj.__flex_v)<1 && Math.abs(100-x)<1)
+			{
+				clearInterval(obj.timer);
+				if(fnEnd)fnEnd.call(obj, target);
+				obj.__flex_v=0;
+			}
+		}
+	}
+};
+
+var Utils = {
+	setStyle :function(obj,json){
+		if(obj.length)
+			for(var i=0;i<obj.length;i++) Utils.setStyle(obj[i], json);
+		else
+		{
+			if(arguments.length==2)
+				for(var i in json) obj.style[i]=json[i];
+			else
+				obj.style[arguments[1]]=arguments[2];
+		}
+	},
+	setStyle3 : function(obj, name, value){
+		obj.style[name]=value;
+	}
+};
+
+//监听css3运动终止
+(function (){
+	var aListener=[];
+	if(!Modernizr.csstransitions)return;
+	
+	document.addEventListener('transitionend', endListrner, false);
+	
+	
+	function endListrner(ev)
+	{
+		var oEvObj=ev.srcElement||ev.target;
+		for(var i=0;i<aListener.length;i++)
+		{
+			if(oEvObj==aListener[i].obj)
+			{
+				aListener[i].fn.call(aListener[i].obj, aListener[i].arg);
+				aListener.remove(aListener[i--]);
+			}
+		}
+	}
+	
+	fx.addEnd=function (obj, fn, arg)
+	{
+		if(!obj || !fn)return;
+		aListener.push({obj: obj, fn: fn, arg: arg});
+	}
+})();
+
+$(function(){
+	var now=0;
+	var ready=true;
+	var W=469;
+	var H=469;	
+	var $img = $("#img");	
+	var oDiv = $img.get(0);
+	var next =function(){
+		return (now+1)%6;
+	}
+
+	$(document).keydown(function(event){
+		var e = event||window.event;
+		var key =e.KeyCode||e.which;
+		if(key<37 || key>40)return;
+		
+		var val_1,val_2;
+		
+		if(!ready)return;
+		ready=false;
+		
+		oDiv.innerHTML='';
+		oDiv.style.background='none';
+					
+		Utils.setStyle3(oDiv, 'transformStyle', 'preserve-3d');
+		Utils.setStyle3(oDiv, 'transform', 'perspective(1000px)');
+
+		var oNow=document.createElement('div');
+		var oNext=document.createElement('div');
+		
+		Utils.setStyle([oNow, oNext], {
+			position: 'absolute',
+			width: '100%', 
+			height: '100%', 
+			left: 0,
+			top: 0
+		});
+		
+		if(key == 37)
+		{
+			Utils.setStyle3(oNow, 'transform', 'scale3d(0.808,0.808,0.808) rotate3d(0,1,0,0deg) translate3d(0,0,'+W/2+'px)');
+			Utils.setStyle3(oNext, 'transform', 'scale3d(0.808,0.808,0.808) rotate3d(0,1,0,90deg) translate3d(0,0,'+W/2+'px)');
+			val_1 = {v:0};
+			val_2 = {v:-90};		
+		}
+		else if(key == 38)
+		{
+			Utils.setStyle3(oNow, 'transform', 'scale3d(0.808,0.808,0.808) rotate3d(1,0,0,0deg) translate3d(0,0,'+H/2+'px)');
+			Utils.setStyle3(oNext, 'transform', 'scale3d(0.808,0.808,0.808) rotate3d(1,0,0,-90deg) translate3d(0,0,'+H/2+'px)');
+			val_1 = {v:0};
+			val_2 = {v:90};		
+		}
+		else if(key == 39)
+		{
+			Utils.setStyle3(oNow, 'transform', 'scale3d(0.808,0.808,0.808) rotate3d(0,1,0,0deg) translate3d(0,0,'+W/2+'px)');
+			Utils.setStyle3(oNext, 'transform', 'scale3d(0.808,0.808,0.808) rotate3d(0,1,0,-90deg) translate3d(0,0,'+W/2+'px)');
+			val_1 = {v:0};
+			val_2 = {v:90};	
+		}
+		else
+		{
+			Utils.setStyle3(oNow, 'transform', 'scale3d(0.808,0.808,0.808) rotate3d(1,0,0,0deg) translate3d(0,0,'+H/2+'px)');
+			Utils.setStyle3(oNext, 'transform', 'scale3d(0.808,0.808,0.808) rotate3d(1,0,0,90deg) translate3d(0,0,'+H/2+'px)');
+			val_1 = {v:0};
+			val_2 = {v:-90};		
+		}
+		
+		oDiv.appendChild(oNext);
+		oDiv.appendChild(oNow);
+
+		oNow.style.background='url(images/'+(now+1)+'.jpg) center no-repeat';
+		oNext.style.background='url(images/'+(next()+1)+'.jpg) center no-repeat';
+		
+		if(now == 5)
+		{
+			document.getElementById("title").innerHTML = "<img src='images/5.jpg' alt='cp icon' width=39px height=48px> POP";
+			document.getElementById("content1").innerHTML = "Music 001";
+			document.getElementById("content2").innerHTML = "Xiaowei Guan";
+		}
+		else if(now == 0)
+		{
+			document.getElementById("title").innerHTML = "<img src='images/6.jpg' alt='cp icon' width=39px height=48px> Classic";
+			document.getElementById("content1").innerHTML = "Music 002";
+			document.getElementById("content2").innerHTML = "Huasheng Chen";
+		}
+		else if(now == 1)
+		{
+			document.getElementById("title").innerHTML = "<img src='images/7.jpg' alt='cp icon' width=39px height=48px> HipHop";
+			document.getElementById("content1").innerHTML = "Music 003";
+			document.getElementById("content2").innerHTML = "Xunkang Dai";
+		}
+		else if(now == 2)
+		{
+			document.getElementById("title").innerHTML = "<img src='images/8.jpg' alt='cp icon' width=39px height=48px> POP";
+			document.getElementById("content1").innerHTML = "Music 004";
+			document.getElementById("content2").innerHTML = "Guitao Yu";
+		}
+		else if(now == 3)
+		{
+			document.getElementById("title").innerHTML = "<img src='images/9.jpg' alt='cp icon' width=39px height=48px> Classic";
+			document.getElementById("content1").innerHTML = "Music 005";
+			document.getElementById("content2").innerHTML = "Han Lv";
+		}
+		else
+		{
+			document.getElementById("title").innerHTML = "<img src='images/10.jpg' alt='cp icon' width=39px height=48px> HipHop";
+			document.getElementById("content1").innerHTML = "Music 006";
+			document.getElementById("content2").innerHTML = "Wei Sun";
+		}
+		setTimeout(function (){
+		fx.flex(oDiv, val_1, val_2, function (now){	
+				oNow.style.opacity = 1- Math.abs(now.v/90);
+				if(key==37||key==39)
+				{
+					Utils.setStyle3(oDiv, 'transform', 'perspective(1000px) rotateY('+now.v+'deg)');
+				}
+				else
+				{
+					Utils.setStyle3(oDiv, 'transform', 'perspective(1000px) rotateX('+now.v+'deg)');
+				}}, function (){
+				Utils.setStyle3(oDiv, 'transition', 'none');
+				Utils.setStyle3(oDiv, 'transformStyle', 'flat');
+				Utils.setStyle3(oDiv, 'transform', 'none');
+
+				oDiv.innerHTML='';
+				oDiv.style.background='url(images/'+(next()+1)+'.jpg) center no-repeat';
+				
+				now=next();
+
+				ready=true;
+			}, //end of last function
+			9, 0.6); // end of flex
+		},10); // end of the setTimeout
+
+	});//end of keydown
+});
+
+
+</script>
+</head>
+
+<body>
+<div id="container"></div>
+
+<div id="div1">
+	<div id="title"><img src="images/icon_cp_tunein.png" alt="cp icon" width=39px height=48px> POP</div>
+	<div id="img"></div>
+	<label id="content1">Music 001</label>
+	<lable id="content2">Xiaowei Guan</label>
+</div>
+
+<script type="text/javascript" src="js/stats.min.js"></script>
+<script>
+var container, stats;
+init();
+animate();
+function init() {
+
+	container = document.getElementById( 'container' );
+	
+	stats = new Stats();
+	stats.domElement.style.position = 'absolute';
+	stats.domElement.style.top = '0px';
+	container.appendChild( stats.domElement );
+}
+
+function animate() {
+
+	requestAnimationFrame( animate );
+	stats.update();
+
+}
+
+</script>
+</body>
+</html>
