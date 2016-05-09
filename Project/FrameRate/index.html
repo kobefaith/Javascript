@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div style="width:1920px;height:1080px;">
+<div id="container"></div>
+ 
+<form name="f">
+<div style='position:absolute;left:70px;top:100px;' >
+	<input id="btnDel" type="button" value="decrease num" onclick="del()" style='width:110px; height:50px;background-color:green;'>
+	<input id="btnAdd" type="button" value="increase num" onclick="add()" style='width:110px; height:50px;background-color:green;'>
+	<span id="ll">15</span>
+	<span id="l"></span>
+</div>
+
+<div style='position:absolute;left:70px;top:160px;' >
+	<input id="btnSmall" type="button" value="decrease size" onclick="small()" style='width:110px; height:50px;background-color:green;'>
+	<input id="btnLarge" type="button" value="increase size" onclick="large()" style='width:110px; height:50px;background-color:green;'>
+	<span id="jj">100</span>
+	<span id="j"></span>
+</div>
+
+<div style='position:absolute;left:70px;top:220px;' >
+	<input id="btnSlow" type="button" value="decrease speed" onclick="slow()" style='width:110px; height:50px;background-color:green;'>
+	<input id="btnQuick" type="button" value="increase speed" onclick="quick()" style='width:110px; height:50px;background-color:green;'>
+	<span id="xx">3</span>
+	<span id="x"></span>
+</div>
+</form>
+
+
+<img src="img/1.jpg" style='position:absolute;' width=100px height=100px id="one">
+<img src="img/2.jpg" style='position:absolute;' width=100px height=100px id="two">
+<img src="img/3.jpg" style='position:absolute;' width=100px height=100px id="three">
+<img src="img/4.jpg" style='position:absolute;' width=100px height=100px id="four">
+<img src="img/5.jpg" style='position:absolute;' width=100px height=100px id="five">
+<img src="img/6.jpg" style='position:absolute;' width=100px height=100px id="six">
+<img src="img/7.jpg" style='position:absolute;' width=100px height=100px id="seven">
+<img src="img/8.jpg" style='position:absolute;' width=100px height=100px id="eight">
+<img src="img/9.jpg" style='position:absolute;' width=100px height=100px id="nine">
+<img src="img/10.jpg" style='position:absolute;' width=100px height=100px id="ten">
+<img src="img/11.jpg" style='position:absolute;' width=100px height=100px id="eleven">
+<img src="img/12.jpg" style='position:absolute;' width=100px height=100px id="tweleve">
+<img src="img/13.jpg" style='position:absolute;' width=100px height=100px id="thirteen">
+<img src="img/14.jpg" style='position:absolute;' width=100px height=100px id="fourteen">
+<img src="img/15.jpg" style='position:absolute;' width=100px height=100px id="fifteen">
+<img src="img/16.jpg" style='position:absolute;' width=100px height=100px id="sixteen">
+<img src="img/17.jpg" style='position:absolute;' width=100px height=100px id="seventeen">
+<img src="img/18.jpg" style='position:absolute;' width=100px height=100px id="eighteen">
+<img src="img/19.jpg" style='position:absolute;' width=100px height=100px id="nineteen">
+<img src="img/20.jpg" style='position:absolute;' width=100px height=100px id="twenty">
+
+</div>
+
+<script type="text/javascript" src="js/stats.min.js"></script>
+<script>
+
+var container, stats;
+function init() {
+
+	container = document.getElementById( 'container' );
+	
+	stats = new Stats();
+	stats.domElement.style.position = 'absolute';
+	stats.domElement.style.top = '0px';
+	container.appendChild( stats.domElement );
+}
+
+function animate() {
+
+	requestAnimationFrame( animate );
+	stats.update();
+
+}
+
+function xpos()
+{
+	return parseInt(Math.random()*1820,10);
+}
+
+function ypos()
+{
+	return parseInt(Math.random()*980,10);
+}
+
+function ShowImg(obj)
+{
+	obj.style.visibility = "visible";
+}
+
+function HideImg(obj)
+{
+	obj.style.visibility = "hidden";
+}
+
+function float(obj,step,delay){
+      var x =parseInt((obj.style.left||"").replace(/[^\d]/g,""))||100,y = parseInt((obj.style.top||"").replace(/[^\d]/g,""))||100; 
+	  var xin, yin ;
+	  
+	  if(Math.random() < 0.5){ xin = true;}
+	  else{xin = false;}
+	  
+	  if(Math.random() < 0.5){ yin = true;}
+	  else{yin = false;}
+	  	  
+      function floatAD() {
+		var L=0;  
+		var T=0;
+		var R= document.body.clientWidth-obj.offsetWidth;   
+		var B= document.body.clientHeight-obj.offsetHeight;   
+		obj.style.left = (x + document.body.scrollLeft)+"px"; 
+		obj.style.top =(y + document.body.scrollTop)+"px";
+   
+		x = x + step*(xin?1:-1); 
+		if (x < L) { xin = true; x = L;}  
+		if (x > R){ xin = false; x = R;} 
+		y = y + step*(yin?1:-1);
+		if (y < T) { yin = true; y = T; } 
+		if (y > B) { yin = false; y = B; } 
+	}  
+	var t = setInterval(floatAD, delay);
+	return t;
+ }
+
+
+init();
+animate();
+
+var stepv = 3;
+var delayv=10;
+var last = 15;
+
+var id = new Array();
+id[0] = "one";id[1] = "two";id[2] = "three";id[3] = "four";id[4] = "five";
+id[5] = "six";id[6] = "seven";id[7] = "eight";id[8] = "nine";id[9] = "ten";
+id[10] = "eleven";id[11] = "tweleve";id[12] = "thirteen";id[13] = "fourteen";id[14] = "fifteen";
+id[15] = "sixteen";id[16] = "seventeen";id[17] = "eighteen";id[18] = "nineteen";id[19] = "twenty";
+
+var ele = new Array;
+
+var interval = new Array;
+
+for(var i=0;i<20;i++)
+{
+	ele[i] = document.getElementById(id[i]);
+	ele[i].style.position = "absolute";
+	ele[i].style.left = xpos()+'px';
+	ele[i].style.top = ypos()+'px';
+	if(i<last)
+	{
+		interval[i] = float(ele[i],stepv,delayv);
+	}
+	else
+	{
+		HideImg(ele[i]);
+	}
+}
+
+
+
+function del()
+{
+	if(last ==0)
+	{
+		document.getElementById("l").innerHTML = "  it's 0 now!!! cann't delete any more" ;
+		alert("it's 0 now!!! cann't delete any more");
+		return;
+	}
+	document.getElementById("l").innerHTML = "" ;
+	clearInterval(interval[last-1]);
+	HideImg(ele[last-1]);
+	last = last -1;
+	document.getElementById("ll").innerHTML--;
+}
+
+function add()
+{
+	if(last == 20)
+	{
+		document.getElementById("l").innerHTML = "  it's 20 now!!! cann't add any more" ;
+		alert("it's 20 now!!! cann't add any more");
+		return;
+	}
+	document.getElementById("l").innerHTML = "" ;
+	ShowImg(ele[last]);
+	interval[last] = float(ele[last],stepv,delayv);	
+	last = last + 1;
+	document.getElementById("ll").innerHTML++;
+}
+
+var size=100;
+function small()
+{
+	if(size==50)
+	{
+		document.getElementById("j").innerHTML="  it's 50 now!!! cann't small any more";
+		alert("it's 50 now!!! cann't small any more");
+		return;
+	}
+	document.getElementById("j").innerHTML="";
+	size=size-10;
+	for(var i=0;i<20;i++)
+	{
+		ele[i].style.width = size+'px';
+		ele[i].style.height = size+'px';
+	}	
+	document.getElementById("jj").innerHTML=size;
+}
+
+function large()
+{
+	if(size==200)
+	{
+		document.getElementById("j").innerHTML="  it's 200 now!!! cann't large any more";
+		alert("it's 200 now!!! cann't large any more");
+		return;
+	}
+	document.getElementById("j").innerHTML="";
+	size=size+10;
+	for(var i=0;i<20;i++)
+	{
+		ele[i].style.width = size+'px';
+		ele[i].style.height = size+'px';
+	}	
+	document.getElementById("jj").innerHTML=size;
+}
+
+function slow()
+{
+	if(stepv==0)
+	{
+		document.getElementById("x").innerHTML="  it's 0 now!!! cann't slow any more";
+		alert("it's 0 now!!! cann't slow any more");
+		return;
+	}
+	document.getElementById("x").innerHTML="";
+	stepv--;
+	for(var i=1;i<=last;i++)
+	{
+		clearInterval(interval[i-1]);
+		interval[i-1] = float(ele[i-1],stepv,delayv);
+	}
+	document.getElementById("xx").innerHTML--;
+}
+
+function quick()
+{
+	if(stepv==12)
+	{
+		document.getElementById("x").innerHTML="  it's 12 now!!! cann't quick any more";
+		alert("it's 12 now!!! cann't quick any more");
+		return;
+	}
+	document.getElementById("x").innerHTML="";
+	stepv++;
+	for(var i=1;i<=last;i++)
+	{
+		clearInterval(interval[i-1]);
+		interval[i-1] = float(ele[i-1],stepv,delayv);
+	}
+	document.getElementById("xx").innerHTML++;
+}
+
+var focusele = document.f.btnDel;
+focusele.style.background= 'maroon';
+focusele.focus();
+
+var x = 0,y=0,cow=2,line=3;
+function moveFocus()
+{
+	focusele.style.background= 'green';
+	if(x==0)
+	{
+		if(y==0)
+		{
+			document.f.btnDel.focus();
+			focusele = document.f.btnDel;
+		}
+		else if(y==1)
+		{
+			document.f.btnSmall.focus();
+			focusele = document.f.btnSmall;
+		}
+		else
+		{
+			document.f.btnSlow.focus();
+			focusele = document.f.btnSlow;
+		}
+		
+	}
+	else
+	{
+		if(y==0)
+		{
+			document.f.btnAdd.focus();
+			focusele = document.f.btnAdd;
+		}
+		else if(y==1)
+		{
+			document.f.btnLarge.focus();
+			focusele = document.f.btnLarge;
+		}
+		else
+		{
+			document.f.btnQuick.focus();
+			focusele = document.f.btnQuick;
+		}		
+	}
+	focusele.style.background= 'maroon';
+	
+}
+
+document.onkeydown=keydown;
+function keydown(event)
+{
+	event=event?event:(window.event?window.event:null);	
+	if(event.keyCode==37)
+	{
+		x=(x+cow-1)%cow;
+		moveFocus();		
+	}
+	else if(event.keyCode==38)
+	{
+		y=(y+line-1)%line;
+		moveFocus();
+	}
+	else if(event.keyCode==39)
+	{
+		x=(x+1)%cow;
+		moveFocus();
+	}
+	else if(event.keyCode==40)
+	{
+		y=(y+1)%line;
+		moveFocus();
+	}
+}
+</script>
+</body>
+</html>
