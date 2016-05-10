@@ -696,6 +696,21 @@ inheritPrototype(SubType,SuperType);
 SubType.prototype.sayAge = function(){
     alert(this.age);
 }   
+JavaScript还有一个免费赠送的关键字arguments，它只在函数内部起作用，并且永远指向当前函数的调用者传入的所有参数。arguments类似Array但它不是一个Array：
+function foo(x) {
+    alert(x); // 10
+    for (var i=0; i<arguments.length; i++) {
+        alert(arguments[i]); // 10, 20, 30
+    }
+}
+foo(10, 20, 30);
+
+要指定函数的this指向哪个对象，可以用函数本身的apply方法，它接收两个参数，第一个参数就是需要绑定的this变量，第二个参数是Array，表示函数本身的参数。
+另一个与apply()类似的方法是call()，唯一区别是：
+apply()把参数打包成Array再传入；
+call()把参数按顺序传入。   
+Math.max.apply(null, [3, 5, 4]); // 5
+Math.max.call(null, 3, 5, 4); // 5
     
     
         
