@@ -1,5 +1,6 @@
 Ajax跨域请求：
 a.test.com 与b.test.com 之间进行通信的话，可以用iframe进行。
+iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。
 iframe可以在子域之间进行通信，比如上面两个就可以看做test.com的两个子域。
 http://b.test.com/cross_sub_domain.html 利用这个页面做中间人，这个页面是b的域的页面，所以可以
 与b域进行ajax通信，然后a域和这个中间人通过iframe进行通信，得到从b域得到的数据。
@@ -25,6 +26,9 @@ http://b.test.com/cross_sub_domain.html 中
         }
 
 </script>
+问题：
+1、安全性，当一个站点（b.a.com）被攻击后，另一个站点（c.a.com）会引起安全漏洞。
+2、如果一个页面中引入多个iframe，要想能够操作所有iframe，必须都得设置相同domain。
 jsonp原理
 本质上并不是ajax，只是执行了跨域的js
 html中所有带src属性的标签都可以跨域script img iframe
