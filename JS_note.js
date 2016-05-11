@@ -206,6 +206,9 @@ window.history对象包含浏览器的历史url的集合
 history.back()与浏览器中点击后退按钮相同
 history.forward()与浏览器中点击向前按钮相同
 history.go()进入某个历史页面
+history.go("wrox.com");
+history.go(-1);后退一页
+history.go(2);前进两页
 <button id="btn" onclick="go()">按钮</button>
 <script>
     function go(){
@@ -234,6 +237,7 @@ location.port      返回web主机的端口
 location.protocol  返回所使用的协议
 location.href      返回当前页面的url
 location.assign() 加载新的文档
+location.search() 返回URL的查询字符串。这个字符串以问号开头 "?q=javascript"
 <script>
         function getLoc(){
             document.getElementById("ptime").innerHTML=window.location.pathname;
@@ -242,6 +246,46 @@ location.assign() 加载新的文档
             location.assign("http://www.jikexueyuan.com");
         }
 </script>
+http://cn.bing.com/search?q=nba&qs=n&form=QBRE&pq=nba&sc=8-3&sp=-1&sk=&cvid=2044A37DAFCE48DBB483168BA8F2C96F
+如果想处理以上的URL，从中提取出参数，可用如下程序：
+function getQuerySringArgs(){
+    var qs = (location.search.length >0 ?location.search.substring(1):""),
+    args = {},
+    items = qs.length ? qs.split("&"):[],
+    item = null,
+    name = null,
+    value = null,
+    i = 0,
+    len = items.length;
+    for(i = 0; i < len; i++){
+        item = items[i].split("=");
+        name = decodeURIComponent(item[0]);
+        value = decodeURIComponent(item[1]);
+        if( name.length){
+            args[name] = value;
+        }
+    }
+    return args;
+}
+navigator对象
+可以用来识别客户端浏览器。
+appName  完整浏览器名称
+cookieEnabled  表示cookie是否启用
+onLine   表示浏览器是否连接到了互联网
+plugins 浏览器中安装的插件信息的数组
+在非IE浏览器中检测是否安装了特定插件的程序如下：
+function hasPlugin(name){
+    name = name.toLowerCase();
+    for (var i = 0; i < navigator.plugins.length; i++){
+        if(navigator.plugins[i].name.toLowerCase().indexOf(name) > -1){
+            return true;
+        }
+    }
+    return false;
+}
+alert(hasPlugin("Flash"));
+alert(hasPlugin("QuickTime"));
+<script>
 screen对象
 <script>
     document.write("可用高度"+screen.availHeight+"，可用高度"+screen.availWidth);
