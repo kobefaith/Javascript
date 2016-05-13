@@ -20,3 +20,29 @@ text-transform:uppercase;
 a:hover,a:active{
 background-color:#7A991A;
 }
+
+<p>this is an <strong>web<i>hello</i></strong>site</p>
+p strong i{
+    color:red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
