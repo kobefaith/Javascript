@@ -386,6 +386,7 @@ myjq(document).ready(function(){
 });
 
 7 jQuery css
+7.1操作css
 $(document).ready(function(){
     $("div").css("width","100px");
     $("div").css("height","100px");
@@ -413,8 +414,23 @@ jQcss.css
     height:100px;
     background-color:blue;
 }
-
-
+7.2盒子模型
+<style>
+    #div{
+        width:100px;
+        height:100px;
+        margin:50px;
+        padding:50px;
+        border:2px solid aqua;
+        background-color:blue;
+    }
+</style>
+$(document).ready(function(){
+    alert($("#div").height());//100
+    alert($("#div").innerHeight());//200 height + padding
+    alert($("#div").outerHeight());//204 height+padding +border 
+    alert($("#div").outerHeight(true));//304 height+padding +border+margin
+});
 
 
 
