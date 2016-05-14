@@ -755,7 +755,113 @@ apply()把参数打包成Array再传入；
 call()把参数按顺序传入。   
 Math.max.apply(null, [3, 5, 4]); // 5
 Math.max.call(null, 3, 5, 4); // 5
-    
+AMD是"Asynchronous Module Definition"的缩写，意思就是"异步模块定义"。
+它采用异步方式加载模块，模块的加载不影响它后面语句的运行。
+所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。
+AMD也采用require()语句加载模块，但是不同于CommonJS，它要求两个参数：
+require([module], callback);
+第一个参数[module]，是一个数组，里面的成员就是要加载的模块；第二个参数callback，则是加载成功之后的回调函数。如果将前面的代码改写成AMD形式，就是下面这样：
+require(['math'], function (math) {
+　　math.add(2, 3);
+});
+math.add()与math模块加载不是同步的，浏览器不会发生假死。所以很显然，AMD比较适合浏览器环境。
+目前，主要有两个Javascript库实现了AMD规范：require.js和curl.js。
+网页加载的时候，浏览器会停止网页渲染，加载文件越多，网页失去响应的时间就会越长；
+由于js文件之间存在依赖关系，因此必须严格保证加载顺序（比如上例的1.js要在2.js的前面），依赖性最大的模块一定要放到最后加载，当依赖关系很复杂的时候，代码的编写和维护都会变得困难。
+require.js的作用
+（1）实现js文件的异步加载，避免网页失去响应；
+（2）管理模块之间的依赖性，便于代码的编写和维护。
+require.js加载
+<script src="js/require.js"></script>
+有人可能会想到，加载这个文件，也可能造成网页失去响应。解决办法有两个，一个是把它放在网页底部加载，另一个是写成下面这样：
+<script src="js/require.js" defer async="true" ></script>  async属性表明这个文件需要异步加载，避免网页失去响应。IE不支持这个属性，只支持defer，所以把defer也写上。
+加载require.js以后，下一步就要加载我们自己的代码了。假定我们自己的代码文件是main.js，也放在js目录下面。那么，只需要写成下面这样就行了：
+<script src="js/require.js" data-main="js/main"></script>
+data-main属性的作用是，指定网页程序的主模块。在上例中，就是js目录下面的main.js，这个文件会第一个被require.js加载。由于require.js默认的文件后缀名是js，所以可以把main.js简写成main。
+上一节的main.js，我把它称为"主模块"，意思是整个网页的入口代码。它有点像C语言的main()函数，所有代码都从这儿开始运行。
+下面就来看，怎么写main.js。
+假定主模块依赖jquery、underscore和backbone这三个模块，main.js就可以这样写：
+require(['jquery', 'underscore', 'backbone'], function ($, _, Backbone){
+　　// some code here
+});
+使用require.config()方法，我们可以对模块的加载行为进行自定义。require.config()就写在主模块（main.js）的头部。参数就是一个对象，这个对象的paths属性指定各个模块的加载路径。
+require.config({
+　　　paths: {
+　　　　　"jquery": "jquery.min",
+　　　　　"underscore": "underscore.min",
+　　　　　"backbone": "backbone.min"
+　　　}
+}); 
+上面的代码给出了三个模块的文件名，路径默认与main.js在同一个目录（js子目录）。
+如果这些模块在其他目录，比如js/lib目录，则有两种写法。一种是逐一指定路径。
+require.config({
+　　paths: {
+　　　　"jquery": "lib/jquery.min",
+　　　　"underscore": "lib/underscore.min",
+　　　　"backbone": "lib/backbone.min"
+　　}
+});
+另一种则是直接改变基目录（baseUrl）。
+require.config({
+　　baseUrl: "js/lib",
+　　paths: {
+　　　　"jquery": "jquery.min",
+　　　　"underscore": "underscore.min",
+　　　　"backbone": "backbone.min"
+　　}
+});
+require.js加载的模块，采用AMD规范。也就是说，模块必须按照AMD的规定来写。
+具体来说，就是模块必须采用特定的define()函数来定义。如果一个模块不依赖其他模块，
+那么可以直接定义在define()函数之中。
+假定现在有一个math.js文件，它定义了一个math模块。那么，math.js就要这样写：
+// math.js
+define(function (){
+　　var add = function (x,y){
+　　　　return x+y;
+　　};
+　　return {
+　　　　add: add
+　　};
+});
+加载方法如下：
+// main.js
+require(['math'], function (math){
+　　alert(math.add(1,1));
+});
+如果这个模块还依赖其他模块，那么define()函数的第一个参数，必须是一个数组，指明该模块的依赖性。
+define(['myLib'], function(myLib){
+　　function foo(){
+　　　　myLib.doSomething();
+　　}
+　　return {
+　　　　foo : foo
+　　};
+});
+理论上，require.js加载的模块，必须是按照AMD规范、用define()函数定义的模块。
+但是实际上，虽然已经有一部分流行的函数库（比如jQuery）符合AMD规范，
+更多的库并不符合。那么，require.js是否能够加载非规范的模块呢？
+require.config({
+　　shim: {
+
+　　　　'underscore':{
+　　　　　　exports: '_'
+　　　　},
+　　　　'backbone': {
+　　　　　　deps: ['underscore', 'jquery'],
+　　　　　　exports: 'Backbone'
+　　　　}
+　　}
+});
+require.config()接受一个配置对象，这个对象除了有前面说过的paths属性之外，还有一个shim属性，专门用来配置不兼容的模块。
+具体来说，每个模块要定义（1）exports值（输出的变量名），表明这个模块外部调用时的名称；（2）deps数组，表明该模块的依赖性。
+
+
+
+
+
+
+
+   
     
         
     
