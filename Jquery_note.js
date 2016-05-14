@@ -385,7 +385,34 @@ myjq(document).ready(function(){
     });
 });
 
-
+7 jQuery css
+$(document).ready(function(){
+    $("div").css("width","100px");
+    $("div").css("height","100px");
+    $("div").css("background","#FF0000");
+    以上写法特啰嗦，下面是简洁的写法
+    $("div").css({
+        width:"100px",height:"100px",backgroundColor:"#00FF00"
+    });
+    还可以使用addClass的方式:
+    $("div").addClass("style1");//style1是在css文件中定义
+    $("div").click(function(){
+        $(this).addClass("style2");
+        $(this).removeClass("style2");
+        $(this).toggleClass("style2");//可以在style1 和style2 之间来回的切换。
+    });
+});
+jQcss.css
+.style1{
+    width:100px;
+    height:100px;
+    background-color:red;
+}
+.style2{
+    width:100px;
+    height:100px;
+    background-color:blue;
+}
 
 
 
