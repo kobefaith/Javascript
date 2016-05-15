@@ -524,7 +524,65 @@ $(document).ready(function(){
     $("div p").filter("p").css("background-color","red");//修改所有的p元素
     $("div p").not(".pclass").css("background-color","red");//修改除pclass之外的元素
 });
-
+9jQuery菜单
+9.1垂直菜单布局
+<ul>
+   <li class="main">
+      <a href="#">菜单1</a>
+      <ul>
+           <li><a href="#">子菜单1</a></li>
+           <li><a href="#">子菜单2</a></li>
+      </ul>
+    </li>
+    <li class="main">
+      <a href="#">菜单2</a>
+      <ul>
+           <li><a href="#">子菜单1</a></li>
+           <li><a href="#">子菜单2</a></li>
+      </ul>
+    </li>
+    <li class="main">
+      <a href="#">菜单3</a>
+      <ul>
+           <li><a href="#">子菜单1</a></li>
+           <li><a href="#">子菜单2</a></li>
+      </ul>
+    </li>
+</ul>
+style.css
+ul,li{
+    list-style:none; //去除ul li前面的点
+}
+ul{
+    padding:0;
+    margin:0;
+}
+.main{
+    background-image:url(images/title.gif);
+    background-repeat:repeat-x;
+    width:100px;
+}
+li{
+    background-color:#eeeeee;
+}
+a{
+    text-decoration:none;
+    padding-left:20px;
+    display:block;
+    width:80px;
+    padding-top:3px;
+    padding-bottom:3px;    
+}
+.main a{
+    color:white;
+    background-image:url(images/collapsed.gif);
+    background-repeat:no-repeat;
+    background-position:3px center;
+}
+.main li a{
+    color:black;
+    background-image:none;
+}
 
 
 
