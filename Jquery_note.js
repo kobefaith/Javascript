@@ -466,7 +466,33 @@ p{
 
 $(document).ready(function(){
    $("#div1").children().css({border:"3px solid #FF0000"});
+   $("#div1").children("#div2").css({border:"3px solid #FF0000"});//参数是可选的，但是不能选孙元素
+   $("#div1").children("p").css({border:"3px solid #FF0000"});//find可以选择孙元素，只要指定名字就可以。find必须填参数
+   
 });
+8.2向上遍历
+$(document).ready(function(){
+   $("p").parent().css({border:"3px solid #FF0000"});//只改变直接父元素的css
+   $("p").parents().css({border:"3px solid #FF0000"});//所有的父元素包括document的css也变化。
+   $("a").parentsUntil("#div1").css({border:"3px solid #FF0000"});//从a 到div1 之间有 p和div2  ，这两个会被变红
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
