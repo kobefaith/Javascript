@@ -431,8 +431,42 @@ $(document).ready(function(){
     alert($("#div").outerHeight());//204 height+padding +border 
     alert($("#div").outerHeight(true));//304 height+padding +border+margin
 });
+8.jquery元素遍历和过滤
+8.1向下遍历
+<div id="div1">div1
+   <div id="div2">div2
+       <p>
+            <a>
+                hello
+            </a>
+       </p>
+   </div>
+</div>
 
+style.css
+#div1{
+    width:500px;
+    height:200px;
+    border:3px solid chocolate;
+}
+#div2{
+    width:400px;
+    height:150px;
+    margin-top:10px;
+    margin-left:10px;
+    border:3px solid chocolate;
+}
+p{
+    margin-left:10px;
+    margin-top:10px;
+    width:150px;
+    height:80px;
+    border:3px solid chocolate;
+}
 
+$(document).ready(function(){
+   $("#div1").children().css({border:"3px solid #FF0000"});
+});
 
 
 
