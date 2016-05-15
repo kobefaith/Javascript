@@ -476,8 +476,54 @@ $(document).ready(function(){
    $("p").parents().css({border:"3px solid #FF0000"});//所有的父元素包括document的css也变化。
    $("a").parentsUntil("#div1").css({border:"3px solid #FF0000"});//从a 到div1 之间有 p和div2  ，这两个会被变红
 });
-
-
+8.3同级遍历
+<style>
+.bd *{
+    display:block;
+    border:3px solid gray;
+    color:gray;
+    padding:5px;
+    margin:15px;
+}
+</style>
+<div class="bd">
+    <p>p</p>
+    <h2>h2</h2>
+    <h3>h3</h3>
+    <h4>h4</h4>
+    <h5>h5</h5>
+    <h6>h6</h6>    
+</div>
+$(document).ready(function(){
+    $("h4").siblings().css({boder:"3px solid #FF0000"});//会把所有同级的元素都更改css
+    $("h4").next().css({boder:"3px solid #FF0000"});//只修改h4下方的h5
+    $("h4").nextAll().css({boder:"3px solid #FF0000"});//从h4往下所有的都修改
+    $("h4").nextUntil("h6").css({boder:"3px solid #FF0000"});//只修改h4 到h6之间的h5
+    $("h4").prev().css({boder:"3px solid #FF0000"});//只修改上一个
+    $("h4").preAll().css({boder:"3px solid #FF0000"});//修改h4以上所有的
+    $("h4").preUntil("p").css({boder:"3px solid #FF0000"});//修改p到h4之间的所有元素
+    
+});
+8.4过滤
+<div>
+    <p>div1</p>
+</div>
+<div>
+    <p class="pclass">div2</p>
+</div>
+<div>
+    <p class="pclass">div3</p>
+</div>
+<div>
+    <a>div4</a>
+</div>
+$(document).ready(function(){
+    $("div p").first().css("background-color","red");//只修改第一个 
+    $("div p").last().css("background-color","red");//只修改最后一个
+    $("div p").eq(0).css("background-color","red");//0代表div1 ，1代表div2,2代表div3
+    $("div p").filter("p").css("background-color","red");//修改所有的p元素
+    $("div p").not(".pclass").css("background-color","red");//修改除pclass之外的元素
+});
 
 
 
