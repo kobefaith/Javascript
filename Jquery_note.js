@@ -203,7 +203,7 @@ $(document).ready(function(){
     });
 });
 4.jQuery效果
-4.1现实与隐藏
+4.1显示与隐藏
 <body>
    <p>hello</p>
    <button id="hide">隐藏</button>
@@ -231,7 +231,8 @@ $(document).ready(function(){
         $("p").show(1000);
     });
     $("#toggle").click(function(){
-        $("p").toggle(1000); //点击后隐藏 ，再点击会显示    
+        $("p").toggle(1000); //点击后隐藏 ，再点击会显示 参数代表执行的时间，也可以用fast slow  normal等
+        $("p").toggle("fast");
     });
 });
 4.2淡入淡出
@@ -583,7 +584,21 @@ a{
     color:black;
     background-image:none;
 }
-
+.main ul{
+    display:none;  //收起子菜单
+}
+app.js
+$(document).ready(function(){
+    $(".main>a").click(function(){
+        var ulNode = $(this).next("ul");
+        //ulNode.show();
+        //ulNode.hide();
+        //ulNode.toggle("normal");
+        //ulNode.slideDown();//向下展开菜单
+        //ulNode.slideUp();//收起菜单
+        ulNode.slideToggle();//开关一样的收起展开菜单
+    });
+});
 
 
 
