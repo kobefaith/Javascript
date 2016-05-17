@@ -35,7 +35,13 @@ $(document).ready(function(){
     //$("button").click(function(){
     //$("button").dblclick(function(){ 
     //$("button").mouseenter(function(){//鼠标移动到元素上时触发
-    //$("button").mouseleave(function(){//鼠标移开时触发   
+    //$("button").mouseleave(function(){//鼠标移开时触发  
+      $( "li" ).hover(              //鼠标滑过触发，第一个函数是鼠标进入触发，第二个函数是鼠标离开触发
+        function() {
+          $( this ).append( $( "<span> ***</span>" ) );
+        }, function() {
+          $( this ).find( "span:last" ).remove();
+      });    
     $(this).hide();    
     });
     $("#clickMeBtn").bind("click",clickHandler1);//绑定事件
@@ -597,11 +603,93 @@ $(document).ready(function(){
         //ulNode.slideDown();//向下展开菜单
         //ulNode.slideUp();//收起菜单
         ulNode.slideToggle();//开关一样的收起展开菜单
+        changeIcon($(this));
     });
 });
-
-
-
+9.2水平菜单布局
+<ul>
+   <li class="hmain">
+      <a href="#">菜单1</a>
+      <ul>
+           <li><a href="#">子菜单1</a></li>
+           <li><a href="#">子菜单2</a></li>
+      </ul>
+    </li>
+    <li class="hmain">
+      <a href="#">菜单2</a>
+      <ul>
+           <li><a href="#">子菜单1</a></li>
+           <li><a href="#">子菜单2</a></li>
+      </ul>
+    </li>
+    <li class="hmain">
+      <a href="#">菜单3</a>
+      <ul>
+           <li><a href="#">子菜单1</a></li>
+           <li><a href="#">子菜单2</a></li>
+      </ul>
+    </li>
+</ul>
+ul,li{
+    list-style:none; //去除ul li前面的点
+}
+ul{
+    padding:0;
+    margin:0;
+}
+.main,.hmain{
+    background-image:url(images/title.gif);
+    background-repeat:repeat-x;
+    width:100px;
+}
+li{
+    background-color:#eeeeee;
+}
+a{
+    text-decoration:none;
+    padding-left:20px;
+    display:block;
+    width:80px;
+    padding-top:3px;
+    padding-bottom:3px;    
+}
+.main a,.hmain a{
+    color:white;
+    background-image:url(images/collapsed.gif);
+    background-repeat:no-repeat;
+    background-position:3px center;
+}
+.main li a,.hmain li a{
+    color:black;
+    background-image:none;
+}
+.main ul,.hmain ul{
+    display:none;  //收起子菜单
+}
+.hmain{
+    float:left;  //浮动后会水平显示
+    margin-right:1px;//相互之间加上间隔
+}
+app.js
+$(document).ready(function(){
+    $(".hmain").hover(function(){   //鼠标滑过触发事件
+        $(this).children("ul").slideDown();
+        changeIcon($(this).children("a"));
+    },function(){
+        $(this).children("ul").slideUp();
+        changeIcon($(this).children("a"));
+    });
+});
+如果我们想在点击后 改变菜单前面三角形图片的形状，可以用下面的函数
+function changeIcon(mainNode){
+    if(mainNode){
+        if(mainNode.css("background-image").indexOf("collapsed.gif")>=0){
+            mainNode.css("background-image","url('image/expanded.gif')");
+        }else{
+            mainNode.css("background-image","url('image/collapsed.gif')");
+        }
+    }
+}
 
 
 
