@@ -87,7 +87,7 @@ function changeIcon(mainNode){
                     }
                 }
                 //键盘事件
-                $(this).keyup(function(e){
+                $(this).keydown(function(e){
                     s = v = $.trim($(this).val());    
                     if(/@/.test(v)){
                         s = v.replace(/@.*/, "");
