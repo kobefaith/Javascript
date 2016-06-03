@@ -1,4 +1,45 @@
-```
+12.已知数组var stringArray = [“This”, “is”, “Baidu”, “Campus”]，Alert出”This is Baidu Campus”。
+
+答案：alert(stringArray.join(" "))
+已知有字符串foo="get-element-by-id",写一个function将其转化成驼峰表示法"getElementById"。
+<span style="font-family: verdana, geneva;">function combo(msg){
+    var arr = msg.split("-");
+    var len = arr.length;    //将arr.length存储在一个局部变量可以提高for循环效率
+    for(var i=1;i<len;i++){
+        arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1);
+    }
+    msg=arr.join("");
+    return msg;
+}</span>
+看下面的代码，输出什么，foo的类型为什么？    
+<span style="font-family: verdana, geneva;">var foo = "11"+2-"1";
+console.log(foo);
+console.log(typeof foo);</span>
+执行完后foo的值为111，foo的类型为Number。
+<span style="font-family: verdana, geneva;">var foo = "11"+2+"1";    //体会加一个字符串'1' 和 减去一个字符串'1'的不同
+console.log(foo);
+console.log(typeof foo);</span>
+执行完后foo的值为1121(此处是字符串拼接)，foo的类型为String。
+看下列代码,输出什么？解释原因。
+<span style="font-family: verdana, geneva;">var undefined;
+undefined == null; // true
+1 == true;   // true
+2 == true;   // false
+0 == false;  // true
+0 == '';     // true
+NaN == NaN;  // false
+[] == false; // true
+[] == ![];   // true</span>
+
+var numberArray = [3,6,2,4,1,5]; （考察基础API）
+1) 实现对该数组的倒排，输出[5,1,4,2,6,3]
+2) 实现对该数组的降序排列，输出[6,5,4,3,2,1]
+<span style="font-family: verdana, geneva;">var numberArray = [3,6,2,4,1,5];
+numberArray.reverse(); // 5,1,4,2,6,3
+numberArray.sort(function(a,b){  //6,5,4,3,2,1
+   return b-a;
+})
+</span>
 <p>i = 10,j = 10;i+j = ?</p>
 <p id="sumid"></p>
 <button onclick="mysum()">结果</button>
