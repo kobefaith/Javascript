@@ -1,3 +1,41 @@
+匹配邮箱的正则表达式
+var regMail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+有这样一个URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e，请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:'1', b:'2', c:'', d:'xxx', e:undefined}。
+function serilizeUrl(url) {
+    var result = {};
+    url = url.split("?")[1];
+    var map = url.split("&");
+    for(var i = 0, len = map.length; i < len; i++) {
+        result[map[i].split("=")[0]] = map[i].split("=")[1];
+    }
+    return result;
+}
+把两个数组合并，并删除第二个元素。
+<span style="font-family: verdana, geneva;">var array1 = ['a','b','c'];
+var bArray = ['d','e','f'];
+var cArray = array1.concat(bArray);
+cArray.splice(1,1); //有两个参数，该方法返回开始和结束位置之间的项，但不包含结束位置的项。只有一个参数的情况下，返回从该参数指定位置开始到数组末尾的所有项
+</span>
+cArray.slice(1,1); //有两个参数，该方法返回开始和结束位置之间的项，但不包含结束位置的项。只有一个参数的情况下，返回从该参数指定位置开始到数组末尾的所有项
+cArray.splice(1,1);//删除第二项，要删除的第一项的位置和项数，就可以删除指定的项。
+cArray.splice(2,0,"z","x");//从第二项开始 删除0项，然后插入 z  x 两项。
+cArray.splice(2,1,"z","x");//从第二项开始 删除1项然后插入 z x 两项
+15.将字符串”<tr><td>{$id}</td><td>{$name}</td></tr>”中的{$id}替换成10，{$name}替换成Tony （使用正则表达式）
+
+答案："<tr><td>{$id}</td><td>{$id}_{$name}</td></tr>".replace(/{\$id}/g, '10').replace(/{\$name}/g, ‘Tony’);
+输出今天的日期，以YYYY-MM-DD的方式，比如今天是2014年9月26日，则输出2014-09-26
+<span style="font-family: verdana, geneva;">var d = new Date();
+// 获取年，getFullYear()返回4位的数字
+var year = d.getFullYear();
+// 获取月，月份比较特殊，0是1月，11是12月
+var month = d.getMonth() + 1;
+// 变成两位
+month = month < 10 ? '0' + month : month;
+// 获取日
+var day = d.getDate();
+day = day < 10 ? '0' + day : day;
+alert(year + '-' + month + '-' + day);
+</span>    
 12.已知数组var stringArray = [“This”, “is”, “Baidu”, “Campus”]，Alert出”This is Baidu Campus”。
 
 答案：alert(stringArray.join(" "))
@@ -171,12 +209,25 @@ people.age = "30";
 var str = "hello world";
 document.write(str.length);
 document.write(str.indexOf("world"));
+document.write(str.lastindexOf("o")); 7
 document.write(str.match("world"));
 document.write(str.replace("world","jikexueyuan"));
 document.write(str.toUpperCase());
 var str1 = "hello, world, xueyuan";
 var s = str1.split(",");
 document.write(s[1]);//world
+var stringvalue = "hello world";
+alert(stringvalue.charAt(1));//e
+
+var stringvalue = "hello";
+var result = stringvalue.concat("world");
+
+var stringvalue = "hello world";
+alert(stringvalue.slice(3));//lo world
+
+stringvalue.trim()删除字符串前后的空格
+stringvalue.toLowerCase()转换为小写
+stringvalue.toUpperCase()转换为大写
 日期对象
 var date = new Date();
 document.write(date);
