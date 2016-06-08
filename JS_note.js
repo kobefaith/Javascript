@@ -50,7 +50,7 @@ alert(year + '-' + month + '-' + day);
     return msg;
 }</span>
 看下面的代码，输出什么，foo的类型为什么？    
-<span style="font-family: verdana, geneva;">var foo = "11"+2-"1";
+<span style="font-family: verdana, geneva;">var foo = "11"+2-"1";//如果一个操作符是字符串或bool型，则-的时候会将字符型转化为数字运算
 console.log(foo);
 console.log(typeof foo);</span>
 执行完后foo的值为111，foo的类型为Number。
