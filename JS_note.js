@@ -14,7 +14,7 @@ function serilizeUrl(url) {
 <span style="font-family: verdana, geneva;">var array1 = ['a','b','c'];
 var bArray = ['d','e','f'];
 var cArray = array1.concat(bArray);
-cArray.splice(1,1); //有两个参数，该方法返回开始和结束位置之间的项，但不包含结束位置的项。只有一个参数的情况下，返回从该参数指定位置开始到数组末尾的所有项
+cArray.splice(1,1); 
 </span>
 cArray.slice(1,1); //有两个参数，该方法返回开始和结束位置之间的项，但不包含结束位置的项。只有一个参数的情况下，返回从该参数指定位置开始到数组末尾的所有项
 cArray.splice(1,1);//删除第二项，要删除的第一项的位置和项数，就可以删除指定的项。
