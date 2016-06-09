@@ -1,3 +1,4 @@
+<p style="font-size:1.6em;color:green;">字体大小 1.6 em</p>
 css背景
 p{
    width:150px;
