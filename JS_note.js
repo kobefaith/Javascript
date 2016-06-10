@@ -408,7 +408,7 @@ script>
    if(btn1.addEventListener){
        btn1.addEventListener("click",demo);
    }else if(btn1.attachEvent){
-       btn1.attachevent("onclick",demo);
+       btn1.attachEvent("onclick",demo);
    }else{
        btn1.onclick = demo;
    }
