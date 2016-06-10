@@ -498,7 +498,7 @@ scrollHeight        网页尺寸
        alert(childnode[0].nodeType);
    }
    function getParentNode(){
-       var div = document.getelementById("pid");
+       var div = document.getElementById("pid");
        alert(div.parentNode.nodeName);
    }
    getParentNode();
