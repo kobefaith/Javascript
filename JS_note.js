@@ -380,7 +380,7 @@ alert(hasPlugin("QuickTime"));
 <script>
 screen对象
 <script>
-    document.write("可用高度"+screen.availHeight+"，可用高度"+screen.availWidth);
+    document.write("可用高度"+screen.availHeight+"，可用宽度"+screen.availWidth);
     document.write("高度"+screen.height+"，宽度"+screen.width);
 </script>
 JS 事件流：
