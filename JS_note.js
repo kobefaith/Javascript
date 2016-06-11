@@ -947,6 +947,28 @@ require.config({
 require.config()接受一个配置对象，这个对象除了有前面说过的paths属性之外，还有一个shim属性，专门用来配置不兼容的模块。
 具体来说，每个模块要定义（1）exports值（输出的变量名），表明这个模块外部调用时的名称；（2）deps数组，表明该模块的依赖性。
 
+HTML5的离线储存怎么使用，工作原理能不能解释一下？
+在用户没有与因特网连接时，可以正常访问站点或应用，在用户与因特网连接时，
+更新用户机器上的缓存文件。
+原理：HTML5的离线存储是基于一个新建的.appcache文件的缓存机制(不是存储技术)，
+通过这个文件上的解析清单离线存储资源，这些资源就会像cookie一样被存储了下来。
+之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示。
+
+
+如何使用：
+1、页面头部像下面一样加入一个manifest的属性；
+2、在cache.manifest文件的编写离线存储的资源；
+    CACHE MANIFEST
+    #v0.11
+    CACHE:
+    js/app.js
+    css/style.css
+    NETWORK:
+    resourse/logo.png
+    FALLBACK:
+    / /offline.html
+3、在离线状态时，操作window.applicationCache进行需求实现。
+
 
 
 
