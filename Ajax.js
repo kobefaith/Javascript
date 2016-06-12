@@ -132,7 +132,7 @@ function crossAjax() {
 
 后端
 router.all('/test', function(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://b.test.com');
+    res.setHeader('Access-Control-Allow-Origin', 'http://a.test.com');
     ////res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'test,other');
