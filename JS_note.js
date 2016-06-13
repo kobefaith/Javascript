@@ -968,9 +968,59 @@ HTML5的离线储存怎么使用，工作原理能不能解释一下？
     FALLBACK:
     / /offline.html
 3、在离线状态时，操作window.applicationCache进行需求实现。
+Js的继承方式
+二、 prototype模式
+第二种方法更常见，使用prototype属性。
+如果"猫"的prototype对象，指向一个Animal的实例，那么所有"猫"的实例，就能继承Animal了。
+　　Cat.prototype = new Animal();
+　　Cat.prototype.constructor = Cat;
+　　var cat1 = new Cat("大毛","黄色");
+　　alert(cat1.species); // 动物
+三、 直接继承prototype
+第三种方法是对第二种方法的改进。由于Animal对象中，不变的属性都可以直接写入Animal.prototype。所以，我们也可以让Cat()跳过 Animal()，直接继承Animal.prototype。
+现在，我们先将Animal对象改写：
+　　function Animal(){ }
+　　Animal.prototype.species = "动物";
+然后，将Cat的prototype对象，然后指向Animal的prototype对象，这样就完成了继承。
+　　Cat.prototype = Animal.prototype;
+　　Cat.prototype.constructor = Cat;
+　　var cat1 = new Cat("大毛","黄色");
+　　alert(cat1.species); // 动物
+与前一种方法相比，这样做的优点是效率比较高（不用执行和建立Animal的实例了），比较省内存。缺点是 Cat.prototype和Animal.prototype现在指向了同一个对象，那么任何对Cat.prototype的修改，都会反映到Animal.prototype。
+四、 利用空对象作为中介
+由于"直接继承prototype"存在上述的缺点，所以就有第四种方法，利用一个空对象作为中介。
+　　var F = function(){};
+　　F.prototype = Animal.prototype;
+　　Cat.prototype = new F();
+　　Cat.prototype.constructor = Cat;
+我们将上面的方法，封装成一个函数，便于使用。
+　　function extend(Child, Parent) {
 
-
-
+　　　　var F = function(){};
+　　　　F.prototype = Parent.prototype;
+　　　　Child.prototype = new F();
+　　　　Child.prototype.constructor = Child;
+　　　　Child.uber = Parent.prototype;
+　　}
+　　使用的时候，方法如下
+　　extend(Cat,Animal);
+　　var cat1 = new Cat("大毛","黄色");
+　　alert(cat1.species); // 动物
+五、 拷贝继承
+写一个函数，实现属性拷贝的目的。
+　　function extend2(Child, Parent) {
+　　　　var p = Parent.prototype;
+　　　　var c = Child.prototype;
+　　　　for (var i in p) {
+　　　　　　c[i] = p[i];
+　　　　　　}
+　　　　c.uber = p;
+　　}
+这个函数的作用，就是将父对象的prototype对象中的属性，一一拷贝给Child对象的prototype对象。
+使用的时候，这样写：
+　　extend2(Cat, Animal);
+　　var cat1 = new Cat("大毛","黄色");
+　　alert(cat1.species); // 动物
 
 
 
