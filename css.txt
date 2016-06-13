@@ -422,7 +422,15 @@ CSS3新增伪类有那些？
     :disabled       控制表单控件的禁用状态。
     :checked        单选框或复选框被选中。
 
-
+纯css画一个三角形
+把上、左、右三条边隐藏掉（颜色设为 transparent）
+#demo {
+  width: 0;
+  height: 0;
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent transparent red transparent;
+}
 
 
 
