@@ -394,7 +394,7 @@ css3多列
    -webkit-column-count:4;
    -webkit-column-gap:30px;
    column-gap:30px;
-   column-rule:5px;outset #FF0000;
+   column-rule:5px outset #FF0000;
    -webkit-column-rule:5px outset #FF0000;
 }
 瀑布流：宽度等宽 但高度不一样的 图片排列方式
