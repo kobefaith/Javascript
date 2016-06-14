@@ -1083,7 +1083,14 @@ Js的继承方式
 　　　　function f2() { } // 语法错误
 　　}
 
-   
+ JSON字符串转换为JSON对象:
+var obj =eval('('+ str +')');
+var obj = str.parseJSON();
+var obj = JSON.parse(str);
+
+JSON对象转换为JSON字符串：
+var last=obj.toJSONString();
+var last=JSON.stringify(obj);  
     
         
     
