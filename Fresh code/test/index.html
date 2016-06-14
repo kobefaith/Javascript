@@ -9,6 +9,20 @@
 
 </head>
 <body>
+<script >
+   function combo(msg){
+    var arr = msg.split("-");
+    var len = arr.length;  
+    var result = arr[0];    //将arr.length存储在一个局部变量可以提高for循环效率
+    for(var i=1;i<len;i++){
+        //arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1);
+        result += arr[i].slice(0,1).toUpperCase()+arr[i].slice(1);
+    }
+   // msg=arr.join("");
+    return result;
+}
+alert(combo("get-element-by-id"));
+</script>
 <ul>
     <li><a href="https://www.baidu.com">百度</a></li>
     <li><a href="http://www.cn.bing.com">必应</a></li>
@@ -108,5 +122,13 @@
 <br/>
 <br/>
 <br/>
+<script>
+document.write("Hello world!");
+</script>
+<br/>
+<br/>
+<br/>
+<div id="demo">
+</div>
 </body>
 </html>
