@@ -1092,7 +1092,20 @@ JSON对象转换为JSON字符串：
 var last=obj.toJSONString();
 var last=JSON.stringify(obj);  
     
-        
+下面代码运行结果是什么？请解释。
+  function printing() {
+   console.log(1);
+   setTimeout(function() { console.log(2); }, 1000);
+   setTimeout(function() { console.log(3); }, 0);
+   console.log(4);
+}
+printing();
+要弄懂数字为何以这种顺序输出，你需要弄明白setTimeout()是干什么的，
+以及浏览器的事件循环工作原理。浏览器有一个事件循环用于检查事件队列，处理延迟的事件。
+UI事件（例如，点击，滚动等），Ajax回调，以及提供给setTimeout()和setInterval()的回调都会依次被事件循环处理。
+因此，当调用setTimeout()函数时，即使延迟的时间被设置为0，提供的回调也会被排队。
+回调会呆在队列中，直到指定的时间用完后，引擎开始执行动作（如果它在当前不执行其他的动作）。
+因此，即使setTimeout（）回调被延迟0毫秒，它仍然会被排队，并且直到函数中其他非延迟的语句被执行完了之后，才会执行。
     
     
     
