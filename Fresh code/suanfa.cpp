@@ -599,6 +599,50 @@ int ELFhash(char *key)
     return h%hash_table_size;  
 }
 
+<script>
+var d = new Date();
+var year = d.getFullYear();
+var month = d.getMonth()+1;
+var date = d.getDate();
+var hour = d.getHours();
+var minutes = d.getMinutes();
+var second = d.getSeconds();
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
