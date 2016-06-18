@@ -299,7 +299,9 @@ var StudentView=Backbone.View.extend({
 			this.model.destroy();
         }
  }）
-
+var StudentView=Backbone.View.extend({
+		//表示<tr></tr>元素
+		tagName:"tr",  //把view绑定页面的标签
 
 
 
