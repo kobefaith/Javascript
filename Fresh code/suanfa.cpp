@@ -620,8 +620,17 @@ function hasPlugin(name){
     return false;
 }
 
-
-
+getName();
+function getAttr(){
+    var anode = document.getElementById("aid");
+    var attr = anode.getAttribute("id");
+    alert(attr);
+}
+function getChildNode(){
+    var childnode = document.getElementsByTagName("ul")[0].childNodes;
+    alert(childnode.length);
+    alert(childnode[0].nodeType);
+}
 
 
 
