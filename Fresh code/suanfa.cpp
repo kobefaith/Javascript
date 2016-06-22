@@ -632,6 +632,17 @@ function getChildNode(){
     alert(childnode[0].nodeType);
 }
 
+function getparentnode(){
+    var div = document.getElementById("pid");
+    alert(div.parentNode.nodeName);
+}
+function createNode(){
+    var body = document.body;
+    var input = document.createElement("input");
+    input.type = "button";
+    input.value = "按钮";
+    body.appendchild(input);
+}
 
 
 
