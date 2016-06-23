@@ -644,7 +644,9 @@ function createNode(){
     body.appendchild(input);
 }
 
-
+require(['jquery','underscore','backbone'],function($,_,Backbone){
+    
+});
 
 
 
