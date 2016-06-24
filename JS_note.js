@@ -1,3 +1,4 @@
+```
 匹配邮箱的正则表达式
 var regMail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
 有这样一个URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e，请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:'1', b:'2', c:'', d:'xxx', e:undefined}。
@@ -946,7 +947,72 @@ require.config({
 });
 require.config()接受一个配置对象，这个对象除了有前面说过的paths属性之外，还有一个shim属性，专门用来配置不兼容的模块。
 具体来说，每个模块要定义（1）exports值（输出的变量名），表明这个模块外部调用时的名称；（2）deps数组，表明该模块的依赖性。
+require.config({
+    baseUrl: './app',
 
+    paths: {
+        underscore: '../libs/underscore',
+        backbone: '../libs/backbone',
+        jquery: '../libs/jquery-2.1.1',
+        text: '../libs/text',
+        config: 'config',
+        marquee: 'common/jquery.marquee',
+        jeasing: 'common/jquery.easing',
+        three: '../libs/three.min',
+        webaudiox: '../libs/webaudiox',
+        id3: '../libs/id3-minimized',
+        stats: '../libs/stats.min',
+        modernizr: '../libs/Modernizr',
+        rgbaster: '../libs/rgbaster'
+    },
+
+    shim: {
+        'backbone': {
+            deps: ['underscore', 'jquery'],
+            exports: 'Backbone'
+        },
+
+        'underscore': {
+            exports: '_'
+        },        
+    }
+});
+
+// App Entry
+require([
+    'jquery',
+    'underscore',
+    'backbone',
+    'router',    
+], function($, _, Backbone, Router, Modernizr, Global, app, MonetKeyValue, PathDef) {
+
+    console.log('application start');
+
+    envInit();
+
+    //loadInitFiles();
+    window.onload = App.onload;
+    window.onShow = App.onShow;
+    window.onResume = App.onResume;
+    
+    Backbone.history.start();
+
+    window.Router = Router;    
+
+}, function(err) {console.log('application error: ' + err);});
+NowingPlaying_PhotoView.js
+define([
+    'jquery',
+    'underscore',
+    'backbone',
+    'common/commonDef',
+    'models/InstagramModel',
+    'text!templates/Home/NowPlaying_PhotoTemplate.html'
+], function($, _, Backbone, CommonDef,InstagramModel,NowPlaying_PhotoTemplate) {
+
+		var self = null;
+
+		var NowPlaying_PhotoView = Backbone.View.extend({
 HTML5的离线储存怎么使用，工作原理能不能解释一下？
 在用户没有与因特网连接时，可以正常访问站点或应用，在用户与因特网连接时，
 更新用户机器上的缓存文件。
@@ -969,6 +1035,25 @@ HTML5的离线储存怎么使用，工作原理能不能解释一下？
     / /offline.html
 3、在离线状态时，操作window.applicationCache进行需求实现。
 Js的继承方式
+二、 prototype模式
+一、构造继承
+var Base = function()  
+{  
+    this.level = 1;  
+    this.name = "base";  
+    this.toString = function(){  
+        return "base";  
+    };  
+};  
+Base.CONSTANT = "constant";  
+  
+var Sub = function()  
+{  
+    Base.call(this);  
+    this.name = "sub";  
+};
+优点：可以实现多重继承，可以把子类特有的属性设置放在构造器内部。
+缺点：使用instanceof发现，对象不是父类的实例。
 二、 prototype模式
 第二种方法更常见，使用prototype属性。
 如果"猫"的prototype对象，指向一个Animal的实例，那么所有"猫"的实例，就能继承Animal了。
@@ -1090,8 +1175,7 @@ var obj = JSON.parse(str);
 
 JSON对象转换为JSON字符串：
 var last=obj.toJSONString();
-var last=JSON.stringify(obj);  
-    
+var last=JSON.stringify(obj);
 下面代码运行结果是什么？请解释。
   function printing() {
    console.log(1);
@@ -1115,7 +1199,7 @@ UI事件（例如，点击，滚动等），Ajax回调，以及提供给setTimeo
         return Object.prototype.toString.call(arg)==="[object Array]"
     }; 
 }
-</span>   
+</span>     
 Ajax
 function success(text) {
     var textarea = document.getElementById('test-response-text');
@@ -1155,7 +1239,11 @@ readyState
 1: 服务器连接已建立
 2: 请求已接收
 3: 请求处理中
-4: 请求已完成，且响应已就绪   
+4: 请求已完成，且响应已就绪
+    
+        
+    
+    
     
     
     
@@ -1165,3 +1253,5 @@ readyState
     
     
 
+
+```
