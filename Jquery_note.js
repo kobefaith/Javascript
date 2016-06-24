@@ -1,3 +1,4 @@
+```
 <head lang="en">
 <meta charset="UTF-8">
 <script src="jquery-2.1.1.min.js"></script>
@@ -71,6 +72,9 @@ function clickHandler2(e){
       });
     });
 </script>
+ $(document).keydown(function (event) {
+    alert(event.keyCode);
+});
 <input type="text" id="text_box"/>
 2.1事件目标和冒泡
 <body>
@@ -352,6 +356,23 @@ $(document).ready(function(){
             $("#result").text("通讯有问题");
         });
     });
+});
+var jqxhr = $.ajax('/api/categories', {
+    dataType: 'json'
+});
+var jqxhr = $.get('/path/to/resource', {
+    name: 'Bob Lee',
+    check: 1
+});
+var jqxhr = $.post('/path/to/resource', {
+    name: 'Bob Lee',
+    check: 1
+});
+var jqxhr = $.getJSON('/path/to/resource', {
+    name: 'Bob Lee',
+    check: 1
+}).done(function (data) {
+    // data已经被解析为JSON对象了
 });
 5.2AJAX加载片段
 box.htm
@@ -727,3 +748,5 @@ function changeIcon(mainNode){
 
 
 
+
+```
