@@ -1231,8 +1231,17 @@ request.onreadystatechange = function () { // 状态发生变化时，函数被�
 // 发送请求:
 request.open('GET', '/api/categories');
 request.send();
-
 alert('请求已发送，请等待响应...');
+
+如果您希望通过 GET 方法发送信息，请向 URL 添加信息：
+xmlhttp.open("GET","demo_get2.asp?fname=Bill&lname=Gates",true);
+xmlhttp.send();
+
+如果需要像 HTML 表单那样 POST 数据，请使用 setRequestHeader() 来添加 HTTP 头。然后在 send() 方法中规定您希望发送的数据：
+xmlhttp.open("POST","ajax_test.asp",true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("fname=Bill&lname=Gates");
+
 readyState	
 存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
 0: 请求未初始化
