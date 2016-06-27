@@ -24,3 +24,17 @@ p{
   border-style: solid;
   border-color: transparent transparent red transparent;
 }
+.Absolute-Center {  
+  height:500px;
+  margin: auto;  
+  position: absolute;  
+  top: 0; left: 0; bottom: 0; right: 0;  
+}  
+.line-center{
+    width: 800px;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    background-color: purple;
+}
