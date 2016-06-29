@@ -304,6 +304,102 @@ var StudentView=Backbone.View.extend({
 		tagName:"tr",  //把view绑定页面的标签
 
 
+Events 是一个可以融合到任何对象的模块, 给予 对象绑定和触发自定义事件的能力. 
+Events 在绑定之前 不需要声明, 并且还可以传递参数. 比如:
+object.on(event, callback, [context])
+model.on('change', this.render, this) 
+object.trigger(event, [*args]) 
+view.listenTo(model, 'change', view.render);
+ 你也可以在Models（模型），Collection（集合），Views（视图）上自由地触发这些事件，只要你认为合适。
+ 
+ "add" (model, collection, options) — 当一个model（模型）被添加到一个collection（集合）时触发。
+"remove" (model, collection, options) — 当一个model（模型）从一个collection（集合）中被删除时触发。
+"reset" (collection, options) — 当该collection（集合）的全部内容已被替换时触发。
+"sort" (collection, options) — 当该collection（集合）已被重新排序时触发。
+"change" (model, options) — 当一个model（模型）的属性改变时触发。
+"change:[attribute]" (model, value, options) — 当一个model（模型）的某个特定属性被更新时触发。
+"destroy" (model, collection, options) —当一个model（模型）被destroyed（销毁）时触发。
+"request" (model_or_collection, xhr, options) — 当一个model（模型）或collection（集合）开始发送请求到服务器时触发。
+"sync" (model_or_collection, resp, options) — 当一个model（模型）或collection（集合）成功同步到服务器时触发。
+"error" (model_or_collection, resp, options) — 当一个model（模型）或collection（集合）的请求远程服务器失败时触发。
+"invalid" (model, error, options) — 当model（模型）在客户端 validation（验证）失败时触发。
+"route:[name]" (params) —  当一个特定route（路由）相匹配时通过路由器触发。
+"route" (route, params) — 当任何一个route（路由）相匹配时通过路由器触发。
+"route" (router, route, params) — 当任何一个route（路由）相匹配时通过history（历史记录）触发。
+"all" — 所有事件发生都能触发这个特别的事件，第一个参数是触发事件的名称。
 
+constructor / initializenew Model([attributes], [options]) 
+当创建model实例时，可以传入 属性 (attributes)初始值，这些值会被 set （设置）到 model。 如果定义了 initialize 函数，该函数会在model创建后执行。
+
+new Book({
+  title: "One Thousand and One Nights",
+  author: "Scheherazade"
+});
+getmodel.get(attribute) 
+从当前model中获取当前属性(attributes)值，比如： note.get("title")
+setmodel.set(attributes, [options]) 
+向model设置一个或多个hash属性(attributes)。如果任何一个属性改变了model的状态，
+在不传入 {silent: true} 选项参数的情况下，会触发 "change" 事件，更改特定属性的事件也会触发。 
+可以绑定事件到某个属性，例如：change:title，及 change:content。
+note.set({title: "March 20", content: "In his eyes she eclipses..."});
+
+book.set("title", "A Scandal in Bohemia");
+hasmodel.has(attribute) 
+属性值为非 null 或非 undefined 时返回 true。
+idmodel.id 
+id是model的特殊属性，可以是任意字符串（整型 id 或 UUID）。在属性中设置的 id 会被直接拷贝到model属性上。 
+我们可以从集合（collections）中通过 id 获取model，另外 id 通常用于生成model的 URLs。
+unsetmodel.unset(attribute, [options]) 
+从内部属性散列表中删除指定属性(attribute)。 如果未设置 silent 选项，会触发 "change" 事件。
+syncmodel.sync(method, model, [options]) 
+使用 Backbone.sync 可以将一个模型的状态持续发送到服务器。 可以自定义行为覆盖。
+// 每隔 10 秒从服务器拉取数据以保持频道模型是最新的
+setInterval(function() {
+  channel.fetch();
+}, 10000);
+savemodel.save([attributes], [options]) 
+通过委托给Backbone.sync，保存模型到数据库（或替代持久化层）。
+集合是模型的有序组合，我们可以在集合上绑定 "change" 事件，
+从而当集合中的模型发生变化时fetch（获得）通知，集合也可以监听 "add" 和 "remove" 事件， 
+从服务器更新，并能使用 Underscore.js 提供的方法。
+集合中的模型触发的任何事件都可以在集合身上直接触发，
+所以我们可以监听集合中模型的变化： documents.on("change:selected", ...)
+modelcollection.model 
+覆盖此属性来指定集合中包含的模型类。可以传入原始属性对象（和数组）来 add, create,和 reset，传入的属性会被自动转换为适合的模型类型。
+
+var Library = Backbone.Collection.extend({
+  model: Book
+});
+synccollection.sync(method, collection, [options]) 
+使用 Backbone.sync来将一个集合的状态持久化到服务器。 可以自定义行为覆盖。
+addcollection.add(models, [options]) 
+向集合中增加一个模型（或一个模型数组），触发"add"事件
+var ships = new Backbone.Collection;
+
+ships.on("add", function(ship) {
+  alert("Ahoy " + ship.get("name") + "!");
+});
+
+ships.add([
+  {name: "Flying Dutchman"},
+  {name: "Black Pearl"}
+]);
+resetcollection.reset([models], [options]) 
+每次都是只添加和删除一个模型那没问题， 但有时，你需要改变很多模型，那么你宁愿只更新集合。  
+使用reset，将一个新的模型（或属性散列）列表替换集合，最后触发一个但单独的"reset"事件。
+调用collection.reset()，不传递任何模型作为参数 将清空整个集合。
+getcollection.get(id) 
+通过一个id，一个cid，或者传递一个model来 获得集合中 的模型。
+
+var book = library.get(110);
+sortcollection.sort([options]) 
+强制对集合进行重排序。一般情况下不需要调用本函数，因为当一个模型被添加时， comparator 函数会实时排序。
+要禁用添加模型时的排序，可以传递{sort: false}给add。 调用sort会触发的集合的"sort"事件。
+atcollection.at(index) 
+获得集合中指定索引的模型。不论你是否对模型进行了重新排序， at 始终返回其在集合中插入时的索引值。
+pushcollection.push(model, [options]) 
+在集合尾部添加一个模型。选项和add相同。
+fetchcollection.fetch([options]) 
+从服务器拉取集合的默认模型设置 ，成功接收数据后会setting（设置）集合。
 
 ```
