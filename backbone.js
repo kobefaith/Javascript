@@ -401,5 +401,18 @@ pushcollection.push(model, [options])
 在集合尾部添加一个模型。选项和add相同。
 fetchcollection.fetch([options]) 
 从服务器拉取集合的默认模型设置 ，成功接收数据后会setting（设置）集合。
+开始创建一个自定义的路由类。当匹配了 URL 片段便执行定义的动作，并可以通过 routes 定义路由动作键值对。 请注意，你要避免在路由定义时使用前导斜杠：
+
+var Workspace = Backbone.Router.extend({
+
+  routes: {
+    "help":                 "help",    // #help
+    "search/:query":        "search",  // #search/kiwis
+    "search/:query/p:page": "search"   // #search/kiwis/p7
+  },
+
+  
+  startBackbone.history.start([options]) 
+当所有的 Routers 创建并设置完毕，调用 Backbone.history.start() 开始监控 hashchange 事件并分配路由。
 
 ```
