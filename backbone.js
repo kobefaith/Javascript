@@ -414,5 +414,20 @@ var Workspace = Backbone.Router.extend({
   
   startBackbone.history.start([options]) 
 当所有的 Routers 创建并设置完毕，调用 Backbone.history.start() 开始监控 hashchange 事件并分配路由。
-
+extendBackbone.View.extend(properties, [classProperties]) 
+开始创建自定义的视图类。 通常我们需要重载 render 函数，声明 events， 以及通过 tagName, className, 或 id 为视图指定根元素。
+elview.el 
+所有的视图都拥有一个 DOM 元素（el 属性），即使该元素仍未插入页面中去。 视图可以在任何时候渲染，然后一次性插入 DOM 中去，这样能尽量减少 reflows 和 repaints 从而获得高性能的 UI 渲染。 
+this.el 可以从视图的 tagName, className, id 和 attributes 创建，如果都未指定，el 会是一个空 div。
+$elview.$el 
+一个视图元素的缓存jQuery对象。 一个简单的引用，而不是重新包装的DOM元素。
+renderview.render() 
+render 默认实现是没有操作的。 重载本函数可以实现从模型数据渲染视图模板，
+var Bookmark = Backbone.View.extend({
+  template: _.template(...),
+  render: function() {
+    this.$el.html(this.template(this.model.attributes));
+    return this;
+  }
+});
 ```
