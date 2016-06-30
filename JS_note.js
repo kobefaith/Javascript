@@ -1071,7 +1071,8 @@ var Sub = function()
 　　Cat.prototype.constructor = Cat;
 　　var cat1 = new Cat("大毛","黄色");
 　　alert(cat1.species); // 动物
-与前一种方法相比，这样做的优点是效率比较高（不用执行和建立Animal的实例了），比较省内存。缺点是 Cat.prototype和Animal.prototype现在指向了同一个对象，那么任何对Cat.prototype的修改，都会反映到Animal.prototype。
+与前一种方法相比，这样做的优点是效率比较高（不用执行和建立Animal的实例了），比较省内存。
+缺点是 Cat.prototype和Animal.prototype现在指向了同一个对象，那么任何对Cat.prototype的修改，都会反映到Animal.prototype。
 四、 利用空对象作为中介
 由于"直接继承prototype"存在上述的缺点，所以就有第四种方法，利用一个空对象作为中介。
 　　var F = function(){};
