@@ -1251,7 +1251,25 @@ readyState
 3: 请求处理中
 4: 请求已完成，且响应已就绪
     
-        
+  1 css 压缩
+ 2 行内元素 块级元素  盒子模型的类型
+ 3 Ie5 Ie6 等 css hjack经验
+ 4 浏览器内核 
+ 5 浮动元素 垂直对齐 img如何垂直对齐
+ 6 不用框架 修改html 为XXXX ，修改字体颜色
+ 7 代码输出结果 
+var j = 100;
+~(function test(){
+    console.log(j);
+    var j = 2；
+    console.log(j);   
+})();
+  8 jQuery实现.ajax GET方法与POST方法的区别 
+  9 css3实现每隔1秒 元素扩大一倍
+         
+    
+    
+           
     
     
     
