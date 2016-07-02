@@ -551,7 +551,11 @@ div{
        @media all and (min-width:0px){ #test {background-color:black\0;} }  /*opera*/
        @media screen and (-webkit-min-device-pixel-ratio:0){ #test {background-color:gray;} 
 }       /*chrome and safari*/
-
+盒子模型是css中一个重要的概念，理解了盒子模型才能更好的排版。
+其实盒子模型有两种，分别是 ie 盒子模型和标准 w3c 盒子模型。他们对盒子模型的解释各不相同，先来看看我们熟知的标准盒子模型：
+ 标准 w3c 盒子模型的范围包括 margin、border、padding、content，并且 content 部分不包含其他部分。
+ ie 盒子模型的 content 部分包含了 border 和 pading。
+ 
 
 
 
