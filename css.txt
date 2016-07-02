@@ -365,6 +365,17 @@ height:200px;
 transform:rotate(360deg);
 -webkit-transform:rotate(360deg);
 }
+transition 属性是一个简写属性，用于设置四个过渡属性：
+transition-property
+transition-duration
+transition-timing-function
+transition-delay
+transition: property duration timing-function delay;
+
+transition-property	规定设置过渡效果的 CSS 属性的名称。
+transition-duration	定义过渡效果花费的时间。默认是 0。
+transition-timing-function	规定过渡效果的时间曲线。默认是 "ease"。
+transition-delay	规定过渡效果何时开始。默认是 0。
 css3动画
 div{
    width:100px;
@@ -555,8 +566,19 @@ div{
 其实盒子模型有两种，分别是 ie 盒子模型和标准 w3c 盒子模型。他们对盒子模型的解释各不相同，先来看看我们熟知的标准盒子模型：
  标准 w3c 盒子模型的范围包括 margin、border、padding、content，并且 content 部分不包含其他部分。
  ie 盒子模型的 content 部分包含了 border 和 pading。
- 
-
+ css 中的box-sizing：border-box 就是选择IE盒子模型
+margin:10px 5px 15px 20px;
+上外边距是 10px
+右外边距是 5px
+下外边距是 15px
+左外边距是 20px
+margin:10px 5px 15px;
+上外边距是 10px
+右外边距和左外边距是 5px
+下外边距是 15px
+margin:10px 5px;
+上外边距和下外边距是 10px
+右外边距和左外边距是 5px
 
 
 
