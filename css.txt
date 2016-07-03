@@ -579,86 +579,110 @@ margin:10px 5px 15px;
 margin:10px 5px;
 上外边距和下外边距是 10px
 右外边距和左外边距是 5px
-css hack。
-原理：利用不同浏览器对CSS的支持和解析结果不一样编写针对特定浏览器样式。常见的hack有1）属性hack。2）选择器hack。3）IE条件注释
-
-IE条件注释：适用于[IE5, IE9]常见格式如下
-<!--[if IE 6]>
-Special instructions for IE 6 here
-<![endif]-->
-选择器hack：不同浏览器对选择器的支持不一样
-/***** Selector Hacks ******/
-
-/* IE6 and below */
-* html #uno  { color: red }
-
-/* IE7 */
-*:first-child+html #dos { color: red }
-
-/* IE7, FF, Saf, Opera  */
-html>body #tres { color: red }
-
-/* IE8, FF, Saf, Opera (Everything but IE 6,7) */
-html>/**/body #cuatro { color: red }
-
-/* Opera 9.27 and below, safari 2 */
-html:first-child #cinco { color: red }
-
-/* Safari 2-3 */
-html[xmlns*=""] body:last-child #seis { color: red }
-
-/* safari 3+, chrome 1+, opera9+, ff 3.5+ */
-body:nth-of-type(1) #siete { color: red }
-
-/* safari 3+, chrome 1+, opera9+, ff 3.5+ */
-body:first-of-type #ocho {  color: red }
-
-/* saf3+, chrome1+ */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
- #diez  { color: red  }
+css hack
+{
+    原理：利用不同浏览器对CSS的支持和解析结果不一样编写针对特定浏览器样式。常见的hack有1）属性hack。2）选择器hack。3）IE条件注释
+    
+    IE条件注释：适用于[IE5, IE9]常见格式如下
+    <!--[if IE 6]>
+    Special instructions for IE 6 here
+    <![endif]-->
+    选择器hack：不同浏览器对选择器的支持不一样
+    /***** Selector Hacks ******/
+    
+    /* IE6 and below */
+    * html #uno  { color: red }
+    
+    /* IE7 */
+    *:first-child+html #dos { color: red }
+    
+    /* IE7, FF, Saf, Opera  */
+    html>body #tres { color: red }
+    
+    /* IE8, FF, Saf, Opera (Everything but IE 6,7) */
+    html>/**/body #cuatro { color: red }
+    
+    /* Opera 9.27 and below, safari 2 */
+    html:first-child #cinco { color: red }
+    
+    /* Safari 2-3 */
+    html[xmlns*=""] body:last-child #seis { color: red }
+    
+    /* safari 3+, chrome 1+, opera9+, ff 3.5+ */
+    body:nth-of-type(1) #siete { color: red }
+    
+    /* safari 3+, chrome 1+, opera9+, ff 3.5+ */
+    body:first-of-type #ocho {  color: red }
+    
+    /* saf3+, chrome1+ */
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+     #diez  { color: red  }
+    }
+    
+    /* iPhone / mobile webkit */
+    @media screen and (max-device-width: 480px) {
+     #veintiseis { color: red  }
+    }
+    
+    /* Safari 2 - 3.1 */
+    html[xmlns*=""]:root #trece  { color: red  }
+    
+    /* Safari 2 - 3.1, Opera 9.25 */
+    *|html[xmlns*=""] #catorce { color: red  }
+    
+    /* Everything but IE6-8 */
+    :root *> #quince { color: red  }
+    
+    /* IE7 */
+    *+html #dieciocho {  color: red }
+    
+    /* Firefox only. 1+ */
+    #veinticuatro,  x:-moz-any-link  { color: red }
+    
+    /* Firefox 3.0+ */
+    #veinticinco,  x:-moz-any-link, x:default  { color: red  }
+    属性hack：不同浏览器解析bug或方法
+    /* IE6 */
+    #once { _color: blue }
+    
+    /* IE6, IE7 */
+    #doce { *color: blue; /* or #color: blue */ }
+    
+    /* Everything but IE6 */
+    #diecisiete { color/**/: blue }
+    
+    /* IE6, IE7, IE8 */
+    #diecinueve { color: blue\9; }
+    
+    /* IE7, IE8 */
+    #veinte { color/*\**/: blue\9; }
+    
+    /* IE6, IE7 -- acts as an !important */
+    #veintesiete { color: blue !ie; } /* string after ! can be anything */
 }
-
-/* iPhone / mobile webkit */
-@media screen and (max-device-width: 480px) {
- #veintiseis { color: red  }
+IE6浏览器有哪些常见的bug,缺陷或者与标准不一致的地方,如何解决
+{
+    ol内li的序号全为1，不递增。解决方法：为li设置样式display: list-item;
+    IE6只支持a标签的:hover伪类，解决方法：使用js为元素监听mouseenter，mouseleave事件，添加类实现效果：
+    IE5-8不支持opacity，解决办法：
+    .opacity {
+        opacity: 0.4
+        filter: alpha(opacity=60); /* for IE5-7 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)"; /* for IE 8*/
+    }
+    IE6在设置height小于font-size时高度值为font-size，解决办法：font-size: 0;
+    IE6不支持PNG透明背景，解决办法: IE6下使用gif图片
+    IE6-7不支持display: inline-block解决办法：设置inline并触发hasLayout
+    display: inline-block;
+        *display: inline;
+        *zoom: 1;
+     通过为块级元素设置宽度和左右margin为auto时，IE6不能实现水平居中，解决方法：为父元素设置text-align: center;
 }
+什么是FOUC?如何避免
 
-/* Safari 2 - 3.1 */
-html[xmlns*=""]:root #trece  { color: red  }
-
-/* Safari 2 - 3.1, Opera 9.25 */
-*|html[xmlns*=""] #catorce { color: red  }
-
-/* Everything but IE6-8 */
-:root *> #quince { color: red  }
-
-/* IE7 */
-*+html #dieciocho {  color: red }
-
-/* Firefox only. 1+ */
-#veinticuatro,  x:-moz-any-link  { color: red }
-
-/* Firefox 3.0+ */
-#veinticinco,  x:-moz-any-link, x:default  { color: red  }
-属性hack：不同浏览器解析bug或方法
-/* IE6 */
-#once { _color: blue }
-
-/* IE6, IE7 */
-#doce { *color: blue; /* or #color: blue */ }
-
-/* Everything but IE6 */
-#diecisiete { color/**/: blue }
-
-/* IE6, IE7, IE8 */
-#diecinueve { color: blue\9; }
-
-/* IE7, IE8 */
-#veinte { color/*\**/: blue\9; }
-
-/* IE6, IE7 -- acts as an !important */
-#veintesiete { color: blue !ie; } /* string after ! can be anything */
-
+Flash Of Unstyled Content：用户定义样式表加载之前浏览器使用默认样式显示文档，
+用户样式加载渲染之后再从新显示文档，造成页面闪烁。
+解决方法：把样式表放到文档的head
 
 
 
