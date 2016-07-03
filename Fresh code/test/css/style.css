@@ -30,7 +30,7 @@ p{
   position: absolute;  
   top: 0; left: 0; bottom: 0; right: 0;  
 }  
-.line-center{
+.line-center1{
     width: 800px;
     position: absolute;
     margin: 0 auto;
@@ -41,4 +41,9 @@ p{
 }
 .rotate_test{
      -webkit-transform:rotate3d(0,1,0,90deg);
+}
+#line-test span{
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
 }
