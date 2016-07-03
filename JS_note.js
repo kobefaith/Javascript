@@ -1267,7 +1267,8 @@ var j = 100;
   8 jQuery实现.ajax GET方法与POST方法的区别 
   9 css3实现每隔1秒 元素扩大一倍
          
-    
+ offsetWidth/offsetHeight返回值包含content + padding + border，效果与e.getBoundingClientRect()相同
+clientWidth/clientHeight返回值只包含content + padding，如果有滚动条，也不包含滚动条   
     
            
     
