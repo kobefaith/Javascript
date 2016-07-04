@@ -1269,8 +1269,72 @@ var j = 100;
          
  offsetWidth/offsetHeight返回值包含content + padding + border，效果与e.getBoundingClientRect()相同
 clientWidth/clientHeight返回值只包含content + padding，如果有滚动条，也不包含滚动条   
-    
+  scrollWidth/scrollHeight返回值包含content + padding + 溢出内容的尺寸  
            
+ javascript有哪几种数据类型
+
+六种基本数据类型
+
+undefined
+null
+string
+boolean
+number
+symbol(ES6)
+一种引用类型
+Object   
+
+下面这段代码想要循环延时输出结果0 1 2 3 4,请问输出结果是否正确,如果不正确,请说明为什么,并修改循环内的代码使其输出正确结果
+
+for (var i = 0; i < 5; ++i) {
+  setTimeout(function () {
+    console.log(i + ' ');
+  }, 100);
+}    
+ 不能输出正确结果，因为循环中setTimeout接受的参数函数通过闭包访问变量i。javascript运行环境为单线程，setTimeout注册的函数需要等待线程空闲才能执行，此时for循环已经结束，i值为5.五个定时输出都是5 修改方法：将setTimeout放在函数立即调用表达式中，将i值作为参数传递给包裹函数，创建新闭包
+
+for (var i = 0; i < 5; ++i) {
+  (function (i) {
+    setTimeout(function () {
+      console.log(i + ' ');
+    }, 100);
+  }(i));
+}      
+ 如何判断一个对象是否为数组
+function isArray(arg) {
+    if (typeof arg === 'object') {
+        return Object.prototype.toString.call(arg) === '[object Array]';
+    }
+    return false;
+}
+<span style="font-family: verdana, geneva;">var a = new Object();
+a.value = 1;
+b = a;
+b.value = 2;
+alert(a.value);
+</span>
+输出2
+JS的基础类型与引用类型
+两种类型：
+1.   ECMAScript变量包含两种不同类型的值：基本类型值、引用类型值；
+2.   基本类型值：指的是保存在栈内存中的简单数据段；
+3.   引用类型值：指的是那些保存在堆内存中的对象，意思是，变量中保存的实际上只是一个指针，这个指针执行内存中的另一个位置，由该位置保存对象；
+ 两种访问方式：
+4.   基本类型值：按值访问，操作的是他们实际保存的值；
+5.   引用类型值：按引用访问，当查询时，我们需要先从栈中读取内存地址，然后再顺藤摸瓜地找到保存在堆内存中的值；   
+两种类型复制
+ 
+1.   基本类型变量的复制：从一个变量向一个变量复制时，会在栈中创建一个新值，然后把值复制到为新变量分配的位置上；
+1.   引用类型变量的复制：复制的是存储在栈中的指针，将指针复制到栈中未新变量分配的空间中，而这个指针副本和原指针执行存储在堆中的同一个对象；
+2. 复制操作结束后，两个变量实际上将引用同一个对象；因此改变其中的一个，将影响另一个；
+两种变量类型检测
+ 
+1.   Typeof操作符是检测基本类型的最佳工具；
+2.   如果变量值是nul或者对象，typeof 将返回“object”；
+3.   Instanceof用于检测引用类型，可以检测到具体的，它是什么类型的实例；
+4.   如果变量是给定引用类型的实例，instanceof操作符会返回true;    
+    
+         
     
     
     
