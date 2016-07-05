@@ -725,7 +725,7 @@ function changeIcon(mainNode){
     }
 }
 
-
+jquery 解决三个ajax的问题
 
 
 
