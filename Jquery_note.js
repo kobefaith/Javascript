@@ -60,6 +60,13 @@ function clickHandler1(e){
 function clickHandler2(e){
     console.log("clickHandler2");
 }
+相同点：
+　　1.都支持单元素多事件的绑定；空格相隔方式或者大括号替代方式;
+　　2.均是通过事件冒泡方式，将事件传递到document进行事件的响应；
+不同点：
+    1.bind()函数只能针对已经存在的元素进行事件的设置；但是live(),on(),delegate()均支持未来新添加元素的事件设置
+    2.bind()函数在jquery1.7版本以前比较受推崇，1.7版本出来之后，官方已经不推荐用bind()，替代函数为on(),这也是1.7版本新添加的函数，同样，可以
+　用来代替live()函数，live()函数在1.9版本已经删除；
 按键事件处理
 <script type="text/javascript">
     $(document).ready(function(){
