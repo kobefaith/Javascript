@@ -62,6 +62,14 @@ function clickHandler2(e){
 }
 相同点：
 　　1.都支持单元素多事件的绑定；空格相隔方式或者大括号替代方式;
+ $(".btn-test").bind({
+    "mouseout": function () {
+        alert("这是mouseout事件!");
+    },
+    "click": function () {
+        $(".container").slideToggle();
+    }
+});
 　　2.均是通过事件冒泡方式，将事件传递到document进行事件的响应；
 不同点：
     1.bind()函数只能针对已经存在的元素进行事件的设置；但是live(),on(),delegate()均支持未来新添加元素的事件设置
