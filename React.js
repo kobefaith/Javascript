@@ -181,9 +181,131 @@ componentWillUnmount
     );
 </script>
 运行中阶段的函数用法实例
-
-
-
+<script type="text/jsx">
+    var style = {
+        color: "red",
+        border: "1px #000 solid",
+    };
+    var HelloWorld = React.createClass({
+        componentWillReceiveProps: function () {
+            console.log("componentWillReceiveProps 1");
+        },
+        shouldComponentUpdate: function () {
+            console.log("shouldComponentUpdate 2");
+            return true;
+        },
+        componentWillUpdate: function () {
+            console.log("componentWillUpdate 3")
+        },
+        render: function () { 
+            console.log("render 4");
+            return <p>Hello, {this.props.name ? this.props.name : "World"}</p>;
+        },
+        componentDidUpdate: function() {
+            console.log("componentDidUpdate 5");
+        },
+    });
+    var HelloUniverse = React.createClass({
+        getInitialState: function () {
+            return {name: ''};
+        },
+        handleChange: function (event) {
+            this.setState({name: event.target.value});
+        },
+        render: function () {
+            return <div>
+            <HelloWorld name={this.state.name}></HelloWorld>
+            <br/>
+            <input type="text" onChange={this.handleChange} />
+            </div>
+        },
+    });
+    React.render(<div style={style}><HelloUniverse></HelloUniverse></div>, document.body);
+</script>
+<script type="text/jsx">
+    $(document).ready(
+        function() {
+            var style = {
+                color: "red",
+                border: "1px #000 solid",
+            };
+            var HelloWorld = React.createClass({
+                componentWillReceiveProps: function (newProps) {
+                    console.log("componentWillReceiveProps 1");
+                    console.log(newProps);
+                },
+                shouldComponentUpdate: function () {
+                    console.log("shouldComponentUpdate 2");
+                    return true;
+                },
+                componentWillUpdate: function () {
+                    console.log("componentWillUpdate 3");
+                },
+                render: function () { 
+                    console.log("render 4");
+                    return <p>Hello, {this.props.name ? this.props.name : "World"}</p>;
+                },
+                componentDidUpdate: function() {
+                    $(React.findDOMNode(this)).append("surprise!");
+                },
+            });
+            var HelloUniverse = React.createClass({
+                getInitialState: function () {
+                    return {name: ''};
+                },
+                handleChange: function (event) {
+                    this.setState({name: event.target.value});
+                },
+                render: function () {
+                    return <div>
+                    <HelloWorld name={this.state.name}></HelloWorld>
+                    <br/>
+                    <input type="text" onChange={this.handleChange} />
+                    </div>
+                },
+            });
+            React.render(<div style={style}><HelloUniverse></HelloUniverse></div>, document.body);
+        }
+    );
+</script>
+销毁阶段函数运行实例
+React.unmountComponentAtNode(document.getElementsByTagName("body")[0]);
+销毁一个组件实例
+<script type="text/jsx">
+        var style = {
+            color: "red",
+            border: "1px #000 solid",
+        };
+        var HelloWorld = React.createClass({
+            render: function () { 
+                console.log("render 4");
+                return <p>Hello, {this.props.name ? this.props.name : "World"}</p>;
+            },
+            componentWillUnmount: function() {
+                console.log("BOOOOOOOOOOOOOOOOOM!");
+            },
+        });
+        var HelloUniverse = React.createClass({
+            getInitialState: function () {
+                return {name: ''};
+            },
+            handleChange: function (event) {                
+                if (event.target.value == "123") {
+                    React.unmountComponentAtNode(document.getElementsByTagName("body")[0]);
+                    return;
+                }
+                this.setState({name: event.target.value});
+            },
+            render: function () {
+                return <div>
+                <HelloWorld name={this.state.name}></HelloWorld>
+                <br/>
+                <input type="text" onChange={this.handleChange} />
+                </div>
+            },
+        });
+        React.render(<div style={style}><HelloUniverse></HelloUniverse></div>, document.body);
+    </script>
 
 
 
