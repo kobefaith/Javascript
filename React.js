@@ -1,3 +1,204 @@
+React 的核心是组件，组件的设计目的是提高代码复用率、降低测试难度和代码复杂度。
+
+JSX  javascript XML 
+基于ECMAScript的一种新特性
+一种定义带属性树结构的语法
+JSX五个特点
+类XML语法容易接受
+增强js语义
+结构清晰
+抽象程度高
+代码模块化
+如何使用JSX
+组件中的注释要在{}中
+var HelloWorld = React.createClass({
+    render:function(){
+       return <p>Hello, world{
+           /*
+              comment 
+            */
+            "hello",
+            //comment
+       }</p>
+    }
+});
+添加css
+为给HelloWorld添加css  可以增加一个父节点 div 然后在div中增加style属性。
+<script type="text/jsx">
+       var style = {
+            color:"red",
+            border:"1px #000 solid",
+       };
+       var HelloWorld = React.createClass({
+       render:function(){
+           return <p>Hello,World</p>
+       }
+       });
+       React.render(<div style={style}><HelloWorld></HelloWorld></div>,document.body);
+</script>
+条件判断语句：
+在{}中不能使用if语句，所以需要替换，有四种方法
+1 三元表达式：{this.props.name ? this.props.name : "world"}
+2 使用函数,然后把函数的返回值赋给一个变量：
+ var HelloWorld = React.createClass({
+       getName:function(){
+           if(this.props.name)
+               return this.props.name
+           else 
+               return "World"
+        },
+       render:function(){
+           var name = this.getName();
+           return <p>Hello,{name}</p>
+       }
+});    
+3 去掉方法2中的变量，直接在{}中调用函数：           
+ render:function(){         
+           return <p>Hello,{this.getName()}</p>
+       }
+4 使用比较运算符 this.props.name || "World"
+var HelloWorld = React.createClass({       
+       render:function(){           
+           return <p>Hello,{this.props.name || "World"}</p>
+       }
+});    
+
+函数表达式
+var HelloWorld = React.createClass({       
+       render:function(){           
+           return <p>Hello,{
+            (function(obj){
+                if(obj.props.name)
+                    return obj.props.name
+                else 
+                    return "World"
+           })(this) //也可以把)放到(this)的后面，放到前面是返回函数的引用，放到后面是直接返回值
+        }</p>
+    }
+});    
+非DOM属性
+dangerouslySetInnerHTML   ref   key
+dangerouslySetInnerHTML :在JSX中直接插入HTML代码
+ref：父组件引用子组件
+key：提高渲染性能
+
+var rawHTML = {
+    __html: "<h1>I'm inner HTML </h1>"
+}
+React.render(<div style={style} dangerouslySetInnerHTML={rawHTML}></div>,
+    document.body);
+var HelloWorld = React.createClass({     
+render:function(){
+    return <ul>
+            <li key="1">1</li>
+            <li key="2">2</li>
+            <li key="3">3</li>
+        </ul>    
+    }
+});
+列表类型的一定要加上key  能避免很多性能问题
+   
+组件声明周期
+组件本质上是状态机。
+初始化    运行中     销毁
+初始化阶段的钩子函数
+getDefaultProps //组件的第一个实例初始化的时候调用，后面就不会调用了，实例之间共享引用
+getInitialsState//初始化每个实例特有的状态
+componentWillMount//render之前最后一次修改状态的机会
+render//只能访问this.props  this.state 只有一个顶层组件，不允许修改状态和DOM输出
+componentDidMount//成功render并渲染完成真实DOM之后触发，可以修改DOM
+
+运行中阶段
+componentWillReceiveProps//属性传递给组件之前
+shouldComponentUpdate//组件接收到新的属性的时候 如果返回false会阻止render调用
+componentWillUpdate//不能修改属性和状态
+render//只能访问this.props  this.state 只有一个顶层组件，不允许修改状态和DOM输出
+componentDidUpdate//可以修改DOM
+销毁阶段
+componentWillUnmount
+
+初始化节点函数用法实例
+<script type="text/jsx">
+       var style = {
+            color:"red",
+            border:"1px #000 solid",
+       };
+       var HelloWorld = React.createClass({
+       getDefaultProps:function(){
+           console.log("getDefaultProps, 1");
+       },
+       getInitialState:function(){
+           console.log("getInitialState, 2");
+           return null;//必须有返回 
+       },
+       componentWillMount:function(){
+           console.log("componentWillMount, 3");
+       },
+       render:function(){
+           console.log("render, 4");
+           return <p>Hello,World</p>
+       },
+       componentDidMount:function(){
+           console.log("componentDidMount, 5");
+       },
+       });
+       React.render(<div style={style}><HelloWorld></HelloWorld></div>,document.body);
+</script>
+
+<script type="text/jsx">
+    $(document).ready(
+        function() {
+            var count = 0;
+            var style = {
+                color: "red",
+                border: "1px #000 solid",
+            };
+            var HelloWorld = React.createClass({
+                getDefaultProps: function () {
+                    console.log("getDefaultProps, 1");
+                    return {name: "Tom"};
+                },
+                getInitialState: function () {
+                    console.log("getInitialState, 2");
+                    return {myCount: count++,
+                            ready: false};
+                },
+                componentWillMount: function () {
+                    console.log("componentWillMount, 3");
+                    this.setState({ready: true});
+                },
+                render: function () {
+                    console.log("render, 4");
+                    return <p ref="childp">Hello, {this.props.name ? this.props.name : "World"}<br/>{"" + this.state.ready} {this.state.myCount}</p>;
+                },
+                componentDidMount: function () {
+                    console.log("componentDidMount, 5");
+                    $(React.findDOMNode(this)).append("surprise!");
+                },
+            });
+            React.render(<div style={style}><HelloWorld></HelloWorld><br/><HelloWorld></HelloWorld></div>, document.body);
+        }
+    );
+</script>
+运行中阶段的函数用法实例
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
