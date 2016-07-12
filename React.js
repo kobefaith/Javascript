@@ -281,7 +281,7 @@ React.unmountComponentAtNode(document.getElementsByTagName("body")[0]);
                 console.log("render 4");
                 return <p>Hello, {this.props.name ? this.props.name : "World"}</p>;
             },
-            componentWillUnmount: function() {
+            componentWillUnmount: function() { //组件销毁时调用
                 console.log("BOOOOOOOOOOOOOOOOOM!");
             },
         });
@@ -306,20 +306,6 @@ React.unmountComponentAtNode(document.getElementsByTagName("body")[0]);
         });
         React.render(<div style={style}><HelloUniverse></HelloUniverse></div>, document.body);
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html>
