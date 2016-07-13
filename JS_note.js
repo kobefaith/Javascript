@@ -1334,7 +1334,13 @@ JS的基础类型与引用类型
 3.   Instanceof用于检测引用类型，可以检测到具体的，它是什么类型的实例；
 4.   如果变量是给定引用类型的实例，instanceof操作符会返回true;    
     
-         
+ 想实现一个对页面某个节点的拖曳？如何做？（使用原生JS）
+
+给需要拖拽的节点绑定mousedown, mousemove, mouseup事件
+mousedown事件触发后，开始拖拽
+mousemove时，需要通过event.clientX和clientY获取拖拽位置，并实时更新位置
+mouseup时，拖拽结束
+需要注意浏览器边界的情况        
     
     
     
