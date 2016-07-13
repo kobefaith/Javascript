@@ -91,6 +91,19 @@ function clickHandler2(e){
     alert(event.keyCode);
 });
 <input type="text" id="text_box"/>
+delegate() 方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。
+使用 delegate() 方法的事件处理程序适用于当前或未来的元素（比如由脚本创建的新元素）。
+<script type="text/javascript">
+$(document).ready(function(){
+  $("div").delegate("p","click",function(){
+    $(this).slideToggle();
+  });
+  $("button").click(function(){
+    $("<p>这是一个新段落。</p>").insertAfter("button");
+  });
+});
+</script>
+通过使用 delegate() 方法，而不是 live()，只有 div 元素中的 p 元素会受到影响。
 2.1事件目标和冒泡
 <body>
    <div style="width:300px;height:300px;background-color:aqua">
