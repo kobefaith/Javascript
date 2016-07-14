@@ -1341,7 +1341,25 @@ mousedown事件触发后，开始拖拽
 mousemove时，需要通过event.clientX和clientY获取拖拽位置，并实时更新位置
 mouseup时，拖拽结束
 需要注意浏览器边界的情况        
-    
+<html>
+<head>
+<script type="text/javascript">
+function show_coords(event)
+  {
+  x=event.clientX
+  y=event.clientY
+  alert("X coords: " + x + ", Y coords: " + y)
+  }
+</script>
+</head>
+
+<body onmousedown="show_coords(event)">
+	
+	<p>Click in the document. An alert box will alert 
+the x and y coordinates of the mouse pointer.</p>
+
+</body>
+</html>   
     
     
     
