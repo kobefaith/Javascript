@@ -308,7 +308,16 @@ React.unmountComponentAtNode(document.getElementsByTagName("body")[0]);
     </script>
 
 React属性
-    
+使用属性的方法
+1 键值对 
+  <HelloWorld name= ? /> ?处可以是"Tim" {123} {"Tim" {[1,2,3]}  {variable}
+  
+2 展开
+var props={
+    one:"123",
+    two:321
+}
+<HelloWorld {...props}/>
 <!DOCTYPE html>
 <html>
   <head>
