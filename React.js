@@ -307,6 +307,8 @@ React.unmountComponentAtNode(document.getElementsByTagName("body")[0]);
         React.render(<div style={style}><HelloUniverse></HelloUniverse></div>, document.body);
     </script>
 
+React属性
+    
 <!DOCTYPE html>
 <html>
   <head>
