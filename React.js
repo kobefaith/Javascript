@@ -318,6 +318,11 @@ var props={
     two:321
 }
 <HelloWorld {...props}/>
+加上...后 组件会自动展开对象中的属性
+3 直接调用setProps  //不常用
+var instance=React.render(<HelloWorld></HelloWorld>,
+    document.body);
+instance.setProps({name:"Tim"});
 <!DOCTYPE html>
 <html>
   <head>
