@@ -323,6 +323,21 @@ var props={
 var instance=React.render(<HelloWorld></HelloWorld>,
     document.body);
 instance.setProps({name:"Tim"});
+状态的含义和用法
+getInitialState:初始化每个实例特有的状态
+setState：更新组件状态
+熟悉和状态的相似点
+    都是纯js对象
+    都会触发render更新
+    都具有确定性
+                         属性   状态
+能否从父组件获取初始值    能     否
+能否由父组件修改          能     否
+能否在组件内部设置默认值  能     能
+能否在组件内部修改        不能   能
+能否设置子组件的初始值    能     不能
+能否修改子组件的值        能     不能
+
 <!DOCTYPE html>
 <html>
   <head>
