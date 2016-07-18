@@ -341,9 +341,33 @@ setState：更新组件状态
 react事件
 组件中的方法包括：React自有方法和 用户自定义方法
 React事件：
-触摸事件：
-onTouchCancel    onTouchEnd   onTouchMove onTouchStart
-
+触摸事件：onTouchCancel    onTouchEnd   onTouchMove onTouchStart
+键盘：onKeyDown  onKeyPress  onKeyUp 
+剪切:onCopy  onCut  onPaste
+表单：onChange   onInput  onSubmit
+焦点：onFocus  onBlur  
+UI元素：onScroll
+滚动：onWheel
+鼠标：onClick  onContextMenu //右键事件  onDoubleClick   onMouseDown
+onMouseEnter  onMouseLeave  onMouseMove  onMouseOut
+onMouseOver onMouseUp
+拖拽事件
+onDrop  onDrag   onDragEnd  onDragEnter  onDragExit
+onDragLeave   onDragOver  onDragStart  
+<script type="text/jsx">
+    var HelloWorld = React.createClass({
+        handleChange: function (event) {
+            console.log(event.target.value);
+        },
+        render: function () {
+            return <div>
+            <input onChange={this.handleChange}></input> //输入框中的内容发送变化会触发事件处理函数。
+            </div>;
+        },
+    });
+    React.render(<HelloWorld></HelloWorld>, document.body);
+</script>
+=================================================
 <!DOCTYPE html>
 <html>
   <head>
