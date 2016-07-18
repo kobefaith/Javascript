@@ -338,6 +338,12 @@ setState：更新组件状态
 能否设置子组件的初始值    能     不能
 能否修改子组件的值        能     不能
 
+react事件
+组件中的方法包括：React自有方法和 用户自定义方法
+React事件：
+触摸事件：
+onTouchCancel    onTouchEnd   onTouchMove onTouchStart
+
 <!DOCTYPE html>
 <html>
   <head>
