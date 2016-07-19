@@ -367,6 +367,10 @@ onDragLeave   onDragOver  onDragStart
     });
     React.render(<HelloWorld></HelloWorld>, document.body);
 </script>
+事件对象
+handleChange:function(event){//event是事件对象
+    console.log(event.target.value);//target是事件对象的属性
+}
 =================================================
 <!DOCTYPE html>
 <html>
