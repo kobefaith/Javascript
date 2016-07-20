@@ -371,6 +371,30 @@ onDragLeave   onDragOver  onDragStart
 handleChange:function(event){//event是事件对象
     console.log(event.target.value);//target是事件对象的属性
 }
+鼠标滚动来改变颜色
+<script type="text/jsx">
+    var HelloWorld = React.createClass({
+        getInitialState: function () {
+            return {
+                backgroundColor: '#FFFFFF'
+            }
+        },
+        handleWheel: function (event) {
+            var newColor = (parseInt(this.state.backgroundColor.substr(1), 16) + event.deltaY * 997).toString(16);
+            newColor = '#' + newColor.substr(newColor.length - 6).toUpperCase();
+            this.setState({
+                backgroundColor: newColor
+            })
+        },
+        render: function () {
+            console.log(this.state)
+            return <div onWheel={this.handleWheel} style={this.state}>
+            <p>Hello, World</p>
+            </div>;
+        },
+    });
+    React.render(<HelloWorld></HelloWorld>, document.body);
+</script>
 =================================================
 <!DOCTYPE html>
 <html>
