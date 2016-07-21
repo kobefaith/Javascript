@@ -380,7 +380,7 @@ handleChange:function(event){//event是事件对象
             }
         },
         handleWheel: function (event) {
-            var newColor = (parseInt(this.state.backgroundColor.substr(1), 16) + event.deltaY * 997).toString(16);
+            var newColor = (parseInt(this.state.backgroundColor.substr(1), 16) + event.deltaY * 997).toString(16);//deltaY是3或-3 ，997是为了放大变化
             newColor = '#' + newColor.substr(newColor.length - 6).toUpperCase();
             this.setState({
                 backgroundColor: newColor
@@ -390,6 +390,34 @@ handleChange:function(event){//event是事件对象
             console.log(this.state)
             return <div onWheel={this.handleWheel} style={this.state}>
             <p>Hello, World</p>
+            </div>;
+        },
+    });
+    React.render(<HelloWorld></HelloWorld>, document.body);
+</script>
+键盘事件实例
+<script type="text/jsx">
+    var HelloWorld = React.createClass({
+        getInitialState: function () {
+            return {
+                password: ''
+            }
+        },
+        handleKeyPress: function (event) {
+            this.setState({
+                password: this.state.password + event.which
+            });
+            console.log(this.state)
+        },
+        handleChange: function (event) {
+            event.target.value = '';
+        },
+        render: function () {
+            return <div>
+            <input onKeyPress={this.handleKeyPress} onChange={this.handleChange}></input>
+            <p style={{
+                'display': this.state.password.indexOf('495051') >= 0 ? 'inline' : 'none'
+                }}>You got it!</p>
             </div>;
         },
     });
