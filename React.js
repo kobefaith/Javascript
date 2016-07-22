@@ -380,8 +380,8 @@ handleChange:function(event){//event是事件对象
             }
         },
         handleWheel: function (event) {
-            var newColor = (parseInt(this.state.backgroundColor.substr(1), 16) + event.deltaY * 997).toString(16);//deltaY是3或-3 ，997是为了放大变化
-            newColor = '#' + newColor.substr(newColor.length - 6).toUpperCase();
+            var newColor = (parseInt(this.state.backgroundColor.substr(1), 16) + event.deltaY * 997).toString(16);//deltaY是3或-3 ，997是为了放大变化，16表示16进制
+            newColor = '#' + newColor.substr(newColor.length - 6).toUpperCase();//生成新的颜色
             this.setState({
                 backgroundColor: newColor
             })
