@@ -405,7 +405,7 @@ handleChange:function(event){//event是事件对象
         },
         handleKeyPress: function (event) {
             this.setState({
-                password: this.state.password + event.which
+                password: this.state.password + event.which//修改密码，将密码加上输入的按键值
             });
             console.log(this.state)
         },
