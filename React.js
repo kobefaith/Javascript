@@ -423,7 +423,7 @@ handleChange:function(event){//event是事件对象
     });
     React.render(<HelloWorld></HelloWorld>, document.body);
 </script>
-事件和状态绑定
+事件和状态的关联
 <script type="text/jsx">
     var HelloWorld = React.createClass({
         getInitialState: function () {
