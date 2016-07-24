@@ -423,6 +423,34 @@ handleChange:function(event){//event是事件对象
     });
     React.render(<HelloWorld></HelloWorld>, document.body);
 </script>
+事件和状态绑定
+<script type="text/jsx">
+    var HelloWorld = React.createClass({
+        getInitialState: function () {
+            return {//初始化状态
+                x: 0,
+                y: 0
+            }
+        },
+        handleMouseMove: function (event) {
+            this.setState({ //将鼠标移动的位置设置给状态
+                x: event.clientX,
+                y: event.clientY
+            });
+        },
+        render: function () {
+            return <div onMouseMove={this.handleMouseMove} style={{
+                height: '1000px',
+                width: '700px',
+                backgroundColor: 'gray'
+            }}>
+            {this.state.x + ', ' + this.state.y}
+            </div>;
+        },
+    });
+    React.render(<HelloWorld></HelloWorld>, document.body);
+</script>
+
 =================================================
 <!DOCTYPE html>
 <html>
