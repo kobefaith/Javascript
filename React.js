@@ -439,7 +439,7 @@ handleChange:function(event){//event是事件对象
             });
         },
         render: function () {
-            return <div onMouseMove={this.handleMouseMove} style={{
+            return <div onMouseMove={this.handleMouseMove} style={{//div元素的css样式设置
                 height: '1000px',
                 width: '700px',
                 backgroundColor: 'gray'
