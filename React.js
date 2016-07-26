@@ -450,7 +450,8 @@ handleChange:function(event){//event是事件对象
     });
     React.render(<HelloWorld></HelloWorld>, document.body);
 </script>
-
+组件的协同
+组件协同本质上是对组件的一种组织、管理方式。
 =================================================
 <!DOCTYPE html>
 <html>
