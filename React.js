@@ -1,5 +1,5 @@
 React 的核心是组件，组件的设计目的是提高代码复用率、降低测试难度和代码复杂度。
-react 不是mvc架构
+react 不是mvc架构,只是相当于view部分。
 JSX  javascript XML 
 基于ECMAScript的一种新特性
 一种定义带属性树结构的语法
