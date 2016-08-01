@@ -12,3 +12,17 @@ function getTimeRemaining(endtime){
 		'seconds':seconds		
 	};
 }
+
+var div = React.DOM.div;
+var hr = React.DOM.hr;
+var h2 = React.DOM.h2;
+
+var DividerClass = React.createClass({
+	displayName:'Divider',
+	render:function(){
+		return div({className:"divider"},
+		h2(null,"Label Text"),
+		hr()
+		);
+	}
+});
