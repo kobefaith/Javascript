@@ -464,7 +464,7 @@ handleChange:function(event){//event是事件对象
 <script type="text/jsx">
     var GenderSelect = React.createClass({
         render: function() {
-            return <select onChange={this.props.handleSelect}>
+            return <select onChange={this.props.handleSelect}>//此处是将处理函数委托给了父组件
             <option value="0">男</option>
             <option value="1">女</option>
             </select>
@@ -491,7 +491,7 @@ handleChange:function(event){//event是事件对象
             return <form>
             <input type="text" placeholder="请输入用户名" onChange={this.handleChange.bind(this, 'name')} />
             <input type="password" placeholder="请输入密码" onChange={this.handleChange.bind(this, 'password')} />
-            <GenderSelect handleSelect={this.handleSelect}></GenderSelect>
+            <GenderSelect handleSelect={this.handleSelect}></GenderSelect>//父组件通过属性的方式将处理函数传递给子组件，实现委托。
             </form>
         }
     })
