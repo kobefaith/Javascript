@@ -461,7 +461,44 @@ handleChange:function(event){//event是事件对象
 子组件很难与父组件通信，可以在父组件中将事件处理函数通过属性传递给子组件，
 然后子组件触发事件后可以调用父组件的事件处理函数，这样间接地实现通信
 这种方式叫做委托
-
+<script type="text/jsx">
+    var GenderSelect = React.createClass({
+        render: function() {
+            return <select onChange={this.props.handleSelect}>
+            <option value="0">男</option>
+            <option value="1">女</option>
+            </select>
+        }
+    })
+    var SignupForm = React.createClass({
+        getInitialState: function() {
+            return {
+                name: '',
+                password: '',
+                gender: '',
+            }
+        },
+        handleChange: function(name, event) {
+            var newState = {}
+            newState[name] = event.target.value
+            this.setState(newState)
+        },
+        handleSelect: function(event) {
+            this.setState({gender: event.target.value})
+        },
+        render: function() {
+            console.log(this.state)
+            return <form>
+            <input type="text" placeholder="请输入用户名" onChange={this.handleChange.bind(this, 'name')} />
+            <input type="password" placeholder="请输入密码" onChange={this.handleChange.bind(this, 'password')} />
+            <GenderSelect handleSelect={this.handleSelect}></GenderSelect>
+            </form>
+        }
+    })
+    React.render(<SignupForm></SignupForm>, document.body);
+</script>
+onChange={this.handleChange.bind(this, 'name')}  bind是es5中新加上的，后面的字符串是传递给函数的参数。
+这样两个onChange事件共用一个事件处理函数。用参数来区分。
 =================================================
 <!DOCTYPE html>
 <html>
