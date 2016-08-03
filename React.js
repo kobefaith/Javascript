@@ -498,7 +498,7 @@ handleChange:function(event){//event是事件对象
     React.render(<SignupForm></SignupForm>, document.body);
 </script>
 onChange={this.handleChange.bind(this, 'name')}  bind是es5中新加上的，后面的字符串是传递给函数的参数。
-这样两个onChange事件共用一个事件处理函数。用参数来区分。
+这样两个onChange事件共用一个事件处理函数。实现代码复用，用参数来区分。
 =================================================
 <!DOCTYPE html>
 <html>
