@@ -1413,12 +1413,11 @@ function drop(ev)
 </script>
 </head>
 <body>
-
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-  <img src="/i/w3school_logo_black.gif" draggable="true" ondragstart="drag(event)" id="drag1" />
-</div>
-<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="/i/w3school_logo_black.gif" draggable="true" ondragstart="drag(event)" id="drag1" />
+    </div>
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</body>   
       
     
     
