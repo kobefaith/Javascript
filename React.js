@@ -499,6 +499,54 @@ handleChange:function(event){//event是事件对象
 </script>
 onChange={this.handleChange.bind(this, 'name')}  bind是es5中新加上的，后面的字符串是传递给函数的参数。
 这样两个onChange事件共用一个事件处理函数。实现代码复用，用参数来区分。
+Mixin
+<script type="text/jsx">
+    // var BindingExample = React.createClass({
+    //     getInitialState: function() {
+    //         return {
+    //             text: ''
+    //         }
+    //     },
+    //     handleChange: function(event) {
+    //         this.setState({text: event.target.value})
+    //     },
+    //     render: function() {
+    //         return <div>
+    //             <input type="text" placeholder="请输入内容" onChange={this.handleChange} />
+    //             <p>{this.state.text}</p>
+    //         </div>
+    //     }
+    // })
+    var BindingMixin = {
+        handleChange: function(key) {
+            var that = this
+            var newState = {}
+            return function(event) {
+                
+                newState[key] = event.target.value
+                that.setState(newState)
+            }
+        }
+    }
+    var BindingExample = React.createClass({
+        mixins: [React.addons.LinkedStateMixin],
+        getInitialState: function() {
+            return {
+                text: '',
+                comment: '',
+            }
+        },
+        render: function() {
+            return <div>
+                <input type="text" placeholder="请输入内容" valueLink={this.linkState('text')} />
+                <textarea valueLink={this.linkState('comment')}></textarea>
+                <p>{this.state.text}</p>
+                <p>{this.state.comment}</p>
+            </div>
+        }
+    })
+    React.render(<BindingExample></BindingExample>, document.body);
+</script>
 =================================================
 <!DOCTYPE html>
 <html>
