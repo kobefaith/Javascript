@@ -26,3 +26,26 @@ var DividerClass = React.createClass({
 		);
 	}
 });
+
+<button className="btn btn-save" onClick={this.handleeSaveclick}>Save</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
