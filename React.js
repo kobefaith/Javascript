@@ -499,37 +499,29 @@ handleChange:function(event){//event是事件对象
 </script>
 onChange={this.handleChange.bind(this, 'name')}  bind是es5中新加上的，后面的字符串是传递给函数的参数。
 这样两个onChange事件共用一个事件处理函数。实现代码复用，用参数来区分。
-Mixin
-<script type="text/jsx">
-    // var BindingExample = React.createClass({
-    //     getInitialState: function() {
-    //         return {
-    //             text: ''
-    //         }
-    //     },
-    //     handleChange: function(event) {
-    //         this.setState({text: event.target.value})
-    //     },
-    //     render: function() {
-    //         return <div>
-    //             <input type="text" placeholder="请输入内容" onChange={this.handleChange} />
-    //             <p>{this.state.text}</p>
-    //         </div>
-    //     }
-    // })
-    var BindingMixin = {
+Mixin是一组方法。
+目的是横向抽离出组件的相似代码。
+优点是：
+代码复用：抽离出通用代码，减少开发成本，提高开发效率
+即插即用：可以直接使用许多现有的Mixin来编写自己的组件
+适应性强：改动一次代码，影响多个组件。
+缺点：
+编写难度高：Mixin可能被用在各种环境中，兼容多种环境就需要更多的逻辑和代码，通用的代价是提高复杂度。
+降低代码的可读性：组件的优势在于将逻辑和界面直接结合在一起，Mixin本质上会分散逻辑，理解起来难度更大。
+<script>
+var BindingMixin = {
         handleChange: function(key) {
-            var that = this
+            var that = this//函数中嵌套函数的话 ，函数中的this会指向全局
             var newState = {}
-            return function(event) {
-                
+            return function(event) {                
                 newState[key] = event.target.value
                 that.setState(newState)
             }
         }
     }
     var BindingExample = React.createClass({
-        mixins: [React.addons.LinkedStateMixin],
+        //mixins: [React.addons.LinkedStateMixin],
+        mixins: [BindingMixin],//指定使用哪个Mixin,Mixin里面的东西会变成组件中的东西，handleChange 会变成组件中的函数。
         getInitialState: function() {
             return {
                 text: '',
@@ -538,8 +530,8 @@ Mixin
         },
         render: function() {
             return <div>
-                <input type="text" placeholder="请输入内容" valueLink={this.linkState('text')} />
-                <textarea valueLink={this.linkState('comment')}></textarea>
+                <input type="text" placeholder="请输入内容" onChange={this.handleChange('text')}/>
+                <textarea onChange={this.handleChange('comment')}></textarea>
                 <p>{this.state.text}</p>
                 <p>{this.state.comment}</p>
             </div>
