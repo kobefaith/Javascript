@@ -539,6 +539,64 @@ var BindingMixin = {
     })
     React.render(<BindingExample></BindingExample>, document.body);
 </script>
+不可控组件与可控组件
+<input type="text" defaultValue="HelloWorld"/>
+defaultValue 不可更改，是不可控的。如果要得到defaultValue的话需要得到dom来操作，不能通过state来操作。
+<input type="text" defaultValue={this.state.value}/>
+var inputValue=this.state.value
+defaultValue是可以设置的，所以是可以控制的。
+组件可控的好处是：
+符合react 的数据流
+数据存储在state中，便于使用
+便于对数据进行处理（使用setstate来处理数据）
+不可控组件的实例：
+<script>
+    var MyForm = React.createClass({ 
+        submitHandler: function (event) {
+            event.preventDefault();
+            var helloTo = React.findDOMNode(this.refs.helloTo).value; 
+            alert(helloTo);
+        },
+        render: function () {
+            return <form onSubmit={this.submitHandler}> 
+                <input
+                    ref="helloTo"
+                    type="text"
+                    defaultValue="Hello World!" />
+                <br />
+                <button type="submit">Speak</button>
+            </form>;
+        } 
+    });
+    React.render(<MyForm></MyForm>, document.body);
+</script>
+可控组件的实例：
+<script type="text/jsx">
+    var MyForm = React.createClass({ 
+        getInitialState: function () {
+            return {
+                helloTo: "Hello World!"
+            }; 
+        },
+        handleChange: function (event) { 
+            this.setState({
+                helloTo: event.target.value
+            });
+        },
+        submitHandler: function (event) {
+            event.preventDefault();
+            alert(this.state.helloTo); 
+        },
+        render: function () {
+            return <form onSubmit={this.submitHandler}>
+                <input type="text" value={this.state.helloTo} onChange={this.handleChange} />
+                <br />
+                <button type="submit">Speak</button>
+            </form>;
+            } 
+        });
+    React.render(<MyForm></MyForm>, document.body);
+</script>
 =================================================
 <!DOCTYPE html>
 <html>
