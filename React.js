@@ -597,6 +597,131 @@ defaultValue是可以设置的，所以是可以控制的。
         });
     React.render(<MyForm></MyForm>, document.body);
 </script>
+常用表单元素：
+<label htmlFor="name">Name</label> 
+<input> <textarea> <select>
+表单元素实例：
+<script type="text/jsx">
+    var MyForm = React.createClass({ 
+        getInitialState: function () {
+            return {
+                username: "",
+                gender: "man",
+                checked: true
+            }; 
+        },
+        handleUsernameChange: function (event) { 
+            this.setState({
+                username: event.target.value
+            });
+        },
+        handleGenderChange: function (event) { 
+            this.setState({
+                gender: event.target.value
+            });
+        },
+        handleCheckboxChange: function (event) { 
+            this.setState({
+                checked: event.target.checked
+            });
+        },
+        submitHandler: function (event) {
+            event.preventDefault();
+            console.log(this.state); 
+        },
+        render: function () {
+            return <form onSubmit={this.submitHandler}>
+                <label htmlFor="username">请输入用户名:</label>
+                <input id="username" type="text" value={this.state.username} onChange={this.handleUsernameChange} />
+                <br />
+                <select value={this.state.gender} onChange={this.handleGenderChange}> 
+                    <option value="man">男</option>
+                    <option value="woman">女</option>
+                </select>
+                <br />
+                <label htmlFor="checkbox">同意用户协议</label>
+                <input id="checkbox" type="checkbox" value="agree" checked={this.state.checked} onChange={this.handleCheckboxChange} />
+                <button type="submit">注册</button>
+            </form>;
+            } 
+        });
+    React.render(<MyForm></MyForm>, document.body);
+</script>
+事件处理函数两种复用方式：
+bind复用和name复用
+<script type="text/jsx">
+    var MyForm = React.createClass({ 
+        getInitialState: function () {
+            return {
+                username: "",
+                gender: "man",
+                checked: true
+            }; 
+        },
+        handleChange: function (name, event) { //bind复用的实例
+            var newState = {};
+            newState[name] = name == "checked" ? event.target.checked : event.target.value; //用三元表达式来实现条件判断
+            this.setState(newState);
+        },
+        submitHandler: function (event) {
+            event.preventDefault();
+            console.log(this.state); 
+        },
+        render: function () {
+            return <form onSubmit={this.submitHandler}>
+                <label htmlFor="username">请输入用户名:</label>
+                <input id="username" type="text" value={this.state.username} onChange={this.handleChange.bind(this, "username")} />//bind方式实现复用
+                <br />
+                <select value={this.state.gender} onChange={this.handleChange.bind(this, "gender")}> 
+                    <option value="man">男</option>
+                    <option value="woman">女</option>
+                </select>
+                <br />
+                <label htmlFor="checkbox">同意用户协议</label>
+                <input id="checkbox" type="checkbox" value="agree" checked={this.state.checked} onChange={this.handleChange.bind(this, "checked")} />
+                <button type="submit">注册</button>
+            </form>;
+            } 
+        });
+    React.render(<MyForm></MyForm>, document.body);
+</script>
+<script type="text/jsx">
+    var MyForm = React.createClass({ 
+        getInitialState: function () {
+            return {
+                username: "",
+                gender: "man",
+                checked: true
+            }; 
+        },
+        handleChange: function (event) {//name方式复用 
+            var newState = {};
+            newState[event.target.name] = event.target.name == "checked" ? event.target.checked : event.target.value;//增加name属性来实现name复用
+            this.setState(newState);
+        },
+        submitHandler: function (event) {
+            event.preventDefault();
+            console.log(this.state); 
+        },
+        render: function () {
+            return <form onSubmit={this.submitHandler}>
+                <label htmlFor="username">请输入用户名:</label>
+                <input name="username" id="username" type="text" value={this.state.username} onChange={this.handleChange} />//元素必须增加name属性
+                <br />
+                <select name="gender" value={this.state.gender} onChange={this.handleChange}> 
+                    <option value="man">男</option>
+                    <option value="woman">女</option>
+                </select>
+                <br />
+                <label htmlFor="checkbox">同意用户协议</label>
+                <input id="checkbox" name="checked" type="checkbox" value="agree" checked={this.state.checked} onChange={this.handleChange} />
+                <button type="submit">注册</button>
+            </form>;
+            } 
+        });
+    React.render(<MyForm></MyForm>, document.body);
+</script>
+
 =================================================
 <!DOCTYPE html>
 <html>
