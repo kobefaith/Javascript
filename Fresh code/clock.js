@@ -28,7 +28,31 @@ var DividerClass = React.createClass({
 });
 
 <button className="btn btn-save" onClick={this.handleeSaveclick}>Save</button>
-
+var SurveyEditer = React.createClass({
+	render:function(){
+		return(
+		   <div className='survey-editor'>
+		     <div className='row'>
+			    <aside className='sidebar col-md-3'>
+				   <h2>Modules</h2>
+				   <DraggableQuestions/>
+				</aside>
+				<div className='survey-canvas col-md-9'>
+				  <div 
+				      className={'drop-zone well well-drop-zone'}
+					  onDragOver={this.handleDragOver}
+					  onDragEnter={this.handleDragEnter}
+					  onDragLeave={this.handleDragLeave}
+					  onDrop={this.handleDrop}
+				   >
+				   Drag and drop a module from the left
+				   </div>
+				</div>
+			</div>
+		</div>					  
+		);
+	}
+});
 
 
 
