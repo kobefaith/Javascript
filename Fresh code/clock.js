@@ -53,7 +53,10 @@ var SurveyEditer = React.createClass({
 		);
 	}
 });
-
+this.setState({title:"fantastic survey 2.0"});
+handleComplete:function(event){
+	this.callMethodOnProps('onCompleted',event.target.value);
+}
 
 
 
