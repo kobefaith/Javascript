@@ -58,7 +58,18 @@ handleComplete:function(event){
 	this.callMethodOnProps('onCompleted',event.target.value);
 }
 
-
+var AnswerRadioInput = React.createClass({
+	render: function(){
+		return (
+		   <div className="radio">
+		      <label>
+		           <input type="radio" />
+			   	Label Text 				
+		      </label>
+			</div>
+		);
+	}
+});
 
 
 
