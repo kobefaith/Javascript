@@ -1419,7 +1419,7 @@ function drop(ev)
     <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 </body>   
       
-    
+ appcelerator可以用js来开发跨平台的安卓和IOS应用。它可以做到一套代码跑不同的平台。   
     
     
     
