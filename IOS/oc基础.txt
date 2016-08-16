@@ -1,1 +1,54 @@
 OC 兼容c语音，oc源文件的后缀是.m ，oc与c++混写的源文件的后缀是.mm
+类的定义
+@interface SimpleClass :NSObject
+@end
+类的属性声明
+@interface Person:NSObject
+@property NSString *firstName;
+@property MSString *lastName;
+@end
+
+@property NSNumber *yearOfBirth;
+@property int yearOfBirth;
+@property (readonly) NSString *firstName;
+
+减号方法（普通方法又称对象方法）声明
+@interface Person:NSObject
+-(void)someMethod;
+-(void)someMethodWithValue:(SomeType)value;
+@end
+加号方法（类方法，又称静态方法）声明
+@interface Person:NSObject
+
++(id)string;
++(id)stringWithString:(NSString *)aString;
+@end
+
+类的实现
+#import "XYZPerson.h"
+@implementation XYZPerson
+-(void)sayHello{
+    NSLog(@"Hello,World");
+}
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
