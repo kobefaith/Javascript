@@ -31,6 +31,16 @@ OC 兼容c语音，oc源文件的后缀是.m ，oc与c++混写的源文件的后
     NSLog(@"Hello,World");
 }
 @end
+ id是万能数据类型
+ int main(int argc,const char *argv[]){
+     @autoreleasepool{
+	    int i = 0;
+		a:
+		  i++;
+		  NSLog(@"i 的值是%d",i);
+		  if(i<5) goto a;
+	 }
+ }
 
 
 
