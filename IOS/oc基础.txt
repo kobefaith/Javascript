@@ -42,11 +42,92 @@ OC 兼容c语音，oc源文件的后缀是.m ，oc与c++混写的源文件的后
 	 }
  }
 
+ oc中的继承
+int main(int argc,const char *argv[]){
+   @autoreleasepool{
+    /*
+	 [类名  方法名]
+	 [对象名  方法名]
+	 alloc  为对象分配内存空间
+	 init  进行初始化操作
+	*/
+       People *p1 = [[People alloc ]init];
+	   People *p3 = [People new];
+	   NSLog(@"p1 - %p",p1);//打印指针的地址
+   }
+   return 0;
+   
+}
+类内使用成员变量，类外使用属性
+@interface People :NSObject
+{ 
+     NSString *_peopleName;
+	 int _peopleAge;
+	 int _peopleSex;
 
+}
+//属性为了让类外可以访问成员变量
+//属性就是成员变量的外部接口
+@property(nonatomic,strong)NSString *peopleName;//声明属性
+@end
+如果没有属性的话要访问成员变量要这样
+-(void)setName:(NSString *)name
+{
+    _peopleName = name;
+}
+-(NSString *)getName
+{
+    return _peopleName;
+}
+调用的时候这样
+People *p1 = [[People alloc ]init];
+[p1 setName:@"李四"];
+NSLog(@"peopleName - %@",[p1 getName]);
 
+@interface People :NSObject
+/*
+  1 声明方法
+  -代表对象方法 ,用对象名来调用
+  +代表类方法，用类名来调用
+  加号方法和减号方法可以互相调用，当然需要类名和实例化变量
+  加号方法不能调用成员变量
+  2 (int) 函数的返回值类型
+  3 :(int)x 代表有参数 int是参数类型  x是参数名
+*/
+- (void) report;
++ (void) report1;
+- (int) showWithA:(int)a;
+- (int) showWithA:(int)a andB:(int)b ;
+@end
+@implementation People
+static NSString *_peopleName1;
+- (void) report
+{
+    NSLog(@"-号report");
+	//_peopleName = @"123";
+}
++ (void) report1
+{
+    NSLog(@"+号:report1");
+	//无法调用成员变量，只能调用静态变量
+	_peopleName1 = @"张三";
+}
+- (int)showWithA:(int)a
+{
+    return a;
+}
+- (int)showWithA:(int)a andB:(int)b
+{
+    return a+b;
+}
+@end
+调用 
+People *p1 = [[People alloc ]init];
+[p1 report];
+[People report1];//用类名来调用类方法
 
-
-
+int a1 = [p1 showWithA:10];
+int a2 = [p1 showWithA:10 andB:20];
 
 
 
