@@ -69,6 +69,8 @@ int main(int argc,const char *argv[]){
 //属性为了让类外可以访问成员变量
 //属性就是成员变量的外部接口
 @property(nonatomic,strong)NSString *peopleName;//声明属性
+老版本的xcode中需要加上 @synthesize peopleName = _peopleName ,这样才能实现属性和成员变量的绑定，新版本不需要。
+
 @end
 如果没有属性的话要访问成员变量要这样
 -(void)setName:(NSString *)name
@@ -93,6 +95,8 @@ NSLog(@"peopleName - %@",[p1 getName]);
   加号方法不能调用成员变量
   2 (int) 函数的返回值类型
   3 :(int)x 代表有参数 int是参数类型  x是参数名
+  4:函数名 及时去掉函数类型、去掉参数类型、去掉参数名剩下的部分，包括冒号
+  showWithA: andB:
 */
 - (void) report;
 + (void) report1;
