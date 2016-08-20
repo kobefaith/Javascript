@@ -156,6 +156,19 @@ int a2 = [p1 showWithA:10 andB:20];
    }
    return self;
 }
+成员变量访问修饰符的问题
+默认是受保护
+公有：在类内类外都可以使用并且可以被继承
+受保护：在类内可以使用，在类外无法调用并且可以被继承。
+私有：类内可以使用，类外无法调用并且不可以被继承。
+框架权限：在框架内相当于受保护，在框架外相当于私有。
+@public 
+int _classInt;
+在类外使用的时候 要用mc->_classInt = 100;//不能使用点 mc._classInt。
+@private
+@protected
+@package
+
 
 
 
