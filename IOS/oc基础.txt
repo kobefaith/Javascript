@@ -132,6 +132,52 @@ People *p1 = [[People alloc ]init];
 
 int a1 = [p1 showWithA:10];
 int a2 = [p1 showWithA:10 andB:20];
+初始化方法
+-(id) init;
+-(instancetype)init; //两种方法都可以instancetype是与当前类一样的类型，id
+方法有些时候回出现错误，所以一般用instancetype方法。
+-(instancetype)init
+{
+   self = [super init];
+   if(self){
+       _peopleName = @"Visitor";
+	   _peopleAge = 30;
+   }
+   return self;
+}
+自定义初始化方法
+-(instancetype) initWithPeopleName:(NSString *)peopleName andPeopleAge:(int)peopleAge
+{
+   self = [super init];
+   if(self)
+   {
+       _peopleName = peopleName;
+	   _peopleAge = peopleAge;
+   }
+   return self;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
