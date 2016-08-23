@@ -173,6 +173,25 @@ int _classInt;
 oc中没有多继承，要实现多继承要使用协议
 
 
+http://www.jianshu.com/p/a4d519e4e0d5
+
+http://blog.csdn.net/libaineu2004/article/details/45913363
+
+http://blog.csdn.net/jiangwei0910410003/article/details/41923401
+
+http://www.jianshu.com/p/2de9c776f226
+
+http://blog.csdn.net/totogo2010/article/details/8013316
+
+http://blog.csdn.net/totogo2010/article/details/8010231
+
+http://www.jianshu.com/p/4dfca35144cb
+
+http://www.jianshu.com/p/7e02fa48d7bc
+
+http://www.tuicool.com/articles/MNjamm
+
+
 
 
 
