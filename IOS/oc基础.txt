@@ -173,7 +173,26 @@ int _classInt;
 oc中没有多继承，要实现多继承要使用协议
 #import "MyClass.h"
 @interface MySubClass : MyClass  //继承
+父类中的私有变量我们是无法继承使用的
+如果父类的方法中使用了私有变量，而我们子类继承了父类的这个方法，那私有变量的操作以及打印我们是可以看到的
+但是我们不可以在子类中直接调用私有变量。
+.h文件中没有声明的方法不能在类外使用，也不能被继承。
+多态，OC中不支持方法重载
 
+@interface BlackPrinter : Printer
+
+@end
+@implementation BlackPrinter 
+-(void)print
+{
+  [super print];//调用父类方法
+  [self print];//调用当前类方法，这样会导致死循环
+  NSLog(@"黑白打印机");
+}
+@end
+
+Printer *printer = [ColorPrinter alloc] init];
+[printer print];//父类指针指向子类对象，调用子类的方法
 http://www.jianshu.com/p/a4d519e4e0d5
 
 http://blog.csdn.net/libaineu2004/article/details/45913363
