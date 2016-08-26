@@ -190,7 +190,7 @@ oc中没有多继承，要实现多继承要使用协议
   NSLog(@"黑白打印机");
 }
 @end
-
+NSLog(@"Hello %@",name);%@表示打印的是NS对象 比如NSObject NSString等。
 Printer *printer = [ColorPrinter alloc] init];
 [printer print];//父类指针指向子类对象，调用子类的方法
 http://www.jianshu.com/p/a4d519e4e0d5
