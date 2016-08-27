@@ -193,6 +193,12 @@ oc中没有多继承，要实现多继承要使用协议
 NSLog(@"Hello %@",name);%@表示打印的是NS对象 比如NSObject NSString等。
 Printer *printer = [ColorPrinter alloc] init];
 [printer print];//父类指针指向子类对象，调用子类的方法
+==================================极客学院笔记===========================================
+int main(int argc,char * argv[])
+{
+    NSString *str = [NSString stringWithFromat:@"Hello %d",100];//OC 方法调用
+	NSLog(@"%@",str);
+}
 http://www.jianshu.com/p/a4d519e4e0d5
 
 http://blog.csdn.net/libaineu2004/article/details/45913363
