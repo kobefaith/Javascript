@@ -199,6 +199,7 @@ int main(int argc,char * argv[])
     NSString *str = [NSString stringWithFromat:@"Hello %d",100];//OC 方法调用
 	NSLog(@"%@",str);
 }
+oc中可以使用include 来引入c语音的头文件，也可以使用import来引入c语音的头文件
 http://www.jianshu.com/p/a4d519e4e0d5
 
 http://blog.csdn.net/libaineu2004/article/details/45913363
