@@ -257,7 +257,41 @@ duration:(NSTimeInterval)duration
 
 说明：当StatusBar框变化完成后执行
 
+oc中的协议、
+IPeople.h中定义协议
+#import <Foundation/Foundation.h>
 
+@protocol IPeople <NSObject>
+
+-(int)getAge;
+-(NSString*)getName;
+
+@end
+man.h中
+@interface Man : NSObject<IPeople>{
+    int _age;
+}
+
+-(id)init;
+-(NSString*)getName;
+-(int)getAge;
+
+@property id<ManDelegate> delegate;
+
+@end
+
+man.m中实现协议
+@implementation Man
+-(int)getAge{
+    return 40;
+}
+
+-(NSString*)getName{
+    return @"ZhangSan";
+}
+
+
+@end
 
 http://www.jianshu.com/p/a4d519e4e0d5
 
