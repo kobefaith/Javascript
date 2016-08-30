@@ -258,7 +258,11 @@ duration:(NSTimeInterval)duration
 说明：当StatusBar框变化完成后执行
 
 
+IOS学习资源 
+http://www.jianshu.com/p/b41b61ce5e66
 
+
+========================================
 http://www.jianshu.com/p/a4d519e4e0d5
 
 http://blog.csdn.net/libaineu2004/article/details/45913363
