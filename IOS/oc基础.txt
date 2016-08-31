@@ -318,7 +318,73 @@ Customer.m中
 }
 
 @end
+协议的作用是筛选类
+//  TCPProtocol.h  定义一个协议，比如是tcp协议
 
+#import <Foundation/Foundation.h>
+
+@protocol TCPProtocol <NSObject>
+
+@required
+
+// 获取源端口号
+- (NSInteger)sourcePort;
+
+// 获取目的地端口号
+- (NSInteger)destinationPort;
+
+@end
+
+//  Model.h 声明遵守这个协议，这样Model类就会被筛选出来
+#import <Foundation/Foundation.h>
+#import "TCPProtocol.h"
+
+@interface Model : NSObject <TCPProtocol>
+
+@end
+协议函数的实现
+#import "Model.h"
+@implementation Model
+
+// 获取源端口号
+- (NSInteger)sourcePort {
+
+    return 10;
+}
+
+// 获取目的地端口号
+- (NSInteger)destinationPort {
+
+    return 20;
+}
+
+@end
+
+使用协议的类的声明
+#import "TCPProtocol.h"
+// 经销商
+@interface ViewController () <CustomerDelegate>
+
+@property (nonatomic) NSInteger  sourcePort;
+@property (nonatomic) NSInteger  destinationPort;
+
+@end
+
+@implementation ViewController
+- (void)accessTCPData:(id <TCPProtocol>)data {  //传入符合协议的数据
+
+    self.sourcePort      = [data sourcePort];
+    self.destinationPort = [data destinationPort];
+}
+@end
+
+
+
+
+
+
+
+     
 IOS学习资源 
 http://www.jianshu.com/p/b41b61ce5e66
 
