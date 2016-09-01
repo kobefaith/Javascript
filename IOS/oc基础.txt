@@ -377,9 +377,45 @@ Customer.m中
     self.destinationPort = [data destinationPort];
 }
 @end
+工厂方法
+#import <Foundation/Foundation.h>
 
+@interface People : NSObject{
+    int _age;
+    NSString *_name;
+}
 
++(People*)peopleWithAge:(int)age andName:(NSString*)name; //定义一个工厂函数
 
+-(id)initWithAge:(int)age andName:(NSString*)name; //定义初始化函数
+-(int)getAge;
+-(NSString*)getName;
+
+@end
+
+@implementation People
++(People*)peopleWithAge:(int)age andName:(NSString *)name{  //工厂函数里面生成并初始化对象
+    return [[People alloc] initWithAge:age andName:name];
+}
+
+- (instancetype)initWithAge:(int)age andName:(NSString *)name  //对象初始化赋值
+{
+    self = [super init];
+    if (self) {
+        _age = age;
+        _name = name;
+    }
+    return self;
+}
+
+main.m
+int main(int argc, char * argv[])
+{
+
+    People *p = [People peopleWithAge:20 andName:@"XiaoLi"];
+    
+    NSLog(@"p.age %d,p.name %@",[p getAge],[p getName]);
+}
 
 
 
