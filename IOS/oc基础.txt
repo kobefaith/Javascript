@@ -417,6 +417,13 @@ int main(int argc, char * argv[])
     NSLog(@"p.age %d,p.name %@",[p getAge],[p getName]);
 }
 
+oc string
+
+NSString *str = @"Hello OC";
+NSString *str1 = [NSString stringWithFormat:@"Number is %d",100];//格式化字符串
+NSString *str2 = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://jikexueyuan.com"] encoding:NSUTF8StringEncoding error:nil];
+
+NSLog(@"%@",str2);
 
 
 
