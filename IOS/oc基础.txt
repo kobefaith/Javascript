@@ -421,9 +421,19 @@ oc string
 
 NSString *str = @"Hello OC";
 NSString *str1 = [NSString stringWithFormat:@"Number is %d",100];//格式化字符串
-NSString *str2 = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://jikexueyuan.com"] encoding:NSUTF8StringEncoding error:nil];
+NSString *str2 = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://jikexueyuan.com"] encoding:NSUTF8StringEncoding error:nil]; //加载网页
 
 NSLog(@"%@",str2);
+oc数组
+NSArray *arr = @[@"hello",@"world"];//也可以用下面的方法创建
+NSArray *arr = [NSArray arrayWithObjects:@"Hello",@"world",nil];// 必须以nil来结尾
+NSArray *arr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"]];
+//读取文件中的内容，文件名是data.plist   
+
+for(int i = 0; i < [arr count];i++){
+  NSLog(@"%@",[arr objectAtIndex:i]);
+}
+
 
 
 
