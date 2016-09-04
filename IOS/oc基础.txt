@@ -485,7 +485,10 @@ NSLog(@"%@",[dict objectForKey:@"name"]);
 NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:
                     [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"]];//读取data.plist的内容
 
-
+oc可变字典
+NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+[dict setObject:@"jikexueyuan" forKey:@"name"];
+NSLog(@"%@",[dict objectForKey:@"name"]);
      
 IOS学习资源 
 http://www.jianshu.com/p/b41b61ce5e66
