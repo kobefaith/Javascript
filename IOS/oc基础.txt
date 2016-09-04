@@ -471,8 +471,19 @@ NSArray *arr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForRe
 for(int i = 0; i < [arr count];i++){
   NSLog(@"%@",[arr objectAtIndex:i]);
 }
-
-
+oc动态数组
+NSMutableArray *arr = [[NSMutableArray alloc] init];
+for (int i = 0; i < 100; i++){
+    [arr addObject:[NSString stringWithFormat:@"Item %d",i]];
+}
+NSLog(@"%@",arr);
+oc 字典
+NSDictionary *dict = @{@"name":@"zhangsan",@"sex":@"male"};
+NSLog(@"%@",dict);
+NSLog(@"%@",[dict objectForKey:@"name"]);
+通过字典来读取plist文件
+NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:
+                    [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"]];//读取data.plist的内容
 
 
      
