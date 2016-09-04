@@ -292,7 +292,195 @@ man.m中实现协议
 
 
 @end
+=======
+代理模式：
+//  Customer.h
+#import <Foundation/Foundation.h>
+@class Customer;    //提前声明customer 否则在代理模式定义的时候回出错。
 
+@protocol CustomerDelegate <NSObject>//声明代理
+
+@required    //必须实现的用require  @optional 是可以实现 可以不实现的。
+- (void)custmer:(Customer *)custmer buyItemCount:(NSInteger)count; //代理的函数中需要传入customer对象，
+>>>>>>> c2a615dfae06db210c62231cefffe35fb28eb6bc
+
+@end
+
+@interface Customer : NSObject
+
+//声明一个代理 ，weak是防止循环引用
+@property (nonatomic, weak) id <CustomerDelegate> delegate;
+
+// 顾客买卖行为，需要将count参数传递给经销商，以前需要在这个函数中调用经销商的函数来传递。有了代理后就直接通过代理调用了。
+- (void)buyItemCount:(NSInteger)count;
+
+@end
+Customer.m中
+#import "Customer.h"
+
+@implementation Customer
+
+- (void)buyItemCount:(NSInteger)count {
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(custmer:buyItemCount:)]) {//判断代理是否存在以及代理是否支持函数buyItemCount 
+        
+        [self.delegate custmer:self buyItemCount:count]; //通过代理调用函数来传递count
+    }
+}
+
+@end
+经销商类 ViewController.m中
+#import "ViewController.h"
+#import "Customer.h"
+
+// 经销商
+@interface ViewController () <CustomerDelegate>   // 使用代理
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
+    Customer *customer  = [[Customer alloc] init];
+    customer.delegate   = self;  //将经销商指定为客户的代理
+    
+    [customer buyItemCount:5];//执行客户的函数
+}
+
+- (void)custmer:(Customer *)custmer buyItemCount:(NSInteger)count {
+
+    NSLog(@"%ld", (long)count);
+}
+
+@end
+协议的作用是筛选类
+//  TCPProtocol.h  定义一个协议，比如是tcp协议
+
+#import <Foundation/Foundation.h>
+
+@protocol TCPProtocol <NSObject>
+
+@required
+
+// 获取源端口号
+- (NSInteger)sourcePort;
+
+// 获取目的地端口号
+- (NSInteger)destinationPort;
+
+@end
+
+//  Model.h 声明遵守这个协议，这样Model类就会被筛选出来
+#import <Foundation/Foundation.h>
+#import "TCPProtocol.h"
+
+@interface Model : NSObject <TCPProtocol>
+
+@end
+协议函数的实现
+#import "Model.h"
+@implementation Model
+
+// 获取源端口号
+- (NSInteger)sourcePort {
+
+    return 10;
+}
+
+// 获取目的地端口号
+- (NSInteger)destinationPort {
+
+    return 20;
+}
+
+@end
+
+使用协议的类的声明
+#import "TCPProtocol.h"
+// 经销商
+@interface ViewController () <CustomerDelegate>
+
+@property (nonatomic) NSInteger  sourcePort;
+@property (nonatomic) NSInteger  destinationPort;
+
+@end
+
+@implementation ViewController
+- (void)accessTCPData:(id <TCPProtocol>)data {  //传入符合协议的数据
+
+    self.sourcePort      = [data sourcePort];
+    self.destinationPort = [data destinationPort];
+}
+@end
+工厂方法
+#import <Foundation/Foundation.h>
+
+@interface People : NSObject{
+    int _age;
+    NSString *_name;
+}
+
++(People*)peopleWithAge:(int)age andName:(NSString*)name; //定义一个工厂函数
+
+-(id)initWithAge:(int)age andName:(NSString*)name; //定义初始化函数
+-(int)getAge;
+-(NSString*)getName;
+
+@end
+
+@implementation People
++(People*)peopleWithAge:(int)age andName:(NSString *)name{  //工厂函数里面生成并初始化对象
+    return [[People alloc] initWithAge:age andName:name];
+}
+
+- (instancetype)initWithAge:(int)age andName:(NSString *)name  //对象初始化赋值
+{
+    self = [super init];
+    if (self) {
+        _age = age;
+        _name = name;
+    }
+    return self;
+}
+
+main.m
+int main(int argc, char * argv[])
+{
+
+    People *p = [People peopleWithAge:20 andName:@"XiaoLi"];
+    
+    NSLog(@"p.age %d,p.name %@",[p getAge],[p getName]);
+}
+
+oc string
+
+NSString *str = @"Hello OC";
+NSString *str1 = [NSString stringWithFormat:@"Number is %d",100];//格式化字符串
+NSString *str2 = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://jikexueyuan.com"] encoding:NSUTF8StringEncoding error:nil]; //加载网页
+
+NSLog(@"%@",str2);
+oc数组
+NSArray *arr = @[@"hello",@"world"];//也可以用下面的方法创建
+NSArray *arr = [NSArray arrayWithObjects:@"Hello",@"world",nil];// 必须以nil来结尾
+NSArray *arr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"]];
+//读取文件中的内容，文件名是data.plist   
+
+for(int i = 0; i < [arr count];i++){
+  NSLog(@"%@",[arr objectAtIndex:i]);
+}
+
+
+
+
+     
+IOS学习资源 
+http://www.jianshu.com/p/b41b61ce5e66
+
+
+========================================
 http://www.jianshu.com/p/a4d519e4e0d5
 
 http://blog.csdn.net/libaineu2004/article/details/45913363
