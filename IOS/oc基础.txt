@@ -489,7 +489,25 @@ oc可变字典
 NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
 [dict setObject:@"jikexueyuan" forKey:@"name"];
 NSLog(@"%@",[dict objectForKey:@"name"]);
+oc代码块
+代码块就相当于函数指针
+int (^max)(int,int);
+typedef void (^SayHello)();
 
+int main(int argc, char * argv[])
+{
+    max = ^(int a,int b){
+        return a>b?a:b;
+    }; 
+    
+    printf("max is %d\n",max(2,3));    
+    
+    SayHello sh = ^(){
+        printf("Hello ObjC block\n");
+    };
+    
+    sh();
+}
 
 
 ===========IOS 开发指南==============================  
@@ -499,7 +517,8 @@ NSLog(@"%@",[dict objectForKey:@"name"]);
 视图创建的时候：viewDidLoad
 视图可见的前后分别调用viewWillAppear  viewDidAppear 
 视图不可见前后分别调用  viewWillDisappear  viewDidDisappear   
-系统低内存的时候分别调用 didReceiveMemoryWarning     viewDidUnload 
+系统低内存的时候分别调用 didReceiveMemoryWarning     viewDidUnload //ios6以后不支持viewDidUnload
+didReceiveMemoryWarning的主要职能是释放内存
 
 IOS学习资源 
 http://www.jianshu.com/p/b41b61ce5e66
