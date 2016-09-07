@@ -508,7 +508,9 @@ int main(int argc, char * argv[])
     
     sh();
 }
-
+oc类型检测
+A * a = [[A alloc] init];    
+NSLog(@"%d",[a isKindOfClass:[B class]]);
 
 ===========IOS 开发指南==============================  
 一般而言，一个工程中可以有多个xib文件，一个xib文件对应着一个视图控制器和多个视图。而使用故事板时，一个工程只需要一个主故事板文件就可以了。
