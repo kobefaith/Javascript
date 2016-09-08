@@ -521,7 +521,50 @@ NSLog(@"%d",[a isKindOfClass:[B class]]);
 视图不可见前后分别调用  viewWillDisappear  viewDidDisappear   
 系统低内存的时候分别调用 didReceiveMemoryWarning     viewDidUnload //ios6以后不支持viewDidUnload
 didReceiveMemoryWarning的主要职能是释放内存
+===========================================
+oc设计模式
+单例模式：
+Cocoa touch 框架中，有UIApplication  UIAccelerometer   NSUserDefaults  NSNotificationCenter 等单例
+Cocoa 框架中有NSFileManager  NSBundle  NSWorkspace  NSApplication  等单例
+单例模式的实现方式有：
+@implementation UserInfoManagerCenter
 
+//+ (void)initialize { //在初始化时函数中实现   不推荐
+//    
+//    static UserInfoManagerCenter *center = nil;
+//    
+//    if (self == [UserInfoManagerCenter class]) {
+//        
+//        center = [[UserInfoManagerCenter alloc] init];
+//    }
+//}
+
+//+ (instancetype)managerCenter {//用静态方法来实现，有缺陷，有可能会产生两个实例
+//
+//    static UserInfoManagerCenter *center = nil;
+//    
+//    if (center == nil) {
+//        
+//        center = [[UserInfoManagerCenter alloc] init];
+//    }
+//    
+//    return center;
+//}
+
++ (instancetype)managerCenter {//使用dispatch_once来实现
+    
+    static UserInfoManagerCenter *center = nil;
+    
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+    
+        center = [[UserInfoManagerCenter alloc] init];
+    });
+    
+    return center;
+}
+
+=====================================================
 IOS学习资源 
 http://www.jianshu.com/p/b41b61ce5e66
 
