@@ -563,7 +563,55 @@ Cocoa 框架中有NSFileManager  NSBundle  NSWorkspace  NSApplication  等单例
     
     return center;
 }
+严格单例模式：
+要防止子类对象的继承 
+要保证对象只出现一个
+static UserInfoManagerCenter *center = nil;
 
+@implementation UserInfoManagerCenter
+
++ (instancetype)managerCenter {
+    
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+    
+        center = (UserInfoManagerCenter *)@"UserInfoManagerCenter";//只有调用managerCenter方法才能被赋值字符串
+        center = [[UserInfoManagerCenter alloc] init];
+    });
+    
+    // 防止子类使用
+    NSString *classString = NSStringFromClass([self class]);
+    if ([classString isEqualToString:@"UserInfoManagerCenter"] == NO) {
+        
+        NSParameterAssert(nil);//如果是子类对象，则类名跟父类不一致，直接崩溃
+    }
+    
+    return center;
+}
+
+- (instancetype)init {
+    
+    NSString *string = (NSString *)center;//将center转化为字符串来判断是不是调用过managerCenter 。
+    if ([string isKindOfClass:[NSString class]] == YES && [string isEqualToString:@"UserInfoManagerCenter"]) {
+        
+        self = [super init];
+        if (self) {
+            
+            // 防止子类使用
+            NSString *classString = NSStringFromClass([self class]);
+            if ([classString isEqualToString:@"UserInfoManagerCenter"] == NO) {
+                
+                NSParameterAssert(nil);
+            }
+        }
+        
+        return self;
+        
+    } else {
+    
+        return nil;
+    }
+}
 =====================================================
 IOS学习资源 
 http://www.jianshu.com/p/b41b61ce5e66
