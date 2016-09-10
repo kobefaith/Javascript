@@ -593,8 +593,7 @@ static UserInfoManagerCenter *center = nil;
     
     NSString *string = (NSString *)center;//将center转化为字符串来判断是不是调用过managerCenter 。
     if ([string isKindOfClass:[NSString class]] == YES && [string isEqualToString:@"UserInfoManagerCenter"]) {
-        
-        self = [super init];
+        //只有调用过managerCenter center转化为字符串才能等于UserInfoManagerCenter，
         if (self) {
             
             // 防止子类使用
