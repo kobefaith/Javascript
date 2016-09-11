@@ -611,6 +611,12 @@ static UserInfoManagerCenter *center = nil;
         return nil;
     }
 }
+委托模式从GOF装饰模式、适配器模式和模板方法模式等演变而来，几乎每一个应用都会或多或少地用到委托模式。
+UIApplication 不直接依赖于APPDelegate类，而是依赖于UIApplicationDelegate协议，这在面向对象软件设计原则中叫做
+“面向接口的编程”，APPDelegate类实现协UIApplicationDelegate，它是委托类。
+委托是为了降低一个对象的复杂度和耦合度，使其能够更具通用性而将其中一些处理置于委托对象中的编码方式。
+通用类因为通用性而变为框架类，框架类保持委托对象的指针，并在特定时刻向委托对象发送消息。消息可能只是
+通知委托对象做一些事情，也可能是对委托对象进行控制。
 =====================================================
 IOS学习资源 
 http://www.jianshu.com/p/b41b61ce5e66
