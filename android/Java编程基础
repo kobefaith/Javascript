@@ -47,6 +47,43 @@ for (int i = 0; i < names.length ; i++) {
 变量与数据类型
 boolean类型如果作为变量占用4个字节，如果作为数组元素占用1个字节
 
+构造方法与类名相同，分为无参构造方法和有参构造方法
+
+public class Telphone{
+float screen;
+float cpu;
+	public Telphone(){
+	   System.out.println("无参的构造方法执行了");
+	}
+	public Telphone(float newScreen,float newCpu){
+	    screen = newScreen;
+	    cpu = newCpu;
+	    System.out.println("有参的构造方法执行了");
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
