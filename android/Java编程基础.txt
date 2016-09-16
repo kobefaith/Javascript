@@ -1,0 +1,101 @@
+Java编程基础
+JVM java虚拟机   JDK java开发工具包    JRE java运行时环境
+JDK包含JRE JRE包含JVM
+开发环境的搭建
+java文件的后缀名是.java
+编译字节码用javac  HelloWorld.java
+编译后出现的字节码文件是 HelloWorld.class
+然后运行字节码文件
+java  HelloWorld     执行字节码文件的时候不能加.class后缀名，加上后会报错
+IDE开发：创建工程 创建包  在包中添加源代码
+在 Java 的领域里，基本数据类型变量存的是数据本身，而引用类型变量存的是保存数据的空间地址。
+final double PI = 3.14 常量定义
+定义数组
+int[] scores = new int[5];
+ 或者
+ int[] scores={78,49,91,68};
+使用array方法
+import java.util.Arrays;
+String[] hobbys = { "sports", "game", "movie" };
+        
+// 使用Arrays类的sort()方法对数组进行排序
+Arrays.sort(hobbys);
+int[] nums = new int[]{25,7,126,53,14,86};
+Array.toString(nums);
+
+数组循环的foreach方法
+int[] scores = { 89, 72, 64, 58, 93 };  
+// 使用foreach遍历输出数组中的元素
+for ( int score :scores  ) {
+	System.out.println(score);
+}
+二维数组：
+int[][] num=new int[2][3];
+// 定义两行三列的二维数组并赋值
+names={{"tom","jack","mike"},{"zhangsan","lisi","wangwu"}};
+          
+// 通过二重循环输出二维数组中元素的值
+for (int i = 0; i < names.length ; i++) {
+     
+	for (int j = 0; j < names[i].length; j++) {
+         
+		System.out.println(names[i][j]);
+	}
+     
+	System.out.println();
+}
+变量与数据类型
+boolean类型如果作为变量占用4个字节，如果作为数组元素占用1个字节
+
+构造方法与类名相同，分为无参构造方法和有参构造方法
+
+public class Telphone{
+float screen;
+float cpu;
+	public Telphone(){
+	   System.out.println("无参的构造方法执行了");
+	}
+	public Telphone(float newScreen,float newCpu){
+	    screen = newScreen;
+	    cpu = newCpu;
+	    System.out.println("有参的构造方法执行了");
+
+	}
+}
+java中成员变量初始值为0，局部变量的初始值不为0.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
