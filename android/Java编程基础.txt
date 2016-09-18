@@ -44,6 +44,52 @@ for (int i = 0; i < names.length ; i++) {
      
 	System.out.println();
 }
+java string 字符串
+String str = "Hello";
+String str1 = new String("Hello");
+System.out.println(str);
+System.out.println(str.equals(str1));
+//"=="比较的是地址
+// "equals"比较的是内容
+String str = "hello";
+String str1 = str + "world";//java字符串内容不能被修改
+System.out.println(str1);
+string 字符串常用方法
+String str = "     jikexueyuan@163.com";
+System.out.println(str.length());
+char data[] = str.toCharArray();//字符串转换为数组
+for ( int i = 0; i < data.length;i++){
+	System.out.print(data[i]+" " );
+}
+System.out.println(str.charAt(7));//取得指定位置的字符
+
+byte bytes[]  = str.getBytes();//转换成byte数组
+for(int i = 0; i < bytes.length;i++){
+	System.out.println(new String(bytes)+" \t");
+}
+System.out.println(str.indexOf("@"));
+System.out.println(str.trim());
+从字符串中取出子字符串 subString()
+大小写转换toLowerCase() toUpperCase()
+判断字符串的开头结尾字符 endsWith()  startWith()
+替换String字符串中的一个字符  replace()
+stringBuffer 与string不同，stringBuffer是可以更改的，是一个操作类，必须通过实例化进行操作。
+stringBuffer的操作
+public static void main(String[] args) {
+	// TODO Auto-generated method stub
+     StringBuffer sf = new StringBuffer();
+     sf.append("jikexueyuan");
+     System.out.println(sf.toString());
+     sf.insert(0, "I love");
+     System.out.println(sf.toString());
+     sf.replace(1, 3, "www.");
+     System.out.println(sf.toString());
+}
+StringBuilder 
+是一个可变的字符序列，该类被设计成StringBuffer的一个简易替换，用在字符串缓冲区被单个线程使用的时候。
+建议优先考虑该类，速度比StringBuffer要快。
+设计到线程安全的问题，建议使用StringBuffer
+常用方法  append() insert()
 变量与数据类型
 boolean类型如果作为变量占用4个字节，如果作为数组元素占用1个字节
 
@@ -98,9 +144,23 @@ static {
 访问修饰符
 private 是只能在本类中使用 ，如果没有修饰符 则默认是在本类和同包中使用。
 protected 是在本类 同包和子类中都可以使用， public 是在本类 同包 子类 和其他都可以使用。
+java中的this关键字的作用：
+
 内部类（ Inner Class ）就是定义在另外一个类里面的类。与之对应，包含内部类的类被称为外部类。
 内部类的主要作用如下：
+   表示类中的属性和调用方法
+   调用本类中的构造方法
+   比如在有参构造函数中，调用无参的构造函数：
+   public People(String name,int age){
+       this();//只能写在第一行
+       this.name = name;
+       this.age  = age;
+   }
+   public People(){
+       System.out.println("无参数构造函数");
+   }
 
+   表示当前对象
 1. 内部类提供了更好的封装，可以把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类
 
 2. 内部类的方法可以直接访问外部类的所有数据，包括私有的数据
@@ -181,9 +241,78 @@ public abstract class Telphone{
 类是一种具体实现，而接口定义了某一批类所需要遵守的规范，接口不关心这些类的内部数据，
 也不关心这些类里方法的实现细节，它只规定这些类里必须提供某些方法。
 接口可以继承多个父类，一个类可以实现一个或多个接口，实现接口使用implements关键字
+继承父类实现接口的语法
+[修饰符]class  类名 extends 父类 implements 接口1， 接口2 ..... 
+接口实现：
+package com.imooc;
+
+public  interface IPlayGame { //声明一个接口
+	public  void playGame();
+}
+// 接口实现
+package com.imooc;
+
+public class Psp implements IPlayGame {
+
+	@Override
+	public void playGame() {
+		// TODO Auto-generated method stub
+		System.out.println("可以玩游戏");
+	}
+
+}
+
+package com.imooc;
+
+public class SmartPhone extends Telphone implements IPlayGame{
+    @Override
+	public void playGame() {
+		// TODO Auto-generated method stub
+		System.out.println("可以玩游戏");
+	}
+}
 
 
+IPlayGame ip1 = new SmartPhone();
+ip1.playGame();
+IPlayGame ip2 = new Psp();
+ip2.playGame();
 
+======================
+使用接口：
+在接口的使用过程当中，还经常与匿名内部类配合使用
+方式1：
+IPlayGame ip3 = new IPlayGame(){
+	public void playGame(){
+	    System.out.println("使用匿名内部类的方式实现接口");
+	}
+}；//一定要加上分号
+ip3.playGame();
+
+方式2：
+new IPlayGame(){
+	public void playGame(){
+	    System.out.println("使用匿名内部类的方式实现接口2");
+	}
+}.playGame();  //调用的时候加上.
+java引用传递
+class Ref2{
+	String temp = "hello";
+}
+
+public class RefDemo03 {
+	public static void main(String args[]){
+		Ref2  r1 = new Ref2();
+		r1.temp="jike";
+		System.out.println(r1.temp);
+		tell(r1);
+		System.out.println(r1.temp);
+	}
+
+	public static void tell(Ref2  r2){
+		r2.temp="xueyuan";//按引用传递进来后 可以修改temp的值
+	}
+}
 
 
 
