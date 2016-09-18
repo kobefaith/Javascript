@@ -181,8 +181,60 @@ public abstract class Telphone{
 类是一种具体实现，而接口定义了某一批类所需要遵守的规范，接口不关心这些类的内部数据，
 也不关心这些类里方法的实现细节，它只规定这些类里必须提供某些方法。
 接口可以继承多个父类，一个类可以实现一个或多个接口，实现接口使用implements关键字
+继承父类实现接口的语法
+[修饰符]class  类名 extends 父类 implements 接口1， 接口2 ..... 
+接口实现：
+package com.imooc;
+
+public  interface IPlayGame { //声明一个接口
+	public  void playGame();
+}
+// 接口实现
+package com.imooc;
+
+public class Psp implements IPlayGame {
+
+	@Override
+	public void playGame() {
+		// TODO Auto-generated method stub
+		System.out.println("可以玩游戏");
+	}
+
+}
+
+package com.imooc;
+
+public class SmartPhone extends Telphone implements IPlayGame{
+    @Override
+	public void playGame() {
+		// TODO Auto-generated method stub
+		System.out.println("可以玩游戏");
+	}
+}
 
 
+IPlayGame ip1 = new SmartPhone();
+ip1.playGame();
+IPlayGame ip2 = new Psp();
+ip2.playGame();
+
+======================
+使用接口：
+在接口的使用过程当中，还经常与匿名内部类配合使用
+方式1：
+IPlayGame ip3 = new IPlayGame(){
+	public void playGame(){
+	    System.out.println("使用匿名内部类的方式实现接口");
+	}
+}；//一定要加上分号
+ip3.playGame();
+
+方式2：
+new IPlayGame(){
+	public void playGame(){
+	    System.out.println("使用匿名内部类的方式实现接口2");
+	}
+}.playGame();  //调用的时候加上.
 
 
 
