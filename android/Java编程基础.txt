@@ -55,7 +55,41 @@ String str = "hello";
 String str1 = str + "world";//java字符串内容不能被修改
 System.out.println(str1);
 string 字符串常用方法
+String str = "     jikexueyuan@163.com";
+System.out.println(str.length());
+char data[] = str.toCharArray();//字符串转换为数组
+for ( int i = 0; i < data.length;i++){
+	System.out.print(data[i]+" " );
+}
+System.out.println(str.charAt(7));//取得指定位置的字符
 
+byte bytes[]  = str.getBytes();//转换成byte数组
+for(int i = 0; i < bytes.length;i++){
+	System.out.println(new String(bytes)+" \t");
+}
+System.out.println(str.indexOf("@"));
+System.out.println(str.trim());
+从字符串中取出子字符串 subString()
+大小写转换toLowerCase() toUpperCase()
+判断字符串的开头结尾字符 endsWith()  startWith()
+替换String字符串中的一个字符  replace()
+stringBuffer 与string不同，stringBuffer是可以更改的，是一个操作类，必须通过实例化进行操作。
+stringBuffer的操作
+public static void main(String[] args) {
+	// TODO Auto-generated method stub
+     StringBuffer sf = new StringBuffer();
+     sf.append("jikexueyuan");
+     System.out.println(sf.toString());
+     sf.insert(0, "I love");
+     System.out.println(sf.toString());
+     sf.replace(1, 3, "www.");
+     System.out.println(sf.toString());
+}
+StringBuilder 
+是一个可变的字符序列，该类被设计成StringBuffer的一个简易替换，用在字符串缓冲区被单个线程使用的时候。
+建议优先考虑该类，速度比StringBuffer要快。
+设计到线程安全的问题，建议使用StringBuffer
+常用方法  append() insert()
 变量与数据类型
 boolean类型如果作为变量占用4个字节，如果作为数组元素占用1个字节
 
