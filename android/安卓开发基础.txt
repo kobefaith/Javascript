@@ -1,1 +1,4 @@
 Activity组件
+onCreate 函数中的 setContentView(R.layput.activity_main);是加载布局，其中activity_main是布局的名字
+startActivity(new Intent(Intent.ACTION_VIEW,uri,parse("http://jikexueyuan.com")));//跳转到极客学院的页面
+
