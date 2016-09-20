@@ -17,7 +17,42 @@ onDestroy()
 在活动被销毁之前调用，之后的活动状态将变为销毁状态
 onRestart()
 在活动由停止状态变为运行状态之前调用，也就是活动被重新启动了。
+=========安卓录音api===============
+File dir = new File(mDir);
+if(!dir.exists())
+dir.mkdirs();
+String fileName = generateFileName();
+File file  = new File(dir,filename);
 
+mMediaRecorder = new MediaRecorder();
+mMediaRecorder.setOutputFile(file.getAbsolutePath());
+//设置音频源为麦克风
+mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);//api 10以上使用AMR_NB，以下使用RAW_AMR
+mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+mMediaRecorder.prepare();
+mMediaRecorder.start();
+
+public int getVoiceLevel(int maxLevel)
+{
+	if(isPrepared)
+	{
+	//mMediaRecorder.getMaxAmplitude() 1-32767
+	    return maxLevel*mMediaRecorder.getMaxAmplitude()/32768 + 1;
+	}
+	return 1;
+}
+private String generateFileName()
+{
+	return UUID.randomUUID().toString()+".amr";
+}
+public void release()
+{
+	mMediaRecorder.stop();
+	mMediaRecorder.release();
+	mMediaRecorder  = null;
+}
+=====================
 
 
 
