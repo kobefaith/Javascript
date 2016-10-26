@@ -53,6 +53,12 @@ public void release()
 	mMediaRecorder  = null;
 }
 =====================
+发送通知的时候，如果连续发送多条，但是只显示一条，比如：http://univasity.iteye.com/blog/1390445
+1. 创建PendingIntent的时候：PendingIntent pendingIntent = PendingIntent.getActivity(context, id, intent, 0); 参数中的id，对于多个消息要用不同的值，这样才能保证每个消息对应的Intent的值不同 ，否则如果显示三条通知，点击后只会显示同样的数据。
+http://blog.csdn.net/harryweasley/article/details/46557827
+2. NotificationManager.notify(id, Notification); 这里如果连个id一样，只会显示一条消息。
+
+
 
 
 
