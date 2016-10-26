@@ -55,11 +55,39 @@ public void release()
 =====================
 发送通知的时候，如果连续发送多条，但是只显示一条，比如：http://univasity.iteye.com/blog/1390445
 1. 创建PendingIntent的时候：PendingIntent pendingIntent = PendingIntent.getActivity(context, id, intent, 0); 参数中的id，对于多个消息要用不同的值，这样才能保证每个消息对应的Intent的值不同 ，否则如果显示三条通知，点击后只会显示同样的数据。
-http://blog.csdn.net/harryweasley/article/details/46557827
+
 2. NotificationManager.notify(id, Notification); 这里如果连个id一样，只会显示一条消息。
 
-在Ti下 显示3条通知，如果杀掉app 那么用了以上方法后点击每一条通知都会得到相应的通知内容，但是如果app在后台就不会显示正确的通知内容，而且如果后台的页面不是mainactivity 那么也会得不到通知的内容。
+显示3条通知，如果杀掉app 那么用了以上方法后点击每一条通知都会得到相应的通知内容，但是如果app在后台就不会显示正确的通知内容。
+http://blog.csdn.net/harryweasley/article/details/46557827
+原生安卓中解决app在后台但是获取不同通知的内容失败的问题的方案：
+@Override
+ protected void onNewIntent(Intent intent) {
+     super.onNewIntent(intent);
+     if (intent != null) {
+         Bundle bundle1 = intent.getExtras();
+         String text = bundle1.getString("message");
+         Log.e(TAG, "=========zf=======onNewIntent result==" + text);
+         setIntent(intent);
+         getIntent().putExtras(intent);
+     }
+ }
+
+
+Ti下获取intent中的内容
+var activity = Ti.Android.currentActivity;
+var intent = activity.getIntent();
+var dialog = Ti.UI.createAlertDialog({
+			title: 'Push received',
+			message: intent.getStringExtra("zf_data"),
+			buttonNames: ['View','Cancel'],
+			cancel: 1
+});
+dialog.show();	
+
+ti中我们遇到的问题是如果app在后台就不会显示正确的通知内容，而且如果后台的页面不是mainactivity 那么也会得不到通知的内容。
 我们的解决方案是检测app是否活着，如果活着就在生成pendingIntent的时候 发送广播，然后在页面接受广播来获取通知的内容。
+
 
 
 
