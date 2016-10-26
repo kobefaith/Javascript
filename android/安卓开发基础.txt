@@ -58,6 +58,9 @@ public void release()
 http://blog.csdn.net/harryweasley/article/details/46557827
 2. NotificationManager.notify(id, Notification); 这里如果连个id一样，只会显示一条消息。
 
+在Ti下 显示3条通知，如果杀掉app 那么用了以上方法后点击每一条通知都会得到相应的通知内容，但是如果app在后台就不会显示正确的通知内容，而且如果后台的页面不是mainactivity 那么也会得不到通知的内容。
+我们的解决方案是检测app是否活着，如果活着就在生成pendingIntent的时候 发送广播，然后在页面接受广播来获取通知的内容。
+
 
 
 
