@@ -29,7 +29,8 @@ http://b.test.com/cross_sub_domain.html 中
 问题：
 1、安全性，当一个站点（b.a.com）被攻击后，另一个站点（c.a.com）会引起安全漏洞。
 2、如果一个页面中引入多个iframe，要想能够操作所有iframe，必须都得设置相同domain。
-jsonp原理
+
+jsonp原理 JSON with Padding
 本质上并不是ajax，只是执行了跨域的js
 html中所有带src属性的标签都可以跨域script img iframe
 所以，可以通过script加载其他域的一段动态脚本，这段脚本包含了想要的数据信息。
@@ -111,7 +112,7 @@ jsonp的缺点：
 后端代码需要调整
 CORS的实现
 <h3>CORS原理</h3>
-
+Cross-Origin Resource Sharing (CORS)
 <p>xhr level2 支持的新标准，允许发起ajax请求</p>
 
 <p>但是为了跨域安全，需要在服务器响应头部提供一些信息，供浏览器校验请求是否被允许</p>
