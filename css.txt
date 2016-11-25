@@ -99,7 +99,7 @@ cursor:cell;//把鼠标显示设置成加号
 导航栏
 ul{
 list-style-type:none;//去掉无序列表前面的点
-magrin:0px;
+margin:0px;
 padding:0px;
 }
 a:link,a:visited{
