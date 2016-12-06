@@ -195,7 +195,7 @@ componentWillUnmount
             return true;
         },
         componentWillUpdate: function () {
-            console.log("componentWillUpdate 3")
+            console.log("componentWillUpdate 3");
         },
         render: function () { 
             console.log("render 4");
@@ -326,7 +326,7 @@ instance.setProps({name:"Tim"});
 状态的含义和用法
 getInitialState:初始化每个实例特有的状态
 setState：更新组件状态
-熟悉和状态的相似点
+属性和状态的相似点
     都是纯js对象
     都会触发render更新
     都具有确定性
