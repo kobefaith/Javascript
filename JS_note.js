@@ -1,4 +1,5 @@
-```
+``
+`
 匹配邮箱的正则表达式
 var regMail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
 有这样一个URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e，请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:'1', b:'2', c:'', d:'xxx', e:undefined}。
@@ -1421,7 +1422,20 @@ function drop(ev)
       
  appcelerator可以用js来开发跨平台的安卓和IOS应用。它可以做到一套代码跑不同的平台。   
     
-    
+ 两层循环写成foreach
+ var fn = function(d, element) {
+   if (element.productid == d.productid && element.unitprice == d.unitprice && element.batchno == d.batchno && element.productiontime == d.productiontime) {
+     element.count += d.count;
+   } else {
+     _dataarray.push(d);
+   }
+ };
+
+ var fn1 = function(d) {
+   _dataarray.forEach(fn.bind(null, d));
+ };
+
+ _data.forEach(fn1);   
     
     
     
@@ -1429,4 +1443,5 @@ function drop(ev)
     
 
 
-```
+`
+``
