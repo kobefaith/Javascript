@@ -22,3 +22,5 @@ if (age === parseInt(age))
 	根据一些类型来执行相应代码的时候：
 if (['incount', 'inmoney', 'outcount', 'outmoney'].indexOf(_key) !== -1)
 	continue;
+
+js中date可能会出现时区问题， 2017 - 04 - 03 和 2017 - 04 - 03 00: 00: 00 可能会差8个小时， 此问题需要咨询吴安 严康
