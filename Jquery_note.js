@@ -351,6 +351,23 @@ $(document).ready(function(){
         $("#content").slideToggle(1000);
     });
 });
+动画
+$("#myimg").click(function(){
+    $(this).animate({left:"500px",height:"200px"},3000);
+});
+
+$(this).animate({left:"500px"},2000).animate({height:"200px"},3000);
+ 动画执行完后，切换css样式，可以使用回调函数来实现：
+$(this).animate({left:"500px",height:"200px"},3000,function(){
+    $(this).css("border","5px solid blue");
+});
+停止动画：
+ $(this).stop().animate({left:"500px",height:"200px"},3000);停止当前的动画
+  $(this).stop(true).animate({left:"500px",height:"200px"},3000); 清空当前元素剩下的动画队列
+判断元素是否处于动画状态
+if(! $(element).is(":animated")){
+
+}
 4.4jQuery回调
 <body>
     <button>隐藏</button>
@@ -754,9 +771,58 @@ function changeIcon(mainNode){
 }
 
 jquery 解决三个ajax的问题
+validation插件
+validator = $("#demoForm").validate({
+    rules: {
+        username: {
+            //required: true,
+            postcode : "中国",
+            email:true,
+            url:true,//必须要有http前缀
+            date:true //校验很宽泛
+            dateISO:true //必须是yyyy-mm-dd
+        },
+        password: {
+            required: true,
+            minlength: 2,／／max是数值大小
+            maxlength: 16,
+            remote:{//远程验证密码
+                url:"http://www.xxx.com",
+                type:"post",
+                data:{
+                    loginTime:new Date();
+                }
+            }
 
-
-
+        },
+        "confirm-password": { ／／重复密码必须与原密码相等
+            equalTo: "#password"
+        }
+    },
+    messages: {
+        username: {
+            required: "必须填写用户名",
+            minlength: "用户名最小为2位",
+            maxlength: "用户名最大为10位",
+            rangelength: "用户名应该在2-10位",
+            remote: "用户名不存在"
+        },
+        password: {
+            required: "必须填写密码",
+            minlength: "密码最小为2位",
+            maxlength: "密码最大为16位"
+        },
+        "confirm-password": {
+            equalTo: "两次输入的密码不一致"
+        }
+    },
+    submitHandler: function (form) {
+        console.log($(form).serialize());
+    }
+});
+$("#username").rules()//获取校验规则
+$("#username").rules("add",{minlength:2,maxlength:10}) //增加校验规则。
+$("#username").rules("remove","email") //删除校验规则。
 
 
 

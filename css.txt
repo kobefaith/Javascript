@@ -1,3 +1,39 @@
+font awesome 和icomoon 是两个css3 字体库
+清除浮动
+就是在浮动元素下方添加一个非浮动元素。
+原理是父容器现在必须考虑非浮动子元素的位置，而后者肯定出现在浮动元素下方，所以显示出来，父容器就把所有子元素都包括进去了。这种方法比较简单，但是要在页面中增加冗余标签，违背了语义网的原则。
+<div style="clear:both;"></div>
+"clearfix"是父容器的class名称，我们知道CSS语句中有一个:after伪选择符，就可以在父容器的尾部自动创建一个子元素
+.clearfix:after {
+   content: "";
+   display: block;
+   height: 0;
+   clear: both;
+}
+.clearfix {
+   zoom: 1;
+}
+absolute 的定位使用overflow:hidden不起作用
+css hack
+http://blog.csdn.net/freshlover/article/details/12132801
+css媒体查询 主要用于屏幕适配
+ <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+外联式<link rel="stylesheet" type="text/css" href="css/style.css" media="only screen and (max-width:640px)">
+@media only screen and (min-width: 500px) and (max-width:960px)
+内嵌式 @media only screen and (max-width: 500px) {
+    .gridmenu {
+        width:100%;
+    }
+
+    .gridmain {
+        width:100%;
+    }
+
+    .gridright {
+        width:100%;
+    }
+}
+
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <p style="font-size:1.6em;color:green;">字体大小 1.6 em</p>
 css背景

@@ -142,3 +142,49 @@ router.all('/test', function(req, res) {
 });
 CORS头信息通用设置方法
 http://enable-cors.org/server.html
+html5支持 postMessage
+<script type="text/JavaScript">
+    function sendIt(){ 
+        // 通过 postMessage 向子窗口发送数据
+        document.getElementById("otherPage").contentWindow 
+            .postMessage( 
+                document.getElementById("message").value, 
+               "http://child.com:8080"
+            ); 
+    } 
+</script>
+var popup = window.open(...popup details...);
+popup.postMessage("The user is 'bob' and the password is 'secret'",
+              "https://secure.example.net");  
+popup.postMessage("hello there!", "http://example.org");
+
+function receiveMessage(event)
+{
+  if (event.origin !== "http://example.org")
+    return;
+  // event.source is popup
+  // event.data is "hi there yourself!  the secret response is: rheeeeet!"【见下面一段代码可知】
+}
+window.addEventListener("message", receiveMessage, false);
+针对上面的脚本进行接受数据的操作：
+
+/*
+ * popup的脚本，运行在<http://example.org>:
+ */
+
+//当postMessage后触发的监听事件
+function receiveMessage(event)
+{
+  //先判断源
+  if (event.origin !== "http://example.com:8080")
+    return;
+
+  // event.source：window.opener
+  // event.data："hello there!"
+
+  event.source.postMessage("hi there yourself!  the secret response " +
+                           "is: rheeeeet!",
+                           event.origin);
+}
+
+window.addEventListener("message", receiveMessage, false);

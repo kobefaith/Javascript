@@ -1,3 +1,438 @@
+浏览器缓存。https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651552184&idx=1&sn=09765a59391d7333b66284d50136fb27&chksm=8025ae79b752276fa42982771a577fcc95c1c6e1b1d0fedcbf0bdb817f8ddba8a4f08f5e12c7&mpshare=1&scene=24&srcid=0514yYnKit9GAbInuWZ0WIXr&key=227c90f337be412a0506a680244872a111e4f84162884535c4a823a5f8ec02d3a80b44c06753eb7dc7a717ad712273dd3138e9eac5c997b7bfbae5823223f1de0884187ffe499e5eaf9d64449039e824&ascene=0&uin=ODYxNTQxOTYy&devicetype=iMac+MacBookAir7%2C2+OSX+OSX+10.12.3+build(16D30)&version=12020710&nettype=WIFI&fontScale=100&pass_ticket=djGJMb4DxRBtKNxjdOcj3R3Rkb6QCEPkBbp9Qli7wZOWnq0tB%2Bpum2Wbq6b1oNTM
+轮播图实现
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>焦点轮播图</title>
+    <style type="text/css">
+        *{ margin: 0; padding: 0; text-decoration: none;}
+        body { padding: 20px;}
+        #container { width: 600px; height: 400px; border: 3px solid #333; overflow: hidden; position: relative;}
+        #list { width: 4200px; height: 400px; position: absolute; z-index: 1;}
+        #list img { float: left;}
+        #buttons { position: absolute; height: 10px; width: 100px; z-index: 2; bottom: 20px; left: 250px;}
+        #buttons span { cursor: pointer; float: left; border: 1px solid #fff; width: 10px; height: 10px; border-radius: 50%; background: #333; margin-right: 5px;}
+        #buttons .on {  background: orangered;}
+        .arrow { cursor: pointer; display: none; line-height: 39px; text-align: center; font-size: 36px; font-weight: bold; width: 40px; height: 40px;  position: absolute; z-index: 2; top: 180px; background-color: RGBA(0,0,0,.3); color: #fff;}
+        .arrow:hover { background-color: RGBA(0,0,0,.7);}
+        #container:hover .arrow { display: block;}
+        #prev { left: 20px;}
+        #next { right: 20px;}
+    </style>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            var container = document.getElementById('container');
+            var list = document.getElementById('list');
+            var buttons = document.getElementById('buttons').getElementsByTagName('span');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+            var index = 1;
+            var len = 5;
+            var animated = false;
+            var interval = 3000;
+            var timer;
+
+
+            function animate (offset) {
+                if (offset == 0) {
+                    return;
+                }
+                animated = true;
+                var time = 300;
+                var inteval = 10;
+                var speed = offset/(time/inteval);
+                var left = parseInt(list.style.left) + offset;
+
+                var go = function (){
+                    if ( (speed > 0 && parseInt(list.style.left) < left) || (speed < 0 && parseInt(list.style.left) > left)) {
+                        list.style.left = parseInt(list.style.left) + speed + 'px';
+                        setTimeout(go, inteval);
+                    }
+                    else {
+                        list.style.left = left + 'px';
+                        if(left>-200){
+                            list.style.left = -600 * len + 'px';
+                        }
+                        if(left<(-600 * len)) {
+                            list.style.left = '-600px';
+                        }
+                        animated = false;
+                    }
+                }
+                go();
+            }
+
+            function showButton() {
+                for (var i = 0; i < buttons.length ; i++) {
+                    if( buttons[i].className == 'on'){
+                        buttons[i].className = '';
+                        break;
+                    }
+                }
+                buttons[index - 1].className = 'on';
+            }
+
+            function play() {
+                timer = setTimeout(function () {
+                    next.onclick();
+                    play();
+                }, interval);
+            }
+            function stop() {
+                clearTimeout(timer);
+            }
+
+            next.onclick = function () {
+                if (animated) {
+                    return;
+                }
+                if (index == 5) {
+                    index = 1;
+                }
+                else {
+                    index += 1;
+                }
+                animate(-600);
+                showButton();
+            }
+            prev.onclick = function () {
+                if (animated) {
+                    return;
+                }
+                if (index == 1) {
+                    index = 5;
+                }
+                else {
+                    index -= 1;
+                }
+                animate(600);
+                showButton();
+            }
+
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].onclick = function () {
+                    if (animated) {
+                        return;
+                    }
+                    if(this.className == 'on') {
+                        return;
+                    }
+                    var myIndex = parseInt(this.getAttribute('index'));
+                    var offset = -600 * (myIndex - index);
+
+                    animate(offset);
+                    index = myIndex;
+                    showButton();
+                }
+            }
+
+            container.onmouseover = stop;
+            container.onmouseout = play;
+
+            play();
+
+        }
+    </script>
+      <script type="text/javascript"> ／／jquery版本
+
+        $(function () {
+            var container = $('#container');
+            var list = $('#list');
+            var buttons = $('#buttons span');
+            var prev = $('#prev');
+            var next = $('#next');
+            var index = 1;
+            var len = 5;
+            var interval = 3000;
+            var timer;
+
+
+            function animate (offset) {
+                var left = parseInt(list.css('left')) + offset;
+                if (offset>0) {
+                    offset = '+=' + offset;
+                }
+                else {
+                    offset = '-=' + Math.abs(offset);
+                }
+                list.animate({'left': offset}, 300, function () {
+                    if(left > -200){
+                        list.css('left', -600 * len);
+                    }
+                    if(left < (-600 * len)) {
+                        list.css('left', -600);
+                    }
+                });
+            }
+
+            function showButton() {
+                buttons.eq(index-1).addClass('on').siblings().removeClass('on');
+            }
+
+            function play() {
+                timer = setTimeout(function () {
+                    next.trigger('click');
+                    play();
+                }, interval);
+            }
+            function stop() {
+                clearTimeout(timer);
+            }
+
+            next.bind('click', function () {
+                if (list.is(':animated')) {
+                    return;
+                }
+                if (index == 5) {
+                    index = 1;
+                }
+                else {
+                    index += 1;
+                }
+                animate(-600);
+                showButton();
+            });
+
+            prev.bind('click', function () {
+                if (list.is(':animated')) {
+                    return;
+                }
+                if (index == 1) {
+                    index = 5;
+                }
+                else {
+                    index -= 1;
+                }
+                animate(600);
+                showButton();
+            });
+
+            buttons.each(function () {
+                 $(this).bind('click', function () {
+                     if (list.is(':animated') || $(this).attr('class')=='on') {
+                         return;
+                     }
+                     var myIndex = parseInt($(this).attr('index'));
+                     var offset = -600 * (myIndex - index);
+
+                     animate(offset);
+                     index = myIndex;
+                     showButton();
+                 })
+            });
+
+            container.hover(stop, play);
+
+            play();
+
+        });
+    </script>
+</head>
+<body>
+
+<div id="container">
+    <div id="list" style="left: -600px;">
+        <img src="img/5.jpg" alt="1"/>
+        <img src="img/1.jpg" alt="1"/>
+        <img src="img/2.jpg" alt="2"/>
+        <img src="img/3.jpg" alt="3"/>
+        <img src="img/4.jpg" alt="4"/>
+        <img src="img/5.jpg" alt="5"/>
+        <img src="img/1.jpg" alt="5"/>
+    </div>
+    <div id="buttons">
+        <span index="1" class="on"></span>
+        <span index="2"></span>
+        <span index="3"></span>
+        <span index="4"></span>
+        <span index="5"></span>
+    </div>
+    <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+    <a href="javascript:;" id="next" class="arrow">&gt;</a>
+</div>
+
+</body>
+</html>
+
+js知识 http://www.cnblogs.com/wangfupeng1988/p/3977924.html
+下拉加载时优化
+componentDidMount() {
+    // 使用滚动时自动加载更多
+    const loadMoreFn = this.props.loadMoreFn
+    const wrapper = this.refs.wrapper
+    let timeoutId
+    function callback() {
+        const top = wrapper.getBoundingClientRect().top
+        const windowHeight = window.screen.height
+        if (top && top < windowHeight) {
+            // 证明 wrapper 已经被滚动到暴露在页面可视范围之内了
+            loadMoreFn()
+        }
+    }
+    window.addEventListener('scroll', function () {
+        if (this.props.isLoadingMore) {
+            return
+        }
+        if (timeoutId) { ／／此处通过定时器来防止每次下拉都会计算 高度，判断是否该加载数据。
+            clearTimeout(timeoutId)
+        }
+        timeoutId = setTimeout(callback, 50)
+    }.bind(this), false);
+}
+瀑布流中下拉加载
+function checkscrollside(){
+    var oParent=document.getElementById('main');
+    var aPin=getClassObj(oParent,'pin');
+    var lastPinH=aPin[aPin.length-1].offsetTop+Math.floor(aPin[aPin.length-1].offsetHeight/2);//创建【触发添加块框函数waterfall()】的高度：最后一个块框的距离网页顶部+自身高的一半(实现未滚到底就开始加载)
+    var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;//注意解决兼容性
+    var documentH=document.documentElement.clientHeight;//页面高度
+    return (lastPinH<scrollTop+documentH)?true:false;//到达指定高度后 返回true，触发waterfall()函数
+}
+function checkscrollside(){
+    var $aPin = $( "#main>div" );
+    var lastPinH = $aPin.last().get(0).offsetTop + Math.floor($aPin.last().height()/2);//创建【触发添加块框函数waterfall()】的高度：最后一个块框的距离网页顶部+自身高的一半(实现未滚到底就开始加载)
+    var scrollTop = $( window ).scrollTop()//注意解决兼容性
+    var documentH = $( document ).width();//页面高度
+    return (lastPinH < scrollTop + documentH ) ? true : false;//到达指定高度后 返回true，触发waterfall()函数
+}
+https://segmentfault.com/a/1190000002627927
+js 快速排序
+var quickSort = function(arr) {
+　　if (arr.length <= 1) { return arr; }
+　　var pivotIndex = Math.floor(arr.length / 2);
+　　var pivot = arr.splice(pivotIndex, 1)[0];
+　　var left = [];
+　　var right = [];
+　　for (var i = 0; i < arr.length; i++){
+　　　　if (arr[i] < pivot) {
+　　　　　　left.push(arr[i]);
+　　　　} else {
+　　　　　　right.push(arr[i]);
+　　　　}
+　　}
+　　return quickSort(left).concat([pivot], quickSort(right));
+};
+React 最基本的优化方式是使用PureRenderMixin，安装工具 npm i react-addons-pure-render-mixin --save，然后在组件中引用并使用
+
+import React from 'react' 
+import PureRenderMixin from 'react-addons-pure-render-mixin' 
+class List extends React.Component { 
+   constructor(props, context) { 
+   super(props, context); 
+   this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this); 
+} //...省略其他内容... }
+
+http://www.imooc.com/article/17009
+http://www.imooc.com/article/16745
+http://www.imooc.com/article/16746
+闭包面试题。 http://www.cnblogs.com/xxcanghai/p/4991870.html
+标签切换
+function $(id){
+    return typeof  id=="string"?document.getElementById(id):id;
+}
+
+window.onload = function(){
+    var titleName = $("tab-title").getElementsByTagName("li");
+    var tabContent = $("tab-content").getElementsByTagName("div");
+    if(titleName.length != tabContent.length){
+        return;
+    }
+    for(var i = 0;i<titleName.length;i++){
+        titleName[i].id = i;
+        titleName[i].onmouseover = function(){
+            for(var j = 0;j<titleName.length;j++){
+                titleName[j].className = "";
+                tabContent[j].style.display = "none"
+            }
+            this.className = "select";
+            tabContent[this.id].style.display = "block";
+        }
+    }
+}
+侧边栏固定：
+<script>
+    var Getid = function(id){
+        return document.getElementById(id);
+    }
+
+    var addEvent = function(obj,event,fun){
+        if(obj.addEventListener){
+            obj.addEventListener(event,fun,false);
+        }else if(obj.attachEvent()){
+            obj.attachEvent("on"+event,fun);
+        }
+    }
+
+    var lnSider = Getid("lesson-nav");
+    addEvent(window,"scroll",function(){
+        var scrollHeight = document.body.scrollTop;
+        console.log(scrollHeight);
+        var contentHeight = Getid("changeid").offsetHeight - lnSider.offsetHeight;
+//        console.log(contentHeight);
+        if(scrollHeight >253 && scrollHeight<contentHeight+253){
+            lnSider.style.position = "absolute";
+            lnSider.style.left ="0px";
+            lnSider.style.top = scrollHeight - 253 +"px";
+        }else if(scrollHeight <=253){
+            lnSider.style.position = "absolute";
+            lnSider.style.left ="0px";
+            lnSider.style.top = "0px";
+        }
+    });
+
+</script>
+
+<script>
+    var jWindow = $(window);
+    jWindow.scroll(function(){
+        var scrollHeight = jWindow.scrollTop();
+        var contentHeight = $("#changeid").height() - $(".lesson-nav").height();
+//        console.log(scrollHeight+"---"+contentHeight);
+        if(scrollHeight >253 && scrollHeight < contentHeight + 253){
+            $(".lesson-nav").css({
+                position:"absolute",
+                left:"0px",
+                top:scrollHeight - 253+"px"
+            });
+        }else if(scrollHeight <=253){
+            $(".lesson-nav").css({
+                position:"absolute",
+                left:"0px",
+                top:"0px"
+            });
+        }
+    });
+返回顶部实现：
+window.onload = function () {
+    var topbtn = document.getElementById("btn");
+    var timer = null;
+    var pagelookheight = document.documentElement.clientHeight;
+
+    window.onscroll = function(){
+//        alert("hello");
+        var backtop = document.body.scrollTop;
+        if(backtop >= pagelookheight){
+            topbtn.style.display = "block";
+        }else{
+            topbtn.style.display = "none";
+        }
+    }
+
+    topbtn.onclick = function () {
+//        alert("Hello")
+
+        timer = setInterval(function () {
+            var backtop = document.body.scrollTop;
+            var speedtop = backtop/5;
+            document.body.scrollTop = backtop -speedtop;
+            if(backtop ==0){
+                clearInterval(timer);
+            }
+        }, 30);
+    }
+}
 ``
 `
 匹配邮箱的正则表达式
@@ -13,7 +448,8 @@ function serilizeUrl(url) {
     return result;
 }
 把两个数组合并，并删除第二个元素。
-<span style="font-family: verdana, geneva;">var array1 = ['a','b','c'];
+<span style="font-family: verdana, geneva;">
+var array1 = ['a','b','c'];
 var bArray = ['d','e','f'];
 var cArray = array1.concat(bArray);
 cArray.splice(1,1); 
@@ -26,7 +462,8 @@ cArray.splice(2,1,"z","x");//从第二项开始 删除1项然后插入 z x 两�
 
 答案："<tr><td>{$id}</td><td>{$id}_{$name}</td></tr>".replace(/{\$id}/g, '10').replace(/{\$name}/g, ‘Tony’);
 输出今天的日期，以YYYY-MM-DD的方式，比如今天是2014年9月26日，则输出2014-09-26
-<span style="font-family: verdana, geneva;">var d = new Date();
+<span style="font-family: verdana, geneva;">
+var d = new Date();
 // 获取年，getFullYear()返回4位的数字
 var year = d.getFullYear();
 // 获取月，月份比较特殊，0是1月，11是12月
@@ -52,16 +489,19 @@ alert(year + '-' + month + '-' + day);
     return msg;
 }</span>
 看下面的代码，输出什么，foo的类型为什么？    
-<span style="font-family: verdana, geneva;">var foo = "11"+2-"1";//如果一个操作符是字符串或bool型，则-的时候会将字符型转化为数字运算
+<span style="font-family: verdana, geneva;">
+var foo = "11"+2-"1";//如果一个操作符是字符串或bool型，则-的时候会将字符型转化为数字运算
 console.log(foo);
 console.log(typeof foo);</span>
 执行完后foo的值为111，foo的类型为Number。
-<span style="font-family: verdana, geneva;">var foo = "11"+2+"1";    //体会加一个字符串'1' 和 减去一个字符串'1'的不同
+<span style="font-family: verdana, geneva;">
+var foo = "11"+2+"1";    //体会加一个字符串'1' 和 减去一个字符串'1'的不同
 console.log(foo);
 console.log(typeof foo);</span>
 执行完后foo的值为1121(此处是字符串拼接)，foo的类型为String。
 看下列代码,输出什么？解释原因。
-<span style="font-family: verdana, geneva;">var undefined;
+<span style="font-family: verdana, geneva;">
+var undefined;
 undefined == null; // true
 1 == true;   // true
 2 == true;   // false
@@ -74,7 +514,8 @@ NaN == NaN;  // false
 var numberArray = [3,6,2,4,1,5]; （考察基础API）
 1) 实现对该数组的倒排，输出[5,1,4,2,6,3]
 2) 实现对该数组的降序排列，输出[6,5,4,3,2,1]
-<span style="font-family: verdana, geneva;">var numberArray = [3,6,2,4,1,5];
+<span style="font-family: verdana, geneva;">
+var numberArray = [3,6,2,4,1,5];
 numberArray.reverse(); // 5,1,4,2,6,3
 numberArray.sort(function(a,b){  //6,5,4,3,2,1
    return b-a;
@@ -180,7 +621,7 @@ removeEventListener()移除方法添加的事件句柄
         alert("hello");
     });
 </script>
-利用事件句柄可以为元素添加多个事件
+利用事件句柄可以为元素添加多个事件,会依次触发
 <script>
     var x = document.getElementById("btn");
     x.addEventListener("click",hello);
@@ -201,12 +642,12 @@ people = new Object();
 people.name = "iwen";
 people.age = "30";
 
-    function people(name,age){
-        this.name = name;
-        this.age = age;
-    }
-    son = new people("kobe",37);
-    document.write("name:"+son.name+",age"+son.age);
+function people(name,age){
+    this.name = name;
+    this.age = age;
+}
+son = new people("kobe",37);
+document.write("name:"+son.name+",age"+son.age);
 字符串对象
 var str = "hello world";
 document.write(str.length);
