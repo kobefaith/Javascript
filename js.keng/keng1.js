@@ -2,7 +2,7 @@
 if (!name) {
 
 }
-加入name是字符串或者整形， 那么name = ""
+假如name是字符串或者整形， 那么name = ""
 或者name = 0 时，!name 为true
 type of(name) === "undefined"
 可以判断字符串或者数字是否存在、 是否填写

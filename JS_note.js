@@ -1,3 +1,21 @@
+cheerio 服务器端用jquery解析dom工具
+viewport http://weizhifeng.net/viewports.html
+数据推送  http://luoxia.me/code/2016/10/16/数据推送业务解决方案/
+js返回一个月有多少天
+var d = new Date();
+//d.getMonth()+1代表下个月，月份索引从0开始，即当前月为6月时，getMonth()返回值为5，创建日期时同理
+//此处构造的日期为下个月的第0天，天数索引从1开始，第0天即代表上个月的最后一天
+var curMonthDays = new Date(d.getFullYear(), (d.getMonth()+1), 0).getDate();
+console.log("本月共有 "+ curMonthDays +" 天");
+es6生成器 https://imququ.com/post/generator-function-in-es6.html
+flex box实现居中对齐
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+前端seo http://www.cnblogs.com/EnSnail/p/5671345.html
 浏览器缓存。https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651552184&idx=1&sn=09765a59391d7333b66284d50136fb27&chksm=8025ae79b752276fa42982771a577fcc95c1c6e1b1d0fedcbf0bdb817f8ddba8a4f08f5e12c7&mpshare=1&scene=24&srcid=0514yYnKit9GAbInuWZ0WIXr&key=227c90f337be412a0506a680244872a111e4f84162884535c4a823a5f8ec02d3a80b44c06753eb7dc7a717ad712273dd3138e9eac5c997b7bfbae5823223f1de0884187ffe499e5eaf9d64449039e824&ascene=0&uin=ODYxNTQxOTYy&devicetype=iMac+MacBookAir7%2C2+OSX+OSX+10.12.3+build(16D30)&version=12020710&nettype=WIFI&fontScale=100&pass_ticket=djGJMb4DxRBtKNxjdOcj3R3Rkb6QCEPkBbp9Qli7wZOWnq0tB%2Bpum2Wbq6b1oNTM
 轮播图实现
 <!DOCTYPE html>
@@ -1878,7 +1896,20 @@ function drop(ev)
 
  _data.forEach(fn1);   
     
-    
+js touch事件
+document.addEventListener('touchstart',function(event){
+    startx = event.touches[0].pageX;
+    starty = event.touches[0].pageY;
+});
+
+document.addEventListener('touchend',function(event){
+    endx = event.changedTouches[0].pageX;
+    endy = event.changedTouches[0].pageY;
+
+    var deltax = endx - startx;
+    var deltay = endy - starty;
+
+
     
     
     

@@ -1,3 +1,10 @@
+w3c plus css 解决方案。http://www.w3cplus.com/solution/index/index.html
+#priority{
+    color:green !important;
+    width:900px;
+
+  }
+  !important 可以改变css优先级，加了!important 的优先级最高。
 font awesome 和icomoon 是两个css3 字体库
 清除浮动
 就是在浮动元素下方添加一个非浮动元素。
@@ -48,7 +55,7 @@ p{
    background-repeat:no-repeat;   //不允许重复
    background-position:left top;top是指图片的顶部
    background-position:100px 100px；
-background-attachment:fixed;图片不随内容滚动
+   background-attachment:fixed;图片不随内容滚动
 }
 文本
 p{
@@ -409,6 +416,8 @@ transition-timing-function
 transition-delay
 transition: property duration timing-function delay;
 
+transition: width 1s linear 2s;
+
 transition-property	规定设置过渡效果的 CSS 属性的名称。
 transition-duration	定义过渡效果花费的时间。默认是 0。
 transition-timing-function	规定过渡效果的时间曲线。默认是 "ease"。
@@ -419,8 +428,8 @@ div{
    height:100px;
    background-color:red;
    position:relative;
-   animation:anim 5s infinite alternate;    //指定动画的名字叫anmi 时间是5秒 加上infinite alternate后会一直循环
-   -webkit-animation:anim 5s infinite alternate;
+   animation:anmi 5s infinite alternate;    //指定动画的名字叫anmi 时间是5秒 加上infinite alternate后会一直循环
+   -webkit-animation:anmi 5s infinite alternate;
 }
 @keyframes anmi{    //用百分比来规定变化发生的时间
    0%{background:red;left:0px;top:0px}
@@ -535,7 +544,7 @@ div{
     right: 0;
     background-color: purple;
 }
-
+http://blog.csdn.net/wolinxuebin/article/details/7615098
 垂直居中
 .Absolute-Center {  
   height:500px;//设置元素的高度
