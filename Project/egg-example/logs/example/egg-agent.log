@@ -1,0 +1,2 @@
+2017-08-02 21:51:26,532 INFO 39130 [egg:logger] init all loggers with options: {"dir":"/Users/kobe/egg/egg-example/logs/example","encoding":"utf8","env":"unittest","level":"INFO","consoleLevel":"WARN","disableConsoleAfterReady":false,"outputJSON":false,"buffer":false,"appLogName":"example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{},"type":"agent"}
+2017-08-02 21:51:26,599 INFO 39130 [egg-watcher:agent] watcher start success

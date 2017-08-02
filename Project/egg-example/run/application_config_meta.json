@@ -1,0 +1,235 @@
+{
+  "keys": "/Users/kobe/egg/egg-example/config/config.default.js",
+  "onerror": {
+    "errorPageUrl": "/Users/kobe/egg/egg-example/node_modules/egg-onerror/config/config.default.js",
+    "appErrorFilter": "/Users/kobe/egg/egg-example/node_modules/egg-onerror/config/config.default.js"
+  },
+  "session": {
+    "maxAge": "/Users/kobe/egg/egg-example/node_modules/egg-session/config/config.default.js",
+    "key": "/Users/kobe/egg/egg-example/node_modules/egg-session/config/config.default.js",
+    "httpOnly": "/Users/kobe/egg/egg-example/node_modules/egg-session/config/config.default.js",
+    "encrypt": "/Users/kobe/egg/egg-example/node_modules/egg-session/config/config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "/Users/kobe/egg/egg-example/node_modules/egg-i18n/config/config.default.js",
+    "dirs": "/Users/kobe/egg/egg-example/node_modules/egg-i18n/config/config.default.js",
+    "queryField": "/Users/kobe/egg/egg-example/node_modules/egg-i18n/config/config.default.js",
+    "cookieField": "/Users/kobe/egg/egg-example/node_modules/egg-i18n/config/config.default.js",
+    "cookieMaxAge": "/Users/kobe/egg/egg-example/node_modules/egg-i18n/config/config.default.js"
+  },
+  "watcher": {
+    "type": "/Users/kobe/egg/egg-example/node_modules/egg-watcher/config/config.unittest.js",
+    "eventSources": {
+      "default": "/Users/kobe/egg/egg-example/node_modules/egg-watcher/config/config.default.js",
+      "development": "/Users/kobe/egg/egg-example/node_modules/egg-watcher/config/config.default.js"
+    }
+  },
+  "multipart": {
+    "autoFields": "/Users/kobe/egg/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "defaultCharset": "/Users/kobe/egg/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "fieldNameSize": "/Users/kobe/egg/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "fieldSize": "/Users/kobe/egg/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "fields": "/Users/kobe/egg/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "fileSize": "/Users/kobe/egg/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "files": "/Users/kobe/egg/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "fileExtensions": "/Users/kobe/egg/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "whitelist": "/Users/kobe/egg/egg-example/node_modules/egg-multipart/config/config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+    "protocolWhiteList": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+    "defaultMiddleware": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+    "csrf": {
+      "enable": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "useSession": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "ignoreJSON": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "cookieName": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "sessionName": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "headerName": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "bodyName": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "queryName": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "xframe": {
+      "enable": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "hsts": {
+      "enable": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "maxAge": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "includeSubdomains": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "dta": {
+      "enable": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "noopen": {
+      "enable": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "nosniff": {
+      "enable": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "xssProtection": {
+      "enable": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "csp": {
+      "enable": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js",
+      "policy": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "/Users/kobe/egg/egg-example/node_modules/egg-security/config/config.default.js"
+  },
+  "logrotator": {
+    "filesRotateByHour": "/Users/kobe/egg/egg-example/node_modules/egg-logrotator/config/config.default.js",
+    "filesRotateBySize": "/Users/kobe/egg/egg-example/node_modules/egg-logrotator/config/config.default.js",
+    "maxFileSize": "/Users/kobe/egg/egg-example/node_modules/egg-logrotator/config/config.default.js",
+    "maxFiles": "/Users/kobe/egg/egg-example/node_modules/egg-logrotator/config/config.default.js",
+    "rotateDuration": "/Users/kobe/egg/egg-example/node_modules/egg-logrotator/config/config.default.js",
+    "maxDays": "/Users/kobe/egg/egg-example/node_modules/egg-logrotator/config/config.default.js"
+  },
+  "static": {
+    "prefix": "/Users/kobe/egg/egg-example/node_modules/egg-static/config/config.default.js",
+    "dir": "/Users/kobe/egg/egg-example/node_modules/egg-static/config/config.default.js",
+    "dynamic": "/Users/kobe/egg/egg-example/node_modules/egg-static/config/config.default.js",
+    "preload": "/Users/kobe/egg/egg-example/node_modules/egg-static/config/config.default.js",
+    "buffer": "/Users/kobe/egg/egg-example/node_modules/egg-static/config/config.default.js",
+    "maxFiles": "/Users/kobe/egg/egg-example/node_modules/egg-static/config/config.default.js"
+  },
+  "jsonp": {
+    "limit": "/Users/kobe/egg/egg-example/node_modules/egg-jsonp/config/config.default.js",
+    "callback": "/Users/kobe/egg/egg-example/node_modules/egg-jsonp/config/config.default.js",
+    "csrf": "/Users/kobe/egg/egg-example/node_modules/egg-jsonp/config/config.default.js"
+  },
+  "view": {
+    "root": "/Users/kobe/egg/egg-example/node_modules/egg-view/config/config.default.js",
+    "cache": "/Users/kobe/egg/egg-example/node_modules/egg-view/config/config.default.js",
+    "defaultExtension": "/Users/kobe/egg/egg-example/node_modules/egg-view/config/config.default.js",
+    "defaultViewEngine": "/Users/kobe/egg/egg-example/node_modules/egg-view/config/config.default.js",
+    "mapping": "/Users/kobe/egg/egg-example/node_modules/egg-view/config/config.default.js"
+  },
+  "env": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+  "name": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+  "proxy": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+  "protocolHeaders": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+  "ipHeaders": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+  "hostHeaders": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+  "pkg": {
+    "name": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "version": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "description": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "private": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "dependencies": {
+      "egg": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "devDependencies": {
+      "autod": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "autod-egg": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "egg-bin": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "egg-ci": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "egg-mock": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "eslint": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "eslint-config-egg": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "webstorm-disable-index": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "engines": {
+      "node": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "scripts": {
+      "start": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "dev": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "test": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "test-local": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "cov": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "lint": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "ci": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "autod": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "ci": {
+      "version": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "repository": {
+      "type": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "url": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "author": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "license": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "baseDir": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+  "HOME": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+  "rundir": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+  "dump": {
+    "ignore": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "notFound": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "sitefile": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "middlewares": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "httpClient": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "bodyParser": {
+    "enable": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "encoding": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "formLimit": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "jsonLimit": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "strict": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "queryString": {
+      "arrayLimit": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "depth": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "parameterLimit": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+    }
+  },
+  "logger": {
+    "dir": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "encoding": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "env": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "level": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "consoleLevel": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.unittest.js",
+    "disableConsoleAfterReady": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "outputJSON": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "buffer": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.unittest.js",
+    "appLogName": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "coreLogName": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "agentLogName": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "errorLogName": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "coreLogger": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "dnsCacheMaxLength": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "dnsCacheMaxAge": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+    "request": {
+      "timeout": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "freeSocketKeepAliveTimeout": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "maxSockets": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "maxFreeSockets": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "freeSocketKeepAliveTimeout": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "maxSockets": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "maxFreeSockets": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+    }
+  },
+  "coreMiddleware": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+  "workerStartTimeout": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "port": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js",
+      "hostname": "/Users/kobe/egg/egg-example/node_modules/egg/config/config.default.js"
+    }
+  }
+}
