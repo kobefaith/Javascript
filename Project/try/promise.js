@@ -34,5 +34,5 @@ let start = new Date().getTime();
 Promise.all([fir,sec,thir]).then((temp1)=>{	
      console.log('the promise are finished.  '+temp1);
      let end = new Date().getTime();
-     console.log('the time consume is '+(end-start)/1000+' s' );
+     console.log('the time consume is  '+(end-start)/1000+' s' );
 });
