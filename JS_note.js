@@ -1,3 +1,22 @@
+CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
+CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
+// lib.js
+export let counter = 3;
+export function incCounter() {
+  counter++;
+}
+
+// main.js
+import { counter, incCounter } from './lib';
+console.log(counter); // 3
+incCounter();
+console.log(counter); // 4
+CommonJS的一个模块，就是一个脚本文件。
+require命令第一次加载该脚本，就会执行整个脚本，然后在内存生成一个对象。
+以后需要用到这个模块的时候，就会到exports属性上面取值。
+即使再次执行require命令，也不会再次执行该模块，而是到缓存之中取值。
+也就是说，CommonJS模块无论加载多少次，都只会在第一次加载时运行一次，以后再加载，
+就返回第一次运行的结果，除非手动清除系统缓存。
 cheerio 服务器端用jquery解析dom工具
 viewport http://weizhifeng.net/viewports.html
 数据推送  http://luoxia.me/code/2016/10/16/数据推送业务解决方案/
