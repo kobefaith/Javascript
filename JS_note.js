@@ -1928,6 +1928,30 @@ document.addEventListener('touchend',function(event){
     var deltax = endx - startx;
     var deltay = endy - starty;
 
+js单例模式：
+var singleton = function() {
+   var privateVariable;
+   function privateFunction(x) {
+      console.log('this is the singleton param:', privateVariable);
+   }
+   return {
+      firstMethod: function(a) {
+          privateVariable = a;
+          console.log('firstMethod :', privateVariable);
+      },
+      secondMethod: function(c) {
+         privateFunction();
+      }
+   };
+}();
+// var t = singleton();
+singleton.firstMethod(1);
+singleton.secondMethod();
+
+
+// t2.firstMethod(3);
+singleton.secondMethod();
+
 
     
     
