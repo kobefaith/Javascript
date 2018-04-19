@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>无标题文档</title>
+  <script type="text/javascript" src="jquery-1.5.1.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      //中心点横坐标
+      var dotLeft = ($(".container").width() - $(".dot").width()) / 2 - 100;
+      //中心点纵坐标
+      var dotTop = ($(".container").height() - $(".dot").height()) / 2 - 100;
+      //椭圆长边
+      a = 460;
+      //椭圆短边
+      b = 120;
+      //起始角度
+      var stard = 0;
+
+      //每一个BOX对应的角度;
+      var avd = 360 / $(".container img").length;
+      //每一个BOX对应的弧度;
+      var ahd = avd * Math.PI / 180;
+      //运动的速度
+      var speed = 2;
+      //图片的宽高
+      var wid = $(".container img").width();
+      var hei = $(".container img").height();
+      //总的TOP值
+      var totTop = dotTop + 100;
+
+
+
+      //设置圆的中心点的位置
+      $(".dot").css({ "left": dotLeft, "top": dotTop });
+
+
+      //运动函数
+      var fun_animat = function(endangle) {
+        if (endangle === 355 && speed >= endangle) {
+          speed = 0;
+          return;
+        }
+        if (speed >= endangle) return;
+        //  speed = speed < 360 ? speed : 2;
+
+        //运运的速度
+        speed += 5;
+        //运动距离，即运动的弧度数;
+        var ainhd = speed * Math.PI / 180;
+
+        //按速度来定位DIV元素
+        $(".container img").each(function(index, element) {
+          var allpers = (Math.cos((ahd * index + ainhd)) * b + dotTop) / totTop;
+          var wpers = Math.max(0.1, allpers);
+          var hpers = Math.max(0.1, allpers);
+          $(this).css({
+            "left": Math.sin((ahd * index + ainhd)) * a + dotLeft,
+            "top": Math.cos((ahd * index + ainhd)) * b + dotTop,
+            "z-index": Math.ceil(allpers * 10),
+            "width": wpers * wid,
+            "height": hpers * hei,
+            "opacity": allpers
+          });
+        });
+      }
+      function run() {
+        fun_animat(85);
+        // 反转4
+        $(".container img").eq(3).addClass("rotateimg");
+        //  $(".container img").eq(3).addClass("rotateimg");
+        fun_animat(175);
+        // 反转3
+        $(".container img").eq(2).addClass("rotateimg");
+        fun_animat(265);
+        // 反转2
+        $(".container img").eq(1).addClass("rotateimg");
+        fun_animat(355);
+        // 反转1
+        $(".container img").eq(0).addClass("rotateimg");
+      }
+
+
+      //定时调用运动函数
+      var setAnimate = setInterval(run, 100);
+    })
+  </script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000000;
+    }
+
+    .container {
+      position: relative;
+      width: 1000px;
+      height: 800px;
+      margin: 0 auto;
+    }
+
+    .container img {
+      position: absolute;
+      width: 293px;
+      height: 144px;
+      background: #000;
+      color: #FFFFFF;
+      font-size: 16px;
+    }
+
+    .dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #F00;
+    }
+
+    .rotateimg {
+      transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      /* IE 9 */
+      -webkit-transform: rotateY(180deg);
+      /* Safari and Chrome */
+      transition: transform 1s linear 2s;
+      /* Safari */
+      -webkit-transition: transform 1s linear 2s;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="images/1.jpg" alt="" />
+    <img src="images/2.jpg" alt="" />
+    <img src="images/3.jpg" alt="" />
+    <img src="images/4.jpg" alt="" />
+
+  </div>
+</body>
+
+</html>
