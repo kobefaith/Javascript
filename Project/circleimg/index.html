@@ -38,12 +38,7 @@
 
       //运动函数
       var fun_animat = function(endangle) {
-        if (endangle === 355 && speed >= endangle) {
-          speed = 0;
-          return;
-        }
-        if (speed >= endangle) return;
-        //  speed = speed < 360 ? speed : 2;
+        speed = speed < 360 ? speed : 2;
 
         //运运的速度
         speed += 5;
@@ -55,6 +50,7 @@
           var allpers = (Math.cos((ahd * index + ainhd)) * b + dotTop) / totTop;
           var wpers = Math.max(0.1, allpers);
           var hpers = Math.max(0.1, allpers);
+
           $(this).css({
             "left": Math.sin((ahd * index + ainhd)) * a + dotLeft,
             "top": Math.cos((ahd * index + ainhd)) * b + dotTop,
@@ -63,27 +59,35 @@
             "height": hpers * hei,
             "opacity": allpers
           });
+          const front = 3 * Math.PI / 2 - 0.5;
+          const end = 3 * Math.PI / 2 + 0.5;
+          if ((ahd * index + ainhd) % (2 * Math.PI) < end && (ahd * index + ainhd) % (2 * Math.PI) > front) {
+            $(this).addClass("rotateimg");
+            $(this).addClass("rotateimg2");
+          }
         });
+
+
       }
-      function run() {
+      /* function run() {
         fun_animat(85);
         // 反转4
-        $(".container img").eq(3).addClass("rotateimg");
         //  $(".container img").eq(3).addClass("rotateimg");
+  
         fun_animat(175);
         // 反转3
-        $(".container img").eq(2).addClass("rotateimg");
+        //  $(".container img").eq(2).addClass("rotateimg");
         fun_animat(265);
         // 反转2
-        $(".container img").eq(1).addClass("rotateimg");
+        //    $(".container img").eq(1).addClass("rotateimg");
         fun_animat(355);
         // 反转1
-        $(".container img").eq(0).addClass("rotateimg");
-      }
+        //    $(".container img").eq(0).addClass("rotateimg");
+      } */
 
 
       //定时调用运动函数
-      var setAnimate = setInterval(run, 100);
+      var setAnimate = setInterval(fun_animat, 100);
     })
   </script>
   <style type="text/css">
@@ -124,6 +128,17 @@
       -ms-transform: rotateY(180deg);
       /* IE 9 */
       -webkit-transform: rotateY(180deg);
+      /* Safari and Chrome */
+      transition: transform 1s linear 2s;
+      /* Safari */
+      -webkit-transition: transform 1s linear 2s;
+    }
+
+    .rotateimg2 {
+      transform: rotateY(360deg);
+      -ms-transform: rotateY(360deg);
+      /* IE 9 */
+      -webkit-transform: rotateY(360deg);
       /* Safari and Chrome */
       transition: transform 1s linear 2s;
       /* Safari */
